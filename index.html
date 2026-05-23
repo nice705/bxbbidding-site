@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>标讯宝 — 免费全网招标采购信息查询平台</title>
+  <meta name="description" content="聚合全国全行业招标采购信息，覆盖医疗设备、IT信息化、工程建设、教育科研等8大行业。源头数据，完全免费，每日更新。">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="标讯宝 — 免费全网招标采购信息查询平台">
+  <meta property="og:description" content="聚合全国全行业招标采购信息，覆盖医疗设备、IT信息化、工程建设等8大行业。源头数据，完全免费，每日更新。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bidding-site.pages.dev/">
+  <meta property="og:locale" content="zh_CN">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://bidding-site.pages.dev/">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "标讯宝",
+    "url": "https://bidding-site.pages.dev/",
+    "description": "免费全网招标采购信息查询平台",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://bidding-site.pages.dev/list.html?q={query}"
+      },
+      "query-input": "required name=query"
+    }
+  }
+  </script>
+
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/theme/light.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+    * { font-family: 'Noto Sans SC', -apple-system, sans-serif; }
+    .hero-gradient { background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%); }
+    .card-hover { transition: all 0.2s ease; }
+    .card-hover:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -8px rgba(0,0,0,0.1); }
+    .tag-pill { cursor: pointer; transition: all 0.15s ease; }
+    .tag-pill:hover { transform: scale(1.05); }
+    .search-input:focus { box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2); }
+    .bid-source-badge { font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 999px; }
+    .fade-in { animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    [x-cloak] { display: none !important; }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#059669',
+            'primary-dark': '#047857',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50 min-h-screen" x-data="app()">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-14">
+        <div class="flex items-center gap-6">
+          <a href="/" class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-lg hero-gradient flex items-center justify-center">
+              <span class="text-white font-bold text-xs">标</span>
+            </div>
+            <span class="text-lg font-bold text-gray-900">标讯宝</span>
+          </a>
+          <div class="hidden md:flex items-center gap-5">
+            <a href="/" class="text-emerald-600 font-medium text-sm">首页</a>
+            <a href="/list.html" class="text-gray-500 hover:text-gray-900 text-sm transition-colors">标讯大全</a>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-gray-400 hidden sm:block">全网标讯 · 完全免费</span>
+          <div class="badge badge-outline badge-sm text-emerald-600 border-emerald-200 bg-emerald-50 whitespace-nowrap">今日更新 <span class="font-bold" x-text="stats.todayCount"></span> 条</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section (compact) -->
+  <section class="hero-gradient">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 leading-tight">
+          全国全行业招标采购信息
+        </h1>
+        <p class="text-emerald-100 text-sm sm:text-base mb-5">
+          源头信息 · 完全免费 · 每日更新
+        </p>
+        <!-- Search Box -->
+        <div class="max-w-2xl mx-auto">
+          <div class="flex gap-2">
+            <div class="relative flex-1">
+              <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
+              <input
+                type="text"
+                placeholder="输入关键词搜索标讯"
+                class="search-input w-full pl-10 pr-3.5 py-2.5 rounded-lg border-0 text-gray-900 bg-white shadow text-sm focus:ring-2 focus:ring-emerald-300"
+                x-model="searchKeyword"
+                @keydown.enter="doSearch()"
+              />
+            </div>
+            <button
+              class="px-5 py-2.5 bg-gray-900 text-white rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors shadow flex items-center gap-1.5"
+              @click="doSearch()"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              搜索
+            </button>
+          </div>
+          <!-- Hot Tags -->
+          <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 mt-3" x-show="hotTags.length > 0">
+            <span class="text-emerald-100 text-xs font-medium">热门搜索：</span>
+            <template x-for="tag in hotTags" :key="tag">
+              <span
+                class="tag-pill px-2 py-0.5 bg-white/20 text-white text-xs rounded-full hover:bg-white/30 transition-colors"
+                @click="searchKeyword = tag; doSearch()"
+                x-text="tag"
+              ></span>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+
+    <!-- Industry Filter -->
+    <div class="flex flex-wrap items-center gap-1.5 mb-4">
+      <span class="text-xs font-medium text-gray-500 mr-1">行业</span>
+      <button
+        class="px-2.5 py-1 text-xs rounded-md transition-colors"
+        :class="selectedIndustry === '' ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'"
+        @click="selectedIndustry = ''"
+      >全部</button>
+      <template x-for="ind in industries" :key="ind">
+        <button
+          class="px-2.5 py-1 text-xs rounded-md transition-colors"
+          :class="selectedIndustry === ind ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'"
+          @click="selectedIndustry = ind"
+          x-text="ind"
+        ></button>
+      </template>
+    </div>
+
+    <!-- Bids Section -->
+    <div class="flex items-center justify-between mb-3">
+      <h2 class="text-base font-bold text-gray-900">最新标讯</h2>
+      <a href="/list.html" class="text-sm text-emerald-600 hover:text-emerald-700 font-medium flex items-center gap-1">
+        查看全部
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- Bids Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+      <template x-for="(bid, idx) in filteredBids" :key="bid.id">
+        <a :href="'/detail.html?id=' + bid.id" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in">
+          <!-- Source + Time -->
+          <div class="flex items-center justify-between mb-2">
+            <span
+              class="bid-source-badge font-medium"
+              :class="sourceBadgeClass(bid.source)"
+              x-text="bid.source"
+            ></span>
+            <span class="text-xs text-gray-400" x-text="bid.date"></span>
+          </div>
+          <!-- Title -->
+          <h3 class="font-semibold text-gray-900 text-sm leading-snug mb-2 line-clamp-2" x-text="bid.title"></h3>
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-1.5 mb-2">
+            <span class="badge badge-sm bg-gray-50 text-gray-500 border-gray-200 text-xs" x-text="bid.industry"></span>
+            <span class="badge badge-sm bg-gray-50 text-gray-500 border-gray-200 text-xs" x-text="bid.region"></span>
+            <span class="badge badge-sm bg-gray-50 text-gray-500 border-gray-200 text-xs" x-text="bid.method"></span>
+          </div>
+          <!-- Budget + Deadline -->
+          <div class="flex items-center justify-between text-xs text-gray-500 pt-2.5 border-t border-gray-50">
+            <span class="flex items-center gap-1">💰 <span x-text="bid.budget"></span></span>
+            <span class="flex items-center gap-1">📅 <span x-text="bid.deadline"></span></span>
+          </div>
+        </a>
+      </template>
+    </div>
+
+    <!-- Empty state -->
+    <div class="text-center py-16" x-show="filteredBids.length === 0">
+      <div class="text-4xl mb-4">📭</div>
+      <p class="text-gray-500">暂无比配的标讯</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-100 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="flex items-center gap-2">
+          <div class="w-5 h-5 rounded hero-gradient flex items-center justify-center">
+            <span class="text-white font-bold text-xs">标</span>
+          </div>
+          <span class="text-sm font-medium text-gray-700">标讯宝</span>
+          <span class="text-xs text-gray-400">— 免费标讯查询平台</span>
+        </div>
+        <div class="text-xs text-gray-400">
+          数据来源：中国招标投标公共服务平台 · 中国政府采购网 · 各省公共资源交易平台 · 招标代理机构 · 医院高校官网
+        </div>
+      </div>
+      <div class="mt-3 pt-3 border-t border-gray-50 text-center text-xs text-gray-400">
+        © 2026 标讯宝 · 未经许可禁止批量抓取数据 · <a href="/robots.txt" class="underline hover:text-gray-600">robots.txt</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 订阅浮窗 + 自动弹窗 -->
+  <div x-data="subscribePrompt()">
+
+    <!-- 右侧悬浮入口 -->
+    <button @mouseenter="openModal()" @click="openModal()" x-show="!showModal"
+      class="fixed right-0 top-1/2 -translate-y-1/2 z-40
+             bg-emerald-600 text-white rounded-l-lg shadow-lg
+             hover:bg-emerald-700 hover:pr-0.5 transition-all
+             w-14 py-2.5 flex flex-col items-center gap-1.5
+             text-sm leading-tight cursor-pointer font-medium">
+      <span class="text-lg">📢</span>
+      <span>免费订阅</span>
+      <span>微信推送</span>
+    </button>
+
+    <!-- 弹窗 -->
+    <div x-show="showModal" x-cloak
+      class="fixed inset-0 bg-black/30 z-50 flex items-center justify-center p-4"
+      @click.away="closeModal()">
+      <div class="bg-white rounded-2xl p-6 text-center max-w-xs w-full shadow-xl" x-show="showModal" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
+        <div class="flex justify-end -mt-2 -mr-2 mb-1">
+          <button @click="closeModal()" class="text-gray-300 hover:text-gray-500 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <img src="/static/wxpusher-qr.svg" alt="微信扫码关注" class="w-44 mx-auto mb-3">
+        <p class="text-base font-semibold text-gray-800">📢 免费订阅每日标讯</p>
+        <p class="text-xs text-gray-400 mt-1 leading-relaxed">微信扫码关注<br>每天推送最新标讯，不错过任何机会</p>
+        <button @click="closeModal()" class="mt-4 text-xs text-gray-400 hover:text-gray-600 underline underline-offset-2">暂不订阅</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function subscribePrompt() {
+      return {
+        showModal: false,
+        init() {
+          setTimeout(() => {
+            this.showModal = true
+          }, 3000)
+        },
+        openModal() { this.showModal = true },
+        closeModal() { this.showModal = false }
+      }
+    }
+  </script>
+
+  <script>
+    function app() {
+      return {
+        searchKeyword: '',
+        selectedIndustry: '',
+        hotTags: ['CT', '核磁共振', 'DSA', '彩超', '内窥镜', '信息化建设', '物业服务', '教学设备'],
+        industries: ['医疗设备', 'IT信息化', '工程建设', '教育科研', '后勤服务', '纺织服装', '交通运输', '环保能源'],
+        stats: { todayCount: 26 },
+        bids: [],
+        demoBids: [
+          { id: 'demo-01', title: '中山大学附属第一医院2026年度CT设备采购项目公开招标公告', source: '政府采购网', industry: '医疗设备', region: '广东省广州市', method: '公开招标', budget: '¥2,800万', date: '2026-05-23', deadline: '2026-06-15', buyer: '中山大学附属第一医院', code: 'GZGK2026P053A' },
+          { id: 'demo-02', title: '四川省人民医院3.0T核磁共振成像系统采购项目', source: '国招平台', industry: '医疗设备', region: '四川省成都市', method: '公开招标', budget: '¥1,950万', date: '2026-05-23', deadline: '2026-06-12', buyer: '四川省人民医院', code: 'SCWZ2026-0510' },
+          { id: 'demo-03', title: '上海市政务云平台2026年度基础设施扩容项目', source: '政府采购网', industry: 'IT信息化', region: '上海市', method: '公开招标', budget: '¥4,500万', date: '2026-05-23', deadline: '2026-06-20', buyer: '上海市大数据中心', code: 'SHZC2026-G-056' },
+          { id: 'demo-04', title: '浙江省中医院DSA数字减影血管造影系统采购项目', source: '医院官网', industry: '医疗设备', region: '浙江省杭州市', method: '公开招标', budget: '¥1,200万', date: '2026-05-22', deadline: '2026-06-08', buyer: '浙江省中医院', code: 'ZJZYY-DSA-202605' },
+          { id: 'demo-05', title: '华中科技大学同济医学院附属协和医院物业服务采购项目', source: '招标代理', industry: '后勤服务', region: '湖北省武汉市', method: '竞争性磋商', budget: '¥680万', date: '2026-05-22', deadline: '2026-06-05', buyer: '华中科技大学同济医学院附属协和医院', code: 'HBT-20260508' },
+          { id: 'demo-06', title: '山东省交通运输厅智慧交通信息化平台建设项目', source: '省平台', industry: 'IT信息化', region: '山东省济南市', method: '公开招标', budget: '¥3,200万', date: '2026-05-22', deadline: '2026-06-18', buyer: '山东省交通运输厅', code: 'SDGP2026-05-22' },
+          { id: 'demo-07', title: '北京师范大学珠海校区实验室仪器设备采购项目', source: '高校官网', industry: '教育科研', region: '广东省珠海市', method: '公开招标', budget: '¥860万', date: '2026-05-21', deadline: '2026-06-10', buyer: '北京师范大学珠海校区', code: 'BNUZH-202605' },
+          { id: 'demo-08', title: '南京市秦淮区老旧小区改造工程项目', source: '省平台', industry: '工程建设', region: '江苏省南京市', method: '公开招标', budget: '¥5,600万', date: '2026-05-21', deadline: '2026-06-14', buyer: '南京市秦淮区住房保障局', code: 'NJQH-2026-GZ003' },
+          { id: 'demo-09', title: '中国医科大学附属盛京医院彩超设备采购项目', source: '国招平台', industry: '医疗设备', region: '辽宁省沈阳市', method: '公开招标', budget: '¥750万', date: '2026-05-21', deadline: '2026-06-07', buyer: '中国医科大学附属盛京医院', code: 'LNZB2026-0510' },
+          { id: 'demo-10', title: '中国纺织工业联合会绿色纺织技术研发项目', source: '招标代理', industry: '纺织服装', region: '北京市', method: '邀请招标', budget: '¥380万', date: '2026-05-20', deadline: '2026-06-03', buyer: '中国纺织工业联合会', code: 'CTIC-2026-YQ01' },
+          { id: 'demo-11', title: '深圳市福田区2026年环卫车辆采购项目', source: '政府采购网', industry: '交通运输', region: '广东省深圳市', method: '公开招标', budget: '¥2,100万', date: '2026-05-20', deadline: '2026-06-09', buyer: '深圳市福田区城市管理局', code: 'FTCG2026-0520' },
+          { id: 'demo-12', title: '国家能源集团福建海上风电项目环境影响评估服务', source: '国招平台', industry: '环保能源', region: '福建省福州市', method: '公开招标', budget: '¥520万', date: '2026-05-20', deadline: '2026-06-02', buyer: '国家能源集团福建公司', code: 'CEZB20260520' },
+        ],
+        async init() {
+          await this.loadData();
+        },
+        async loadData() {
+          try {
+            const resp = await fetch('/api/bids?pageSize=50');
+            const data = await resp.json();
+            this.bids = (data.bids || []).slice(0, 12);
+            this.stats.todayCount = data.todayCount || this.bids.length;
+          } catch(e) {
+            this.bids = this.demoBids;
+            this.stats.todayCount = this.demoBids.length;
+          }
+        },
+        get filteredBids() {
+          let result = this.bids;
+          if (this.selectedIndustry) {
+            result = result.filter(b => b.industry === this.selectedIndustry);
+          }
+          return result.slice(0, 12);
+        },
+        sourceBadgeClass(source) {
+          const map = {
+            '国招平台': 'bg-blue-50 text-blue-600 border-blue-200',
+            '政府采购网': 'bg-emerald-50 text-emerald-600 border-emerald-200',
+            '省平台': 'bg-purple-50 text-purple-600 border-purple-200',
+            '招标代理': 'bg-orange-50 text-orange-600 border-orange-200',
+            '医院官网': 'bg-rose-50 text-rose-600 border-rose-200',
+            '高校官网': 'bg-cyan-50 text-cyan-600 border-cyan-200',
+          };
+          return map[source] || 'bg-gray-50 text-gray-600 border-gray-200';
+        },
+        doSearch() {
+          if (!this.searchKeyword.trim()) return;
+          window.location.href = '/list.html?q=' + encodeURIComponent(this.searchKeyword.trim());
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>

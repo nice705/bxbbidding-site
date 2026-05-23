@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# 以下目录对爬虫关闭（不上搜索引擎）
+Disallow: /api/
+Disallow: /data/
+Disallow: /static/
+
+Sitemap: https://bidding-site.pages.dev/sitemap.xml
