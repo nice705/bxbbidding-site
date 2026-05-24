@@ -6,14 +6,11 @@
   <title>订阅管理 — 标讯宝</title>
   <meta name="description" content="管理您的关键词分组订阅，接收微信推送通知，第一时间获取最新标讯。">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="订阅管理 — 标讯宝">
   <meta property="og:description" content="管理您的关键词分组订阅，接收微信推送通知，第一时间获取最新标讯。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bidding-site.pages.dev/subscribe.html">
   <meta property="og:locale" content="zh_CN">
-
-  <!-- Canonical -->
   <link rel="canonical" href="https://bidding-site.pages.dev/subscribe.html">
 
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
@@ -24,17 +21,32 @@
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
     * { font-family: 'Noto Sans SC', -apple-system, sans-serif; }
     .hero-gradient { background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%); }
-    .card-hover { transition: all 0.2s ease; }
-    .card-hover:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -8px rgba(0,0,0,0.1); }
     .fade-in { animation: fadeIn 0.3s ease; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-    .slide-up { animation: slideUp 0.3s ease; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .slide-up { animation: slideUp 0.2s ease; }
     [x-cloak] { display: none !important; }
     .keyword-tag { transition: all 0.2s ease; }
     .keyword-tag:hover { transform: scale(1.03); }
     .pb-safe { padding-bottom: max(0.75rem, env(safe-area-inset-bottom)); }
-    .toggle-emerald:checked { background-color: #059669; border-color: #059669; }
+    .group-tab { transition: all 0.2s ease; white-space: nowrap; }
+    .group-tab-active { background: #059669; color: white; box-shadow: 0 2px 8px rgba(5,150,105,0.3); }
+    .keyword-chips { min-height: 48px; }
+    .add-group-btn {
+      background: #f3f4f6; border: 2px dashed #d1d5db;
+      color: #9ca3af; border-radius: 999px; padding: 0 14px;
+      font-size: 13px; cursor: pointer; line-height: 34px;
+      white-space: nowrap; transition: all 0.2s;
+    }
+    .add-group-btn:hover { border-color: #059669; color: #059669; background: #f0fdf4; }
+    .group-rename-input {
+      border: none; border-bottom: 2px solid #059669; outline: none;
+      background: transparent; font-size: inherit; color: #059669;
+      font-weight: 600; min-width: 60px; max-width: 140px;
+    }
+    .delete-zone {
+      transition: all 0.2s;
+    }
   </style>
   <script>
     tailwind.config = { theme: { extend: { colors: { primary: '#059669', 'primary-dark': '#047857' } } } }
@@ -60,30 +72,110 @@
     </div>
   </nav>
 
-  <!-- Hero Banner -->
+  <!-- Hero -->
   <section class="hero-gradient">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-      <div class="flex items-center gap-4">
-        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl">🔔</div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-xl">🔔</div>
         <div>
-          <h1 class="text-xl font-bold text-white">订阅管理</h1>
-          <p class="text-emerald-100 text-sm mt-0.5">分组管理关键词 · 微信推送 · 不错过任何商机</p>
+          <h1 class="text-lg font-bold text-white">关键词订阅</h1>
+          <p class="text-emerald-100 text-xs">分组管理 · 微信推送 · 不错过商机</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-5 space-y-4">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-4">
 
-    <!-- ====== Section 1: 添加关键词 ====== -->
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 fade-in">
-      <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2">
-        <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-        </svg>
-        添加关键词
-      </h2>
+    <!-- ====== Main Card: Groups + Input + Keywords ====== -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 fade-in">
 
+      <!-- Group tabs -->
+      <div class="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-hide -mx-1 px-1">
+        <template x-for="(g, gi) in groups" :key="gi">
+          <div class="relative flex-shrink-0">
+            <button
+              class="group-tab px-4 py-1.5 rounded-full text-sm font-medium transition-all"
+              :class="gi === activeGroup ? 'group-tab-active' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'"
+              @click="activeGroup = gi"
+            >
+              <span x-text="g.name"></span>
+              <span class="text-xs ml-1 opacity-70" x-text="'(' + g.keywords.length + ')'"></span>
+            </button>
+            <!-- Edit/delete icons on hover (only when groups.length > 1 or group has keywords) -->
+            <div
+              class="absolute -top-1.5 -right-1.5 flex gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+              style="display: none;"
+              x-init="$el.parentElement.addEventListener('mouseenter', () => $el.style.display = 'flex'); $el.parentElement.addEventListener('mouseleave', () => $el.style.display = 'none')"
+            >
+              <button
+                @click="editGroupName(gi)"
+                class="w-4 h-4 rounded-full bg-white border border-gray-200 flex items-center justify-center shadow-sm hover:border-emerald-300 hover:text-emerald-500"
+                title="重命名"
+              >
+                <svg class="w-2.5 h-2.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+              </button>
+              <button
+                @click="deleteGroup(gi)"
+                class="w-4 h-4 rounded-full bg-white border border-gray-200 flex items-center justify-center shadow-sm hover:border-red-300 hover:text-red-500"
+                title="删除"
+              >
+                <svg class="w-2.5 h-2.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </button>
+            </div>
+          </div>
+        </template>
+        <button
+          class="add-group-btn flex-shrink-0"
+          @click="showNewGroupInput = true"
+        >+ 新建分组</button>
+      </div>
+
+      <!-- New group inline form -->
+      <div x-show="showNewGroupInput" x-cloak class="mt-3 p-3 bg-emerald-50 rounded-lg border border-emerald-200 slide-up">
+        <p class="text-xs text-emerald-600 font-medium mb-1.5">新建分组</p>
+        <div class="flex gap-1.5">
+          <input
+            type="text"
+            x-model="newGroupName"
+            placeholder="输入分组名称"
+            class="flex-1 px-3 py-1.5 border border-emerald-200 rounded-lg text-sm focus:outline-none focus:border-emerald-400 bg-white"
+            @keydown.enter="createGroup()"
+            maxlength="20"
+            x-ref="newGroupInput"
+          />
+          <button @click="createGroup()" class="px-3 py-1.5 bg-emerald-600 text-white rounded-lg text-xs font-medium hover:bg-emerald-700 transition-colors">创建</button>
+          <button @click="showNewGroupInput = false; newGroupName = ''" class="px-3 py-1.5 text-gray-400 text-xs hover:text-gray-600">取消</button>
+        </div>
+      </div>
+
+      <!-- Divider + keyword count -->
+      <div class="flex items-center justify-between mt-4 mb-3">
+        <div class="text-xs text-gray-400">
+          当前：<span class="font-medium text-emerald-600" x-text="currentGroupName"></span>
+          · <span x-text="currentGroupKeywords.length"></span> 个关键词
+        </div>
+        <div class="flex gap-2">
+          <button
+            @click="editGroupName(activeGroup)"
+            class="text-xs text-gray-400 hover:text-emerald-500 transition-colors flex items-center gap-0.5"
+            x-show="groups.length > 0"
+          >
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+            重命名
+          </button>
+          <button
+            @click="deleteGroup(activeGroup)"
+            class="text-xs text-gray-400 hover:text-red-500 transition-colors flex items-center gap-0.5"
+            x-show="groups.length > 0"
+          >
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            删除分组
+          </button>
+        </div>
+      </div>
+
+      <!-- Input -->
       <div class="flex gap-2">
         <div class="relative flex-1">
           <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,11 +183,12 @@
           </svg>
           <input
             type="text"
-            placeholder="输入关键词，如：CT、辽宁..."
+            placeholder="输入关键词..."
             class="w-full pl-10 pr-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-200"
             x-model="newKeyword"
             @keydown.enter="addKeyword()"
             maxlength="50"
+            x-ref="keywordInput"
           />
         </div>
         <button
@@ -105,275 +198,134 @@
         >添加</button>
       </div>
 
-      <!-- Group selector -->
-      <div class="mt-3 flex items-center gap-2">
-        <span class="text-xs text-gray-400">添加到分组：</span>
-        <select
-          class="select select-bordered select-sm text-xs min-w-[120px]"
-          x-model="selectedGroup"
-        >
-          <template x-for="g in groups" :key="g.name">
-            <option :value="g.name" x-text="g.name"></option>
-          </template>
-        </select>
-        <button
-          class="text-xs text-emerald-500 hover:text-emerald-600 transition-colors"
-          @click="showNewGroupInput = true"
-          x-show="!showNewGroupInput"
-        >+ 新建分组</button>
-        <div x-show="showNewGroupInput" class="flex items-center gap-1">
-          <input
-            type="text"
-            x-model="newGroupName"
-            placeholder="分组名称"
-            class="w-28 px-2 py-0.5 border border-gray-200 rounded text-xs focus:outline-none focus:border-emerald-400"
-            @keydown.enter="createGroup()"
-            maxlength="20"
-          />
-          <button @click="createGroup()" class="text-xs text-emerald-600 font-medium">确定</button>
-          <button @click="showNewGroupInput = false; newGroupName = ''" class="text-xs text-gray-400">取消</button>
-        </div>
-      </div>
-
-      <!-- Popular suggestions -->
-      <div class="mt-3" x-show="suggestions.length > 0">
-        <p class="text-xs text-gray-400 mb-2">热门建议：</p>
+      <!-- Keywords of current group -->
+      <div class="mt-3 keyword-chips" x-show="currentGroupKeywords.length > 0">
         <div class="flex flex-wrap gap-1.5">
-          <template x-for="s in suggestions" :key="s">
+          <template x-for="(kw, ki) in currentGroupKeywords" :key="ki">
             <span
-              class="keyword-tag px-2.5 py-1 text-xs rounded-full bg-gray-50 text-gray-500 border border-gray-200 cursor-pointer hover:bg-emerald-50 hover:text-emerald-600 hover:border-emerald-200 transition-colors"
-              @click="newKeyword = s; addKeyword()"
-              x-text="s"
-            ></span>
+              class="slide-up inline-flex items-center gap-1 px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full keyword-tag cursor-default group"
+            >
+              <span class="text-sm text-emerald-700 font-medium" x-text="kw"></span>
+              <button
+                class="w-4 h-4 flex items-center justify-center rounded-full text-emerald-400 hover:text-red-500 hover:bg-red-50 transition-colors"
+                @click="removeKeyword(ki)"
+              >
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </button>
+            </span>
           </template>
         </div>
-      </div>
-
-      <!-- Toast -->
-      <div x-show="showToast" x-cloak x-transition
-        class="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-emerald-600 text-white px-5 py-2.5 rounded-lg shadow-lg text-sm font-medium"
-        x-text="toastMessage"
-      ></div>
-    </div>
-
-    <!-- ====== Section 2: 分组列表 ====== -->
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 fade-in">
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-base font-bold text-gray-900 flex items-center gap-2">
-          <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-          </svg>
-          分组列表
-          <span class="text-sm font-normal text-gray-400" x-text="totalKeywords() + ' 个关键词'"></span>
-        </h2>
       </div>
 
       <!-- Empty state -->
-      <div x-show="groups.length === 0" class="text-center py-8">
-        <div class="text-4xl mb-3">📭</div>
-        <p class="text-gray-400 text-sm">还没有任何分组</p>
-        <p class="text-gray-400 text-xs mt-1">在上方输入关键词开始添加</p>
+      <div x-show="currentGroupKeywords.length === 0" class="text-center py-6 text-gray-400">
+        <p class="text-sm">该分组暂无关键词</p>
+        <p class="text-xs mt-1">在上方输入关键词后点击「添加」</p>
       </div>
 
-      <!-- Group cards -->
-      <div class="space-y-3">
-        <template x-for="(group, gi) in groups" :key="gi">
-          <div class="border border-gray-100 rounded-xl overflow-hidden">
-            <!-- Group header -->
-            <div
-              class="flex items-center justify-between px-4 py-3 bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors"
-              @click="toggleGroup(gi)"
-            >
-              <div class="flex items-center gap-2">
-                <svg
-                  class="w-3.5 h-3.5 text-gray-400 transition-transform"
-                  :class="group.expanded && 'rotate-90'"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                </svg>
-                <span class="text-sm font-semibold text-gray-800" x-text="group.name"></span>
-                <span class="text-xs text-gray-400" x-text="'(' + group.keywords.length + ')'"></span>
-              </div>
-              <div class="flex items-center gap-1">
-                <!-- Rename -->
-                <button
-                  class="p-1 rounded hover:bg-white transition-colors"
-                  @click.stop="editGroupName(gi)"
-                  title="重命名"
-                >
-                  <svg class="w-3.5 h-3.5 text-gray-400 hover:text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
-                  </svg>
-                </button>
-                <!-- Delete group -->
-                <button
-                  class="p-1 rounded hover:bg-white transition-colors"
-                  @click.stop="deleteGroup(gi)"
-                  title="删除分组"
-                >
-                  <svg class="w-3.5 h-3.5 text-gray-400 hover:text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <!-- Group keywords -->
-            <div x-show="group.expanded" x-cloak class="slide-up px-4 py-3">
-              <div x-show="group.keywords.length === 0" class="text-center py-3">
-                <p class="text-xs text-gray-400">该分组暂无关键词</p>
-              </div>
-              <div class="flex flex-wrap gap-2" x-show="group.keywords.length > 0">
-                <template x-for="(kw, ki) in group.keywords" :key="ki">
-                  <div class="flex items-center gap-1 px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full keyword-tag group">
-                    <span class="text-sm text-emerald-700 font-medium" x-text="kw"></span>
-                    <button
-                      class="w-4 h-4 flex items-center justify-center rounded-full text-emerald-400 hover:text-red-500 hover:bg-red-50 transition-colors"
-                      @click="removeKeyword(gi, ki)"
-                    >
-                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                      </svg>
-                    </button>
-                  </div>
-                </template>
-              </div>
-            </div>
-          </div>
-        </template>
-      </div>
-
-      <!-- Add group button -->
-      <button
-        x-show="groups.length > 0"
-        class="mt-4 w-full py-2.5 border-2 border-dashed border-gray-200 rounded-xl text-sm text-gray-400 hover:text-emerald-500 hover:border-emerald-300 transition-colors"
-        @click="showNewGroupInput = true"
-      >+ 添加分组</button>
     </div>
 
-    <!-- ====== Section 3: 推送设置 ====== -->
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 fade-in">
-      <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2">
-        <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-        </svg>
-        推送设置
-      </h2>
+    <!-- Toast -->
+    <div x-show="showToast" x-cloak x-transition
+      class="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-gray-800 text-white px-4 py-2 rounded-lg shadow-lg text-sm font-medium"
+      x-text="toastMessage"
+    ></div>
 
-      <div class="flex items-center justify-between py-3 border-b border-gray-50">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-lg bg-emerald-50 flex items-center justify-center text-lg">📢</div>
+    <!-- ====== Section: 推送设置 ====== -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 fade-in">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-sm font-bold text-gray-900 flex items-center gap-2">
+          <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+          </svg>
+          推送设置
+        </h2>
+      </div>
+
+      <div class="flex items-center justify-between py-2.5 border-b border-gray-50">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-base">📢</div>
           <div>
             <p class="text-sm font-medium text-gray-800">微信推送</p>
-            <p class="text-xs text-gray-400">匹配到新标讯时发送微信通知</p>
+            <p class="text-xs text-gray-400">匹配到新标讯时微信通知</p>
           </div>
         </div>
         <label class="relative inline-flex items-center cursor-pointer">
           <input type="checkbox" class="sr-only peer" x-model="pushEnabled" @change="savePushSettings()" />
-          <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"></div>
+          <div class="w-10 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600"></div>
         </label>
       </div>
 
-      <div x-show="pushEnabled" x-cloak class="slide-up py-4 border-b border-gray-50">
-        <div class="bg-gray-50 rounded-lg p-4 flex items-center gap-4">
-          <img src="/static/wxpusher-qr.svg" alt="微信扫码" class="w-20 h-20 rounded-lg border border-gray-200 bg-white p-1">
+      <div x-show="pushEnabled" x-cloak class="slide-up py-3 border-b border-gray-50">
+        <div class="bg-gray-50 rounded-lg p-3 flex items-center gap-3">
+          <img src="/static/wxpusher-qr.svg" alt="微信扫码" class="w-16 h-16 rounded-lg border border-gray-200 bg-white p-1">
           <div>
-            <p class="text-sm font-medium text-gray-800 mb-1">扫码绑定微信</p>
-            <p class="text-xs text-gray-400 leading-relaxed">
-              使用微信扫描左侧二维码<br>
-              关注后即可接收标讯推送
-            </p>
-            <p class="text-xs text-emerald-600 mt-1.5 font-medium">
-              <span class="inline-flex items-center gap-1">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                已连接：微信推送服务
-              </span>
-            </p>
+            <p class="text-sm font-medium text-gray-800">扫码绑定微信</p>
+            <p class="text-xs text-gray-400">关注后即可接收标讯推送</p>
           </div>
         </div>
       </div>
 
-      <div class="flex items-center justify-between py-3">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-lg bg-orange-50 flex items-center justify-center text-lg">⏰</div>
+      <div class="flex items-center justify-between py-2.5">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center text-base">⏰</div>
           <div>
             <p class="text-sm font-medium text-gray-800">推送频率</p>
-            <p class="text-xs text-gray-400">控制消息推送的时效性</p>
+            <p class="text-xs text-gray-400">控制消息时效性</p>
           </div>
         </div>
-        <select
-          class="select select-bordered select-sm text-sm min-w-[120px]"
-          x-model="pushFrequency"
-          @change="savePushSettings()"
-        >
-          <option value="realtime">实时推送</option>
-          <option value="hourly">每小时汇总</option>
+        <select class="select select-bordered select-xs text-xs min-w-[110px]" x-model="pushFrequency" @change="savePushSettings()">
+          <option value="realtime">实时</option>
+          <option value="hourly">每小时</option>
           <option value="daily">每日一次</option>
-          <option value="workday">工作日推送</option>
+          <option value="workday">工作日</option>
         </select>
       </div>
 
-      <div x-show="pushFrequency === 'daily' || pushFrequency === 'workday'" x-cloak class="slide-up flex items-center justify-between py-3 border-t border-gray-50">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center text-lg">🕐</div>
-          <div>
-            <p class="text-sm font-medium text-gray-800">推送时间</p>
-            <p class="text-xs text-gray-400">每天定时推送汇总消息</p>
-          </div>
+      <div x-show="pushFrequency === 'daily' || pushFrequency === 'workday'" x-cloak class="slide-up flex items-center justify-between py-2.5 border-t border-gray-50">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-base">🕐</div>
+          <p class="text-sm text-gray-800">推送时间</p>
         </div>
-        <input
-          type="time"
-          class="border border-gray-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:border-emerald-400"
-          x-model="pushTime"
-          @change="savePushSettings()"
-          value="08:00"
-        />
+        <input type="time" class="border border-gray-200 rounded-lg px-2 py-1 text-sm focus:outline-none focus:border-emerald-400" x-model="pushTime" @change="savePushSettings()" value="08:00" />
       </div>
     </div>
 
-    <!-- ====== Section 4: 匹配预览 ====== -->
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 fade-in">
-      <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2">
-        <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <!-- ====== Section: 最近匹配 ====== -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 fade-in">
+      <h2 class="text-sm font-bold text-gray-900 mb-3 flex items-center gap-2">
+        <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
         最近匹配
       </h2>
 
-      <div x-show="totalKeywords() === 0" class="text-center py-6">
-        <p class="text-gray-400 text-sm">订阅关键词后将展示匹配的标讯</p>
+      <div x-show="allKeywordsCount === 0" class="text-center py-6">
+        <p class="text-gray-400 text-sm">订阅关键词后将展示匹配标讯</p>
       </div>
 
-      <div x-show="totalKeywords() > 0 && matchedBids.length === 0" class="text-center py-6">
-        <div class="text-3xl mb-2">🔍</div>
-        <p class="text-gray-400 text-sm">暂无新匹配的标讯</p>
-        <p class="text-xs text-gray-400 mt-1">系统会在后台持续为您匹配</p>
+      <div x-show="allKeywordsCount > 0 && matchedBids.length === 0" class="text-center py-6">
+        <div class="text-2xl mb-1">🔍</div>
+        <p class="text-gray-400 text-sm">暂无新匹配</p>
       </div>
 
-      <div x-show="matchedBids.length > 0" class="space-y-2">
-        <template x-for="(bid, idx) in matchedBids.slice(0, 5)" :key="idx">
-          <a :href="'/detail.html?id=' + bid.id" class="block bg-gray-50 rounded-lg p-3 hover:bg-emerald-50 transition-colors">
-            <div class="flex items-center justify-between mb-1">
+      <div x-show="matchedBids.length > 0" class="space-y-1.5">
+        <template x-for="(bid, idx) in matchedBids.slice(0, 3)" :key="idx">
+          <a :href="'/detail.html?id=' + bid.id" class="block bg-gray-50 rounded-lg p-2.5 hover:bg-emerald-50 transition-colors">
+            <div class="flex items-center justify-between mb-0.5">
               <span class="text-xs text-emerald-600 font-medium" x-text="bid.source"></span>
               <span class="text-xs text-gray-400" x-text="bid.date"></span>
             </div>
-            <p class="text-sm font-medium text-gray-800 line-clamp-1" x-text="bid.title"></p>
-            <div class="flex items-center gap-2 mt-1">
-              <span class="text-xs text-gray-400" x-text="bid.industry"></span>
-              <span class="text-xs text-gray-300">·</span>
-              <span class="text-xs text-gray-400" x-text="bid.budget || '暂无预算'"></span>
-            </div>
+            <p class="text-sm text-gray-800 line-clamp-1 font-medium" x-text="bid.title"></p>
           </a>
         </template>
-        <p class="text-center text-xs text-gray-400 pt-2">仅展示最近 5 条匹配结果</p>
+        <p class="text-center text-xs text-gray-400 pt-1">最近 3 条匹配</p>
       </div>
     </div>
 
   </div>
 
-  <!-- Bottom Tab -->
+  <!-- ==================== Bottom Tab ==================== -->
   <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
     <div class="max-w-4xl mx-auto px-4">
       <div class="flex items-center justify-around h-16 pb-safe">
@@ -381,13 +333,13 @@
           <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
           </svg>
-          <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">首页</span>
+          <span class="text-xs text-gray-400 group-hover:text-emerald-600">首页</span>
         </a>
         <a href="/list.html" class="flex flex-col items-center gap-0.5 group">
-          <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
           </svg>
-          <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">标讯大全</span>
+          <span class="text-xs text-gray-400 group-hover:text-emerald-600">标讯大全</span>
         </a>
         <a href="/subscribe.html" class="flex flex-col items-center gap-0.5 relative">
           <span class="absolute -top-1 w-1 h-1 rounded-full bg-emerald-600"></span>
@@ -400,47 +352,11 @@
     </div>
   </nav>
 
-  <!-- Footer -->
   <footer class="bg-white border-t border-gray-100 mt-6">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-      <div class="text-center text-xs text-gray-400">标讯宝 — 免费标讯查询平台</div>
-      <div class="mt-4 text-center text-xs text-gray-400">
-        数据来源：中国招标投标公共服务平台 · 中国政府采购网 · 各省公共资源交易平台
-      </div>
-      <div class="mt-3 pt-3 border-t border-gray-50 text-center text-xs text-gray-400">
-        © 2026 标讯宝 · 未经许可禁止批量抓取数据
-      </div>
+      <div class="text-center text-xs text-gray-400">© 2026 标讯宝 · 免费标讯查询平台</div>
     </div>
   </footer>
-
-  <!-- Subscription Floating Button -->
-  <div x-data="subscribePrompt()">
-    <button @mouseenter="openModal()" @click="openModal()" x-show="!showModal"
-      class="fixed right-0 top-1/2 -translate-y-1/2 z-40
-             bg-emerald-600 text-white rounded-l-lg shadow-lg
-             hover:bg-emerald-700 hover:pr-0.5 transition-all
-             w-14 py-2.5 flex flex-col items-center gap-1.5
-             text-sm leading-tight cursor-pointer font-medium">
-      <span class="text-lg">📢</span>
-      <span>免费订阅</span>
-      <span>微信推送</span>
-    </button>
-    <div x-show="showModal" x-cloak
-      class="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4"
-      @click.away="closeModal()">
-      <div class="bg-white rounded-2xl p-6 text-center max-w-xs w-full shadow-xl" x-show="showModal" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
-        <div class="flex justify-end -mt-2 -mr-2 mb-1">
-          <button @click="closeModal()" class="text-gray-300 hover:text-gray-500 transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-          </button>
-        </div>
-        <img src="/static/wxpusher-qr.svg" alt="微信扫码关注" class="w-44 mx-auto mb-3">
-        <p class="text-base font-semibold text-gray-800">📢 免费订阅每日标讯</p>
-        <p class="text-xs text-gray-400 mt-1 leading-relaxed">微信扫码关注<br>每天推送最新标讯，不错过任何机会</p>
-        <button @click="closeModal()" class="mt-4 text-xs text-gray-400 hover:text-gray-600 underline underline-offset-2">暂不订阅</button>
-      </div>
-    </div>
-  </div>
 
   <script>
     function subscribeApp() {
@@ -448,9 +364,9 @@
         // —— State ——
         newKeyword: '',
         newGroupName: '',
-        selectedGroup: '',
         showNewGroupInput: false,
         groups: [],
+        activeGroup: 0,
         pushEnabled: true,
         pushFrequency: 'realtime',
         pushTime: '08:00',
@@ -459,7 +375,18 @@
         toastMessage: '',
         toastTimer: null,
 
-        suggestions: ['医疗设备', 'CT', '核磁共振', 'DSA', '彩超', '内窥镜', '信息化建设', '物业服务', '教学设备', '工程建设'],
+        // —— Computed ——
+        get currentGroupName() {
+          return this.groups.length > 0 ? this.groups[this.activeGroup].name : '';
+        },
+        get currentGroupKeywords() {
+          return this.groups.length > 0 ? this.groups[this.activeGroup].keywords : [];
+        },
+        get allKeywordsCount() {
+          let c = 0;
+          for (const g of this.groups) c += g.keywords.length;
+          return c;
+        },
 
         // —— Init ——
         init() {
@@ -467,58 +394,38 @@
           this.loadMatchedBids();
         },
 
-        // —— Computed-ish ——
-        totalKeywords() {
-          let count = 0;
-          for (const g of this.groups) {
-            count += g.keywords.length;
-          }
-          return count;
-        },
-
-        // —— localStorage CRUD ——
+        // —— localStorage ——
         loadFromStorage() {
           try {
             const data = localStorage.getItem('subscription_groups');
             if (data) {
               this.groups = JSON.parse(data);
             } else {
-              // Legacy migration: old format subscription_keywords
               const legacy = localStorage.getItem('subscription_keywords');
               if (legacy) {
                 const oldKws = JSON.parse(legacy);
                 if (Array.isArray(oldKws) && oldKws.length > 0) {
-                  this.groups = [{ name: '默认', keywords: oldKws, expanded: true }];
-                  this.saveGroups();
-                } else {
-                  this.groups = [];
+                  this.groups = [{ name: '默认', keywords: oldKws }];
                 }
                 localStorage.removeItem('subscription_keywords');
-              } else {
-                this.groups = [];
               }
             }
-            // Ensure all groups have expanded property
-            this.groups.forEach(g => {
-              if (g.expanded === undefined) g.expanded = true;
-            });
+            if (!this.groups || this.groups.length === 0) {
+              this.groups = [{ name: '默认', keywords: [] }];
+            }
+            this.groups.forEach(g => { if (!g.keywords) g.keywords = []; });
           } catch(e) {
-            console.warn('Failed to load groups', e);
-            this.groups = [];
+            this.groups = [{ name: '默认', keywords: [] }];
           }
-          // Set default selected group
-          if (this.groups.length > 0) {
-            this.selectedGroup = this.groups[0].name;
-          }
+          this.activeGroup = 0;
         },
 
         saveGroups() {
           try {
-            // Strip expanded before saving (UI-only state)
             const data = this.groups.map(g => ({ name: g.name, keywords: g.keywords }));
             localStorage.setItem('subscription_groups', JSON.stringify(data));
           } catch(e) {
-            console.warn('Failed to save groups', e);
+            console.warn('save error', e);
           }
         },
 
@@ -527,175 +434,117 @@
             localStorage.setItem('subscription_push_enabled', JSON.stringify(this.pushEnabled));
             localStorage.setItem('subscription_push_frequency', this.pushFrequency);
             localStorage.setItem('subscription_push_time', this.pushTime);
-          } catch(e) {
-            console.warn('Failed to save push settings', e);
-          }
+          } catch(e) {}
         },
 
-        // —— Group Operations ——
+        // —— Group ——
         createGroup() {
           const name = this.newGroupName.trim();
           if (!name) return;
-          // Check duplicate
           if (this.groups.some(g => g.name === name)) {
-            this.showToastFn('⚠️ 该分组已存在');
-            return;
+            this.toast('⚠️ 该分组已存在'); return;
           }
           if (this.groups.length >= 10) {
-            this.showToastFn('⚠️ 最多创建 10 个分组');
-            return;
+            this.toast('⚠️ 最多 10 个分组'); return;
           }
-          this.groups.push({ name, keywords: [], expanded: true });
+          this.groups.push({ name, keywords: [] });
           this.saveGroups();
-          this.selectedGroup = name;
+          this.activeGroup = this.groups.length - 1;
           this.newGroupName = '';
           this.showNewGroupInput = false;
-          this.showToastFn('✅ 已创建分组 "' + name + '"');
+          this.toast('✅ 已创建');
         },
 
         editGroupName(gi) {
           const current = this.groups[gi].name;
           const name = prompt('重命名分组：', current);
           if (!name || !name.trim() || name.trim() === current) return;
-          const trimmed = name.trim();
-          if (this.groups.some((g, i) => g.name === trimmed && i !== gi)) {
-            this.showToastFn('⚠️ 该名称已存在');
-            return;
+          const t = name.trim();
+          if (this.groups.some((g, i) => g.name === t && i !== gi)) {
+            this.toast('⚠️ 名称已存在'); return;
           }
-          this.groups[gi].name = trimmed;
+          this.groups[gi].name = t;
           this.saveGroups();
-          // Update selectedGroup if needed
-          if (this.selectedGroup === current) {
-            this.selectedGroup = trimmed;
-          }
-          this.showToastFn('✅ 已重命名');
+          this.toast('✅ 已重命名');
         },
 
         deleteGroup(gi) {
-          const name = this.groups[gi].name;
-          if (!confirm('确定删除分组 "' + name + '" 及其所有关键词？')) return;
-          this.groups.splice(gi, 1);
-          this.saveGroups();
-          // Update selectedGroup if needed
-          if (this.selectedGroup === name && this.groups.length > 0) {
-            this.selectedGroup = this.groups[0].name;
+          if (this.groups.length <= 1) {
+            this.toast('⚠️ 至少保留一个分组');
+            return;
           }
-          this.showToastFn('🗑️ 已删除 "' + name + '"');
+          const name = this.groups[gi].name;
+          if (!confirm(`删除「${name}」及其 ${this.groups[gi].keywords.length} 个关键词？`)) return;
+          this.groups.splice(gi, 1);
+          if (this.activeGroup >= this.groups.length) this.activeGroup = this.groups.length - 1;
+          this.saveGroups();
+          this.toast('🗑️ 已删除');
           this.loadMatchedBids();
         },
 
-        toggleGroup(gi) {
-          this.groups[gi].expanded = !this.groups[gi].expanded;
-        },
-
-        // —— Keyword Operations ——
+        // —— Keyword ——
         addKeyword() {
           const kw = this.newKeyword.trim();
-          if (!kw) return;
+          if (!kw || this.groups.length === 0) return;
 
-          // Find target group
-          let targetGroup = this.groups.find(g => g.name === this.selectedGroup);
-          if (!targetGroup) {
-            if (this.groups.length > 0) {
-              targetGroup = this.groups[0];
-            } else {
-              // Auto-create default group
-              this.groups.push({ name: '默认', keywords: [], expanded: true });
-              targetGroup = this.groups[0];
-              this.selectedGroup = '默认';
-            }
-          }
-
-          // Check duplicate in this group
-          const exists = targetGroup.keywords.some(k => k.toLowerCase() === kw.toLowerCase());
+          const g = this.groups[this.activeGroup];
+          const exists = g.keywords.some(k => k.toLowerCase() === kw.toLowerCase());
           if (exists) {
-            this.showToastFn('⚠️ "' + kw + '" 已在分组 "' + targetGroup.name + '" 中');
+            this.toast('⚠️ 该关键词已在此分组');
             this.newKeyword = '';
             return;
           }
 
-          // Limit total keywords
-          const total = this.totalKeywords();
+          let total = 0;
+          for (const grp of this.groups) total += grp.keywords.length;
           if (total >= 100) {
-            this.showToastFn('⚠️ 最多订阅 100 个关键词');
+            this.toast('⚠️ 最多 100 个关键词');
             return;
           }
 
-          targetGroup.keywords.push(kw);
+          g.keywords.push(kw);
           this.saveGroups();
           this.newKeyword = '';
-          this.showToastFn('✅ 已添加 "' + kw + '" → ' + targetGroup.name);
+          this.toast('✅ 已添加');
           this.loadMatchedBids();
         },
 
-        removeKeyword(gi, ki) {
-          const removed = this.groups[gi].keywords[ki];
-          this.groups[gi].keywords.splice(ki, 1);
-          // Clean up empty groups
-          if (this.groups[gi].keywords.length === 0 && this.groups.length > 1) {
-            const name = this.groups[gi].name;
-            this.groups.splice(gi, 1);
-            if (this.selectedGroup === name && this.groups.length > 0) {
-              this.selectedGroup = this.groups[0].name;
-            }
-          }
+        removeKeyword(ki) {
+          const g = this.groups[this.activeGroup];
+          if (!g || ki >= g.keywords.length) return;
+          g.keywords.splice(ki, 1);
           this.saveGroups();
-          this.showToastFn('已移除 "' + removed + '"');
           this.loadMatchedBids();
         },
 
-        // —— Matched Bids Preview ——
+        // —— Matched Bids ——
         async loadMatchedBids() {
-          if (this.totalKeywords() === 0) {
-            this.matchedBids = [];
-            return;
-          }
+          if (this.allKeywordsCount === 0) { this.matchedBids = []; return; }
           try {
             const resp = await fetch('/data/bids.json');
             const data = await resp.json();
             const allBids = data.bids || [];
-            // Collect all keywords
-            const allKeywords = [];
-            for (const g of this.groups) {
-              for (const kw of g.keywords) {
-                allKeywords.push(kw);
-              }
-            }
+            const allKw = [];
+            for (const g of this.groups) for (const kw of g.keywords) allKw.push(kw);
             const matched = [];
             for (const bid of allBids) {
-              if (matched.length >= 10) break;
+              if (matched.length >= 6) break;
               const title = (bid.title || '').toLowerCase();
-              for (const kw of allKeywords) {
-                if (title.includes(kw.toLowerCase())) {
-                  matched.push(bid);
-                  break;
-                }
+              for (const kw of allKw) {
+                if (title.includes(kw.toLowerCase())) { matched.push(bid); break; }
               }
             }
-            this.matchedBids = matched.slice(0, 5);
-          } catch(e) {
-            this.matchedBids = [];
-          }
+            this.matchedBids = matched.slice(0, 3);
+          } catch(e) { this.matchedBids = []; }
         },
 
         // —— Toast ——
-        showToastFn(msg) {
+        toast(msg) {
           this.toastMessage = msg;
           this.showToast = true;
           if (this.toastTimer) clearTimeout(this.toastTimer);
-          this.toastTimer = setTimeout(() => {
-            this.showToast = false;
-          }, 2000);
+          this.toastTimer = setTimeout(() => { this.showToast = false; }, 2000);
         }
-      }
-    }
-
-    function subscribePrompt() {
-      return {
-        showModal: false,
-        init() {},
-        openModal() { this.showModal = true },
-        closeModal() { this.showModal = false }
       }
     }
   </script>
