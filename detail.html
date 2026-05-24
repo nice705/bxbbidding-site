@@ -206,10 +206,11 @@
 
         async loadBid(id) {
           try {
-            const resp = await fetch('/api/bids/' + encodeURIComponent(id));
+            const resp = await fetch('/data/bids.json');
             if (!resp.ok) { this.loading = false; return; }
             const data = await resp.json();
-            this.bid = data.bid || null;
+            const bids = data.bids || [];
+            this.bid = bids.find(b => b.id === id) || null;
             if (this.bid) {
               const b = this.bid
               // Title

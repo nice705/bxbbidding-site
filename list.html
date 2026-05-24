@@ -260,8 +260,7 @@
 
         async loadData() {
           try {
-            const params = new URLSearchParams({ pageSize: 200, page: 1 });
-            const resp = await fetch('/api/bids?' + params.toString());
+            const resp = await fetch('/data/bids.json');
             const data = await resp.json();
             this.bids = data.bids || [];
           } catch(e) {
@@ -285,14 +284,7 @@
 
         async loadDataWithSearch() {
           try {
-            const params = new URLSearchParams({
-              pageSize: 200,
-              page: 1,
-            });
-            if (this.keyword.trim()) {
-              params.set('q', this.keyword.trim());
-            }
-            const resp = await fetch('/api/bids?' + params.toString());
+            const resp = await fetch('/data/bids.json');
             const data = await resp.json();
             this.bids = data.bids || [];
             this.currentPage = 1;
