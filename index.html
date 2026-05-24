@@ -197,8 +197,8 @@
           </div>
           <!-- Budget + Deadline -->
           <div class="flex items-center justify-between text-xs text-gray-500 pt-2.5 border-t border-gray-50">
-            <span class="flex items-center gap-1">💰 <span x-text="bid.budget"></span></span>
-            <span class="flex items-center gap-1">📅 <span x-text="bid.deadline"></span></span>
+            <span class="flex items-center gap-1">💰 <span x-text="bid.budget || '暂无'"></span></span>
+            <span class="flex items-center gap-1">📅 <span x-text="bid.deadline || '暂无'"></span></span>
           </div>
         </a>
       </template>

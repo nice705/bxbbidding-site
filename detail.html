@@ -123,19 +123,19 @@
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-gray-50 rounded-lg">
             <div>
               <div class="text-xs text-gray-400 mb-1">预算金额</div>
-              <div class="font-semibold text-gray-900 text-sm" x-text="bid.budget"></div>
+              <div class="font-semibold text-gray-900 text-sm" x-text="bid.budget || '暂无'"></div>
             </div>
             <div>
               <div class="text-xs text-gray-400 mb-1">投标截止</div>
-              <div class="font-semibold text-gray-900 text-sm" x-text="bid.deadline"></div>
+              <div class="font-semibold text-gray-900 text-sm" x-text="bid.deadline || '暂无'"></div>
             </div>
             <div>
               <div class="text-xs text-gray-400 mb-1">采购单位</div>
-              <div class="font-semibold text-gray-900 text-sm truncate" x-text="bid.buyer" :title="bid.buyer"></div>
+              <div class="font-semibold text-gray-900 text-sm truncate" x-text="bid.buyer || '暂无'" :title="bid.buyer"></div>
             </div>
             <div>
               <div class="text-xs text-gray-400 mb-1">项目编号</div>
-              <div class="font-semibold text-gray-900 text-sm truncate font-mono" x-text="bid.code"></div>
+              <div class="font-semibold text-gray-900 text-sm truncate font-mono" x-text="bid.code || '暂无'"></div>
             </div>
           </div>
         </div>
@@ -148,7 +148,20 @@
             </svg>
             公告详情
           </h2>
-          <div class="prose-content" x-html="bid.content"></div>
+          <!-- 有内容 → 展示 -->
+          <div class="prose-content" x-show="bid.content && bid.content.length > 100" x-html="bid.content"></div>
+          <!-- 无内容 → 引导去官网 -->
+          <div class="text-center py-10" x-show="!bid.content || bid.content.length <= 100">
+            <div class="text-4xl mb-3">📄</div>
+            <p class="text-gray-500 text-sm mb-4">公告全文未收录</p>
+            <a :href="bid.sourceUrl" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors">
+              查看原文
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          </div>
         </div>
 
         <!-- Source Link -->

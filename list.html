@@ -183,8 +183,8 @@
                 <span class="badge badge-sm bg-gray-50 text-gray-500 border-gray-200" x-text="bid.method"></span>
               </div>
               <div class="flex items-center justify-between text-xs text-gray-500 pt-3 border-t border-gray-50">
-                <span>💰 <span x-text="bid.budget"></span></span>
-                <span>📅 <span x-text="bid.deadline"></span></span>
+                <span>💰 <span x-text="bid.budget || '暂无'"></span></span>
+                <span>📅 <span x-text="bid.deadline || '暂无'"></span></span>
               </div>
             </a>
           </template>
