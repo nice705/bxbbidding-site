@@ -198,14 +198,14 @@
         </div>
 
         <!-- Pagination -->
-        <div class="flex items-center justify-center gap-2 mt-8" x-show="totalPages > 1">
+        <div class="flex items-center justify-center gap-1 mt-8 flex-wrap" x-show="totalPages > 1">
           <button
-            class="px-3 py-1.5 text-sm rounded-lg transition-colors"
+            class="px-2.5 py-1.5 text-sm rounded-lg transition-colors"
             :class="currentPage === 1 ? 'text-gray-300 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-100'"
             :disabled="currentPage === 1"
             @click="currentPage > 1 && (currentPage--)"
           >上一页</button>
-          <template x-for="p in totalPages" :key="p">
+          <template x-for="p in getPageWindow()" :key="p">
             <button
               class="w-8 h-8 text-sm rounded-lg transition-colors"
               :class="currentPage === p ? 'bg-emerald-600 text-white' : 'text-gray-600 hover:bg-gray-100'"
@@ -213,8 +213,9 @@
               x-text="p"
             ></button>
           </template>
+          <span class="text-xs text-gray-400 px-1" x-show="totalPages > 7">...</span>
           <button
-            class="px-3 py-1.5 text-sm rounded-lg transition-colors"
+            class="px-2.5 py-1.5 text-sm rounded-lg transition-colors"
             :class="currentPage === totalPages ? 'text-gray-300 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-100'"
             :disabled="currentPage === totalPages"
             @click="currentPage < totalPages && (currentPage++)"
@@ -343,6 +344,22 @@
             '高校官网': 'bg-cyan-50 text-cyan-600 border-cyan-200',
           };
           return map[source] || 'bg-gray-50 text-gray-600 border-gray-200';
+        },
+
+        getPageWindow() {
+          const total = this.totalPages;
+          const current = this.currentPage;
+          const maxVisible = 7; // 最多显示7个页码
+          if (total <= maxVisible) {
+            return Array.from({length: total}, (_, i) => i + 1);
+          }
+          const half = Math.floor(maxVisible / 2);
+          let start = Math.max(1, current - half);
+          let end = Math.min(total, start + maxVisible - 1);
+          if (end - start + 1 < maxVisible) {
+            start = Math.max(1, end - maxVisible + 1);
+          }
+          return Array.from({length: end - start + 1}, (_, i) => start + i);
         },
 
         resetFilters() {
