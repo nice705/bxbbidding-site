@@ -521,9 +521,9 @@
         async loadMatchedBids() {
           if (this.allKeywordsCount === 0) { this.matchedBids = []; return; }
           try {
-            const resp = await fetch('/data/bids.json');
+            const resp = await fetch('/api/bids?page=1&pageSize=100');
             const data = await resp.json();
-            const allBids = data.bids || [];
+            const allBids = data.items || [];
             const allKw = [];
             for (const g of this.groups) for (const kw of g.keywords) allKw.push(kw);
             const matched = [];
