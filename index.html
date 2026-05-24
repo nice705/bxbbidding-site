@@ -150,13 +150,13 @@
       <button
         class="px-2.5 py-1 text-xs rounded-md transition-colors"
         :class="selectedIndustry === '' ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'"
-        @click="selectedIndustry = ''"
+        @click="selectedIndustry = ''; resetInfiniteScroll()"
       >全部</button>
       <template x-for="ind in industries" :key="ind">
         <button
           class="px-2.5 py-1 text-xs rounded-md transition-colors"
           :class="selectedIndustry === ind ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'"
-          @click="selectedIndustry = ind"
+          @click="selectedIndustry = ind; resetInfiniteScroll()"
           x-text="ind"
         ></button>
       </template>
@@ -164,7 +164,10 @@
 
     <!-- Bids Section -->
     <div class="flex items-center justify-between mb-3">
-      <h2 class="text-base font-bold text-gray-900">最新标讯</h2>
+      <h2 class="text-base font-bold text-gray-900">
+        最新标讯
+        <span class="text-sm font-normal text-gray-400 ml-1" x-text="'(' + visibleCount + '/' + filteredAll.length + ')'"></span>
+      </h2>
       <a href="/list.html" class="text-sm text-emerald-600 hover:text-emerald-700 font-medium flex items-center gap-1">
         查看全部
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
@@ -173,7 +176,7 @@
 
     <!-- Bids Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-      <template x-for="(bid, idx) in filteredBids" :key="bid.id">
+      <template x-for="(bid, idx) in visibleBids" :key="bid.id">
         <a :href="'/detail.html?id=' + bid.id" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in">
           <!-- Source + Time -->
           <div class="flex items-center justify-between mb-2">
@@ -201,10 +204,24 @@
       </template>
     </div>
 
+    <!-- Loading trigger -->
+    <div id="scroll-trigger" class="h-4"></div>
+
+    <!-- Loading spinner -->
+    <div class="text-center py-8" x-show="loadingMore">
+      <div class="loading loading-spinner loading-md text-emerald-600"></div>
+      <p class="text-gray-400 text-xs mt-2">加载更多...</p>
+    </div>
+
+    <!-- No more -->
+    <div class="text-center py-8" x-show="!loadingMore && visibleCount >= filteredAll.length && filteredAll.length > 0">
+      <p class="text-gray-400 text-xs">— 已显示全部 <span class="font-medium" x-text="filteredAll.length"></span> 条标讯 —</p>
+    </div>
+
     <!-- Empty state -->
-    <div class="text-center py-16" x-show="filteredBids.length === 0">
+    <div class="text-center py-16" x-show="filteredAll.length === 0">
       <div class="text-4xl mb-4">📭</div>
-      <p class="text-gray-500">暂无比配的标讯</p>
+      <p class="text-gray-500">暂无匹配的标讯</p>
     </div>
   </main>
 
@@ -224,7 +241,7 @@
         </div>
       </div>
       <div class="mt-3 pt-3 border-t border-gray-50 text-center text-xs text-gray-400">
-        © 2026 标讯宝 · 未经许可禁止批量抓取数据 · <a href="/robots.txt" class="underline hover:text-gray-600">robots.txt</a>
+        &copy; 2026 标讯宝 · 未经许可禁止批量抓取数据 · <a href="/robots.txt" class="underline hover:text-gray-600">robots.txt</a>
       </div>
     </div>
   </footer>
@@ -284,43 +301,85 @@
         selectedIndustry: '',
         hotTags: ['CT', '核磁共振', 'DSA', '彩超', '内窥镜', '信息化建设', '物业服务', '教学设备'],
         industries: ['医疗设备', 'IT信息化', '工程建设', '教育科研', '后勤服务', '纺织服装', '交通运输', '环保能源'],
-        stats: { todayCount: 26 },
-        bids: [],
-        demoBids: [
-          { id: 'demo-01', title: '中山大学附属第一医院2026年度CT设备采购项目公开招标公告', source: '政府采购网', industry: '医疗设备', region: '广东省广州市', method: '公开招标', budget: '¥2,800万', date: '2026-05-23', deadline: '2026-06-15', buyer: '中山大学附属第一医院', code: 'GZGK2026P053A' },
-          { id: 'demo-02', title: '四川省人民医院3.0T核磁共振成像系统采购项目', source: '国招平台', industry: '医疗设备', region: '四川省成都市', method: '公开招标', budget: '¥1,950万', date: '2026-05-23', deadline: '2026-06-12', buyer: '四川省人民医院', code: 'SCWZ2026-0510' },
-          { id: 'demo-03', title: '上海市政务云平台2026年度基础设施扩容项目', source: '政府采购网', industry: 'IT信息化', region: '上海市', method: '公开招标', budget: '¥4,500万', date: '2026-05-23', deadline: '2026-06-20', buyer: '上海市大数据中心', code: 'SHZC2026-G-056' },
-          { id: 'demo-04', title: '浙江省中医院DSA数字减影血管造影系统采购项目', source: '医院官网', industry: '医疗设备', region: '浙江省杭州市', method: '公开招标', budget: '¥1,200万', date: '2026-05-22', deadline: '2026-06-08', buyer: '浙江省中医院', code: 'ZJZYY-DSA-202605' },
-          { id: 'demo-05', title: '华中科技大学同济医学院附属协和医院物业服务采购项目', source: '招标代理', industry: '后勤服务', region: '湖北省武汉市', method: '竞争性磋商', budget: '¥680万', date: '2026-05-22', deadline: '2026-06-05', buyer: '华中科技大学同济医学院附属协和医院', code: 'HBT-20260508' },
-          { id: 'demo-06', title: '山东省交通运输厅智慧交通信息化平台建设项目', source: '省平台', industry: 'IT信息化', region: '山东省济南市', method: '公开招标', budget: '¥3,200万', date: '2026-05-22', deadline: '2026-06-18', buyer: '山东省交通运输厅', code: 'SDGP2026-05-22' },
-          { id: 'demo-07', title: '北京师范大学珠海校区实验室仪器设备采购项目', source: '高校官网', industry: '教育科研', region: '广东省珠海市', method: '公开招标', budget: '¥860万', date: '2026-05-21', deadline: '2026-06-10', buyer: '北京师范大学珠海校区', code: 'BNUZH-202605' },
-          { id: 'demo-08', title: '南京市秦淮区老旧小区改造工程项目', source: '省平台', industry: '工程建设', region: '江苏省南京市', method: '公开招标', budget: '¥5,600万', date: '2026-05-21', deadline: '2026-06-14', buyer: '南京市秦淮区住房保障局', code: 'NJQH-2026-GZ003' },
-          { id: 'demo-09', title: '中国医科大学附属盛京医院彩超设备采购项目', source: '国招平台', industry: '医疗设备', region: '辽宁省沈阳市', method: '公开招标', budget: '¥750万', date: '2026-05-21', deadline: '2026-06-07', buyer: '中国医科大学附属盛京医院', code: 'LNZB2026-0510' },
-          { id: 'demo-10', title: '中国纺织工业联合会绿色纺织技术研发项目', source: '招标代理', industry: '纺织服装', region: '北京市', method: '邀请招标', budget: '¥380万', date: '2026-05-20', deadline: '2026-06-03', buyer: '中国纺织工业联合会', code: 'CTIC-2026-YQ01' },
-          { id: 'demo-11', title: '深圳市福田区2026年环卫车辆采购项目', source: '政府采购网', industry: '交通运输', region: '广东省深圳市', method: '公开招标', budget: '¥2,100万', date: '2026-05-20', deadline: '2026-06-09', buyer: '深圳市福田区城市管理局', code: 'FTCG2026-0520' },
-          { id: 'demo-12', title: '国家能源集团福建海上风电项目环境影响评估服务', source: '国招平台', industry: '环保能源', region: '福建省福州市', method: '公开招标', budget: '¥520万', date: '2026-05-20', deadline: '2026-06-02', buyer: '国家能源集团福建公司', code: 'CEZB20260520' },
-        ],
+        stats: { todayCount: 0 },
+        // 全部数据
+        allBids: [],
+        // 可见数量控制
+        pageSize: 15,
+        visibleLimit: 15,
+        loadingMore: false,
+        observer: null,
+
         async init() {
           await this.loadData();
+          this.setupInfiniteScroll();
         },
+
         async loadData() {
           try {
-            const resp = await fetch('/api/bids?pageSize=50');
+            const resp = await fetch('/data/bids.json');
             const data = await resp.json();
-            this.bids = (data.bids || []).slice(0, 12);
-            this.stats.todayCount = data.todayCount || this.bids.length;
+            this.allBids = data.bids || [];
+            this.stats.todayCount = data.todayCount || this.allBids.length;
           } catch(e) {
-            this.bids = this.demoBids;
-            this.stats.todayCount = this.demoBids.length;
+            // fallback: use inline data from bids.json format
+            this.allBids = [];
+            this.stats.todayCount = 0;
           }
         },
-        get filteredBids() {
-          let result = this.bids;
+
+        // 所有过滤后的数据
+        get filteredAll() {
+          let result = this.allBids;
           if (this.selectedIndustry) {
             result = result.filter(b => b.industry === this.selectedIndustry);
           }
-          return result.slice(0, 12);
+          return result;
         },
+
+        // 当前可见的数据（分页截取）
+        get visibleBids() {
+          return this.filteredAll.slice(0, this.visibleLimit);
+        },
+
+        get visibleCount() {
+          return Math.min(this.visibleLimit, this.filteredAll.length);
+        },
+
+        // 重置无限滚动（切换行业时）
+        resetInfiniteScroll() {
+          this.visibleLimit = this.pageSize;
+          this.loadingMore = false;
+          // 重新绑定观察器
+          this.$nextTick(() => {
+            if (this.observer) this.observer.disconnect();
+            this.setupInfiniteScroll();
+          });
+        },
+
+        setupInfiniteScroll() {
+          this.observer = new IntersectionObserver((entries) => {
+            const entry = entries[0];
+            if (entry.isIntersecting && !this.loadingMore && this.visibleLimit < this.filteredAll.length) {
+              this.loadMore();
+            }
+          }, { rootMargin: '200px' });
+
+          this.$nextTick(() => {
+            const trigger = document.getElementById('scroll-trigger');
+            if (trigger) this.observer.observe(trigger);
+          });
+        },
+
+        loadMore() {
+          this.loadingMore = true;
+          // 模拟加载延迟（让用户体验到加载感）
+          setTimeout(() => {
+            this.visibleLimit += this.pageSize;
+            this.loadingMore = false;
+          }, 300);
+        },
+
         sourceBadgeClass(source) {
           const map = {
             '国招平台': 'bg-blue-50 text-blue-600 border-blue-200',
@@ -332,6 +391,7 @@
           };
           return map[source] || 'bg-gray-50 text-gray-600 border-gray-200';
         },
+
         doSearch() {
           if (!this.searchKeyword.trim()) return;
           window.location.href = '/list.html?q=' + encodeURIComponent(this.searchKeyword.trim());
