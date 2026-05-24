@@ -146,22 +146,36 @@
                 :class="filters.dateRange === 'month' ? 'text-emerald-600 font-medium bg-emerald-50/50' : 'text-gray-600'">近一月</button>
             </div>
           </div>
-          <div class="relative" x-data="{ open: false }">
-            <button @click="open = !open" @click.away="open = false"
+          <div class="dropdown dropdown-bottom">
+            <button tabindex="0" role="button"
               class="flex items-center gap-1 w-20 px-2 py-1.5 border border-gray-200 rounded-lg text-xs bg-white whitespace-nowrap hover:border-gray-300 transition-colors flex-shrink-0">
               <span class="text-gray-400">关键词</span>
-              <svg class="w-3 h-3 text-gray-400 transition-transform ml-auto" :class="open && 'rotate-180'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              <svg class="w-3 h-3 text-gray-400 transition-transform ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
-            <div x-show="open" x-cloak
-              class="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-48 overflow-y-auto min-w-[140px] py-0.5">
-              <template x-for="kw in subscriptionKeywords" :key="kw">
-                <button @click="selectKeyword(kw); open = false"
-                  class="block w-full text-left px-2.5 py-1.5 text-xs hover:bg-emerald-50 transition-colors"
-                  :class="filters.keywords.includes(kw) ? 'text-emerald-600 font-medium bg-emerald-50/50' : 'text-gray-600'"
-                  x-text="kw">
-                </button>
+            <div tabindex="0"
+              class="dropdown-content mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-64 overflow-y-auto min-w-[180px] py-1">
+              <template x-for="(group, gi) in subscriptionGroups" :key="gi">
+                <div>
+                  <!-- Group header + select all -->
+                  <div class="flex items-center justify-between px-3 py-1.5 bg-gray-50 border-b border-gray-100">
+                    <span class="text-xs font-semibold text-gray-500" x-text="group.name"></span>
+                    <button
+                      @click="selectAllGroup(group)"
+                      class="text-xs text-emerald-500 hover:text-emerald-600 transition-colors"
+                      x-text="allGroupSelected(group) ? '取消全选' : '全选'"
+                    ></button>
+                  </div>
+                  <!-- Group keywords -->
+                  <template x-for="kw in group.keywords" :key="kw">
+                    <button @click="selectKeyword(kw)"
+                      class="block w-full text-left px-3 py-1.5 text-xs hover:bg-emerald-50 transition-colors"
+                      :class="filters.keywords.includes(kw) ? 'text-emerald-600 font-medium bg-emerald-50/50' : 'text-gray-600'"
+                      x-text="kw">
+                    </button>
+                  </template>
+                </div>
               </template>
-              <div x-show="subscriptionKeywords.length === 0" class="px-2.5 py-2 text-xs text-gray-400 text-center">
+              <div x-show="totalKeywords === 0" class="px-3 py-3 text-xs text-gray-400 text-center">
                 暂无订阅关键词<br><a href="/subscribe.html" class="text-emerald-500 underline">去订阅设置添加</a>
               </div>
             </div>
@@ -388,7 +402,8 @@
       return {
         keyword: '',
         filters: { region: '', category: '', sources: [], dateRange: 'all', sort: 'newest', keywords: [] },
-        subscriptionKeywords: [],
+        subscriptionGroups: [],
+        totalKeywords: 0,
         currentPage: 1,
         pageSize: 15,
         regions: ['北京','上海','天津','重庆','河北','山西','内蒙古','辽宁','吉林','黑龙江','江苏','浙江','安徽','福建','江西','山东','河南','湖北','湖南','广东','广西','海南','四川','贵州','云南','西藏','陕西','甘肃','青海','宁夏','新疆'],
@@ -406,12 +421,31 @@
           if (params.get('cat')) this.filters.category = params.get('cat');
           if (params.get('time')) this.filters.dateRange = params.get('time');
           if (params.get('page')) this.currentPage = parseInt(params.get('page'), 10) || 1;
-          // Load subscription keywords from localStorage
+          // Load subscription groups from localStorage
           try {
-            const kw = localStorage.getItem('subscription_keywords');
-            this.subscriptionKeywords = kw ? JSON.parse(kw) : [];
+            const data = localStorage.getItem('subscription_groups');
+            if (data) {
+              this.subscriptionGroups = JSON.parse(data);
+            } else {
+              // Legacy: old flat keywords format
+              const legacy = localStorage.getItem('subscription_keywords');
+              if (legacy) {
+                const oldKws = JSON.parse(legacy);
+                if (Array.isArray(oldKws) && oldKws.length > 0) {
+                  this.subscriptionGroups = [{ name: '默认', keywords: oldKws }];
+                }
+              }
+            }
+            // Ensure all groups have keywords array
+            this.subscriptionGroups.forEach(g => {
+              if (!g.keywords) g.keywords = [];
+            });
+            // Count total
+            this.totalKeywords = 0;
+            this.subscriptionGroups.forEach(g => { this.totalKeywords += g.keywords.length; });
           } catch(e) {
-            this.subscriptionKeywords = [];
+            this.subscriptionGroups = [];
+            this.totalKeywords = 0;
           }
           await this.loadData();
         },
@@ -452,12 +486,30 @@
         },
         selectKeyword(kw) {
           if (this.filters.keywords.includes(kw)) {
-            // Already selected, remove it
             this.filters.keywords = this.filters.keywords.filter(k => k !== kw);
           } else {
             this.filters.keywords.push(kw);
           }
           this.currentPage = 1;
+        },
+        selectAllGroup(group) {
+          const allInGroup = group.keywords;
+          const allSelected = allInGroup.every(kw => this.filters.keywords.includes(kw));
+          if (allSelected) {
+            // Remove all from this group
+            this.filters.keywords = this.filters.keywords.filter(k => !allInGroup.includes(k));
+          } else {
+            // Add all from this group
+            for (const kw of allInGroup) {
+              if (!this.filters.keywords.includes(kw)) {
+                this.filters.keywords.push(kw);
+              }
+            }
+          }
+          this.currentPage = 1;
+        },
+        allGroupSelected(group) {
+          return group.keywords.length > 0 && group.keywords.every(kw => this.filters.keywords.includes(kw));
         },
         removeKeyword(idx) {
           this.filters.keywords.splice(idx, 1);
