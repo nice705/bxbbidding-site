@@ -1,0 +1,16 @@
+# 排除大文件和日志
+data/bids-cebpub.json
+data/bids-plap.json
+data/bids.json.gz
+logs/
+*.log
+scripts/
+.git
+__pycache__/
+*.pyc
+.env
+.wrangler/
+tender_data.db
+tender_spider*.py
+spider_plap.py
+Hermes01.pem
