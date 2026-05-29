@@ -219,18 +219,37 @@
 
         async loadBid(id) {
           try {
-            const resp = await fetch('/data/bids.json');
-            if (!resp.ok) { this.loading = false; return; }
-            const data = await resp.json();
-            const bids = data.bids || [];
+            // Try multiple sources
+            let bids = [];
+            const sources = ['/data/bids.json', 'https://raw.githubusercontent.com/nice705/bxbbidding-site/main/data/bids.json'];
+            for (const url of sources) {
+              try {
+                const resp = await fetch(url);
+                if (resp.ok) {
+                  const text = await resp.text();
+                  const data = JSON.parse(text);
+                  bids = data.bids || [];
+                  if (bids.length > 0) break;
+                }
+              } catch(e) { console.warn('Fetch failed:', url, e); }
+            }
             this.bid = bids.find(b => b.id === id) || null;
             if (this.bid) {
               const b = this.bid
+              // Map fields (兼容不同数据格式)
+              if (!b.region) b.region = b.province || '全国';
+              if (!b.industry) b.industry = b.category || '招标公告';
+              if (!b.method) b.method = b.category || '公开招标';
+              if (!b.budget) b.budget = '';
+              if (!b.deadline) b.deadline = '';
+              if (!b.buyer) b.buyer = '';
+              if (!b.code) b.code = '';
+              if (!b.sourceUrl) b.sourceUrl = b.url || '';
               // Title
               document.title = b.title + ' — 标讯宝'
 
               // Meta description
-              const desc = b.budget + ' · ' + b.buyer + ' · ' + b.deadline + '截止 · ' + b.region
+              const desc = (b.budget || '') + ' · ' + (b.buyer || '') + ' · ' + (b.deadline || '') + '截止 · ' + (b.region || '')
               setMeta('description', desc)
 
               // OG tags
