@@ -74,7 +74,7 @@
   </script>
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "bcb4a0d224e14f5e93f5a0b2ff7c1b32"}'></script>
-  <style>body > *:not(#app) { display: none !important; }</style>
+  <style>body { font-size: 0; line-height: 0; } body > *:not(#app) { display: none !important; } #app { font-size: 16px; line-height: 1.5; }</style>
 </head>
 <body>
 <script>(function(){var c=document.body.children;for(var i=c.length-1;i>=0;i--){if(c[i].id!=="app")c[i].remove();}})();</script>
@@ -89,7 +89,7 @@
     }
   });
 </script>
-<div id="app" class="bg-gray-50 min-h-screen overflow-x-hidden pb-16" x-data="detailApp()">
+<div id="app" class="bg-gray-50 min-h-screen overflow-x-hidden pb-24" x-data="detailApp()">
 
   <!-- Navbar -->
   <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
@@ -143,9 +143,6 @@
               <span class="inline-block text-xs font-medium px-2 py-0.5 rounded"
                 :class="methodBadgeClass(bid.method)"
                 x-text="bid.method || '公告'"></span>
-              <span class="bid-source-badge font-medium text-xs px-2 py-0.5 rounded-full"
-                :class="sourceBadgeClass(bid.source)"
-                x-text="bid.source"></span>
             </div>
             <div class="flex items-center gap-2">
               <span class="text-sm text-gray-400" x-text="bid.date"></span>
@@ -209,27 +206,11 @@
           </h2>
           <!-- 有内容 → 展示（排除屏蔽页面） -->
           <!-- 有内容 → 展示 -->
-          <div class="prose-content" x-show="bid.content && bid.content.length > 20" x-html="bid._content || bid.content"></div>
+          <div class="prose-content" x-show="bid.content && bid.content.length > 20 && !isContentBlocked(bid.content)" x-html="bid._content || bid.content"></div>
           <!-- 无内容 → 引导去官网 -->
-          <div class="text-center py-10" x-show="!bid.content || bid.content.length <= 20">
+          <div class="text-center py-10" x-show="!bid.content || bid.content.length <= 20 || isContentBlocked(bid.content)">
             <div class="text-4xl mb-3">📄</div>
-            <p class="text-gray-500 text-sm mb-4">公告全文未收录，请前往官方平台查看</p>
-            <a :href="bid.sourceUrl" target="_blank" rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors shadow-sm">
-              查看原文
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-              </svg>
-            </a>
-          </div>
-
-            <a :href="bid.sourceUrl" target="_blank" rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors">
-              查看原文
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-              </svg>
-            </a>
+            <p class="text-gray-500 text-sm">公告全文暂未收录</p>
           </div>
         </div>
 
@@ -237,17 +218,8 @@
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
-              <span class="text-sm text-gray-500">
-                数据来源：<span class="font-medium" x-text="bid.source"></span>
-              </span>
             </div>
-            <a :href="bid.sourceUrl" target="_blank" rel="noopener noreferrer"
-              class="inline-flex items-center gap-1 text-sm text-emerald-600 hover:text-emerald-700 font-medium">
-              查看原文
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-              </svg>
-            </a>
+
           </div>
         </div>
 
@@ -353,6 +325,16 @@
           } catch(e) {
             console.error(e);
           }
+          // If still no bid, try to construct from URL params
+          if (!this.bid) {
+            const params = new URLSearchParams(window.location.search);
+            const title = params.get('t') || '';
+            const source = params.get('s') || '';
+            const sourceUrl = params.get('u') || '';
+            if (title) {
+              this.bid = { id: id, title: decodeURIComponent(title), source: decodeURIComponent(source), sourceUrl: decodeURIComponent(sourceUrl), content: '', date: '', region: '' };
+            }
+          }
           this.loading = false;
         },
 
@@ -440,7 +422,7 @@
         },
 
         isContentBlocked(content) {
-          return content && (content.includes('页面访问提示') || content.includes('暂停访问') || content.includes('PDF 文件'));
+          return content && (content.includes('页面访问提示') || content.includes('暂停访问') || content.includes('PDF 文件') || content.includes('pdf-pending') || content.includes('内容待提取'));
         },
 
         // —— 来源文本颜色 ——

@@ -66,6 +66,7 @@
   </script>
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "bcb4a0d224e14f5e93f5a0b2ff7c1b32"}'></script>
+<style>body { font-size: 0; line-height: 0; } body > *:not(#app) { display: none !important; } #app { font-size: 16px; line-height: 1.5; }</style>
 </head>
 <body>
 <script>
@@ -79,7 +80,7 @@
     }
   });
 </script>
-<div class="bg-gray-50 min-h-screen overflow-x-hidden pb-16" x-data="listApp()">
+<div id="app" class="bg-gray-50 min-h-screen overflow-x-hidden pb-24" x-data="listApp()">
 
   <!-- Navbar -->
   <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
@@ -267,7 +268,7 @@
         <!-- Bid Cards -->
         <div class="space-y-3" x-show="!loading">
           <template x-for="bid in pagedBids" :key="bid.id">
-            <a :href="'/detail.html?id=' + bid.id + (keyword.trim() ? '&q=' + encodeURIComponent(keyword.trim()) : '') + (filters.region ? '&region=' + encodeURIComponent(filters.region) : '')" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in relative">
+            <a :href="'/detail.html?id=' + bid.id + (bid.sourceUrl ? '&u=' + encodeURIComponent(bid.sourceUrl) : '') + (bid.title ? '&t=' + encodeURIComponent(bid.title) : '') + (keyword.trim() ? '&q=' + encodeURIComponent(keyword.trim()) : '') + (filters.region ? '&region=' + encodeURIComponent(filters.region) : '')" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in relative">
               <!-- Favorite star -->
               <button @click.prevent="toggleFav(bid.id, bid.title)"
                 class="absolute top-3 right-3 flex items-center gap-0.5 px-1.5 py-1 rounded-full hover:bg-gray-100 transition-colors z-10 text-xs"
@@ -292,7 +293,6 @@
               </div>
               <!-- Info row -->
               <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 mb-2">
-                <span x-text="bid.source" class="font-medium" :class="sourceTextClass(bid.source)"></span>
                 <span x-text="bid.region || ''" x-show="bid.region"></span>
                 <span x-text="bid.industry || ''" x-show="bid.industry"></span>
               </div>
@@ -446,7 +446,7 @@
           try {
             const resp = await fetch(url);
             const data = await resp.json();
-            this.bids = data.items || [];
+            this.bids = data.bids || data.items || [];
             this.totalResults = data.total || 0;
             this.totalPages = data.totalPages || 1;
             // Sync URL

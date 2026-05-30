@@ -1,6 +1,6 @@
 /**
  * GET /api/bids/:id
- * Returns a single bid by ID
+ * Returns a single bid by ID — never returns 404
  */
 import { loadBidsData } from '../_data.js';
 
@@ -10,13 +10,25 @@ export async function onRequest(context) {
 
   try {
     const data = await loadBidsData(request);
-    const bid = (data.bids || []).find(b => b.id === id);
+    let bid = (data.bids || []).find(b => b.id === id);
 
     if (!bid) {
-      return new Response(JSON.stringify({ error: 'Bid not found', id }), {
-        status: 404,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      // Return a placeholder bid instead of 404
+      bid = {
+        id: id,
+        title: '标讯详情',
+        source: '',
+        sourceUrl: '',
+        content: '',
+        date: '',
+        region: '',
+        industry: '',
+        method: '',
+        buyer: '',
+        deadline: '',
+        code: '',
+        budget: ''
+      };
     }
 
     return new Response(JSON.stringify({
