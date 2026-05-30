@@ -1,350 +1,350 @@
-     1|<!DOCTYPE html>
-     2|<html lang="zh-CN" data-theme="light">
-     3|<head>
-     4|  <meta charset="UTF-8">
-     5|  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     6|  <title>标讯详情 — 标讯宝</title>
-     7|  <meta name="description" content="查看招标采购标讯详情，包含项目预算、投标截止时间、采购单位及完整公告内容。">
-     8|
-     9|  <!-- Open Graph -->
-    10|  <meta property="og:title" content="标讯详情 — 标讯宝">
-    11|  <meta property="og:description" content="查看招标采购标讯详情，包含项目预算、投标截止时间、采购单位及完整公告内容。">
-    12|  <meta property="og:type" content="article">
-    13|  <meta property="og:url" content="https://bidding-site.pages.dev/detail.html">
-    14|  <meta property="og:locale" content="zh_CN">
-    15|
-    16|  <!-- Canonical -->
-    17|  <link rel="canonical" href="https://bidding-site.pages.dev/detail.html">
-    18|
-    19|  <!-- JSON-LD Base (动态更新在 JS 中) -->
-    20|  <script type="application/ld+json" id="ld-breadcrumb">
-    21|  {
-    22|    "@context": "https://schema.org",
-    23|    "@type": "BreadcrumbList",
-    24|    "itemListElement": [
-    25|      { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://bidding-site.pages.dev/" },
-    26|      { "@type": "ListItem", "position": 2, "name": "标讯大全", "item": "https://bidding-site.pages.dev/list.html" },
-    27|      { "@type": "ListItem", "position": 3, "name": "标讯详情" }
-    28|    ]
-    29|  }
-    30|  </script>
-    31|
-    32|  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-    33|  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/theme/light.css" rel="stylesheet" type="text/css" />
-    34|  <script src="https://cdn.tailwindcss.com"></script>
-    35|  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    36|  <style>
-    37|    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
-    38|    * { font-family: 'Noto Sans SC', -apple-system, sans-serif; }
-    39|    .hero-gradient { background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%); }
-    40|    .prose-content h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #111; }
-    41|    .prose-content h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; color: #1f2937; margin-top: 1.5rem; }
-    42|    .prose-content h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: #374151; }
-    43|    .prose-content p { font-size: 0.95rem; line-height: 1.7; color: #4b5563; margin-bottom: 1rem; }
-    44|    .prose-content ul, .prose-content ol { margin-bottom: 1rem; padding-left: 1.5rem; }
-    45|    .prose-content li { font-size: 0.95rem; line-height: 1.7; color: #4b5563; margin-bottom: 0.25rem; }
-    46|    .prose-content table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
-    47|    .prose-content th, .prose-content td { border: 1px solid #e5e7eb; padding: 0.5rem 0.75rem; font-size: 0.9rem; text-align: left; }
-    48|    .prose-content th { background: #f9fafb; font-weight: 600; color: #374151; }
-    49|    .fade-in { animation: fadeIn 0.3s ease; }
-    50|    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    51|    [x-cloak] { display: none !important; }
-    52|  </style>
-    53|  <script>
-    54|    tailwind.config = { theme: { extend: { colors: { primary: '#059669' } } } }
-    55|  </script>
-    56|</head>
-    57|<body class="bg-gray-50 min-h-screen overflow-x-hidden pb-20" x-data="detailApp()">
-    58|
-    59|  <!-- Navbar -->
-    60|  <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
-    61|    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    62|      <div class="flex items-center justify-between h-14">
-    63|        <div class="flex items-center gap-4">
-    64|          <a href="/" class="flex items-center gap-2">
-    65|            <div class="w-7 h-7 rounded-lg hero-gradient flex items-center justify-center">
-    66|              <span class="text-white font-bold text-xs">标</span>
-    67|            </div>
-    68|            <span class="text-lg font-bold text-gray-900">标讯宝</span>
-    69|          </a>
-    70|          <span class="text-gray-300">/</span>
-    71|          <a href="/list.html" class="text-sm text-gray-500 hover:text-gray-900">标讯大全</a>
-    72|        </div>
-    73|      </div>
-    74|    </div>
-    75|  </nav>
-    76|
-    77|  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-    78|
-    79|    <!-- Loading -->
-    80|    <div class="text-center py-20" x-show="loading">
-    81|      <div class="loading loading-spinner loading-lg text-emerald-600"></div>
-    82|      <p class="text-gray-500 mt-4">加载中...</p>
-    83|    </div>
-    84|
-    85|    <!-- Not Found -->
-    86|    <div class="text-center py-20" x-show="!loading && !bid">
-    87|      <div class="text-5xl mb-4">😕</div>
-    88|      <p class="text-gray-500 text-lg">未找到该标讯</p>
-    89|      <a href="/list.html" class="text-emerald-600 text-sm mt-4 inline-block">返回标讯大全</a>
-    90|    </div>
-    91|
-    92|    <!-- Content -->
-    93|    <template x-if="bid">
-    94|      <div class="fade-in">
-    95|
-    96|        <!-- Back -->
-    97|        <a href="/list.html" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4 transition-colors">
-    98|          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-    99|          返回列表
-   100|        </a>
-   101|
-   102|        <!-- Header Card -->
-   103|        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sm:p-8 mb-4">
-   104|          <!-- Source + Date -->
-   105|          <div class="flex items-center justify-between mb-4">
-   106|            <span class="bid-source-badge font-medium text-xs px-2 py-0.5 rounded-full"
-   107|              :class="sourceBadgeClass(bid.source)"
-   108|              x-text="bid.source"></span>
-   109|            <span class="text-sm text-gray-400" x-text="bid.date"></span>
-   110|          </div>
-   111|
-   112|          <!-- Title -->
-   113|          <h1 class="text-xl sm:text-2xl font-bold text-gray-900 leading-snug mb-4" x-text="bid.title"></h1>
-   114|
-   115|          <!-- Tags -->
-   116|          <div class="flex flex-wrap gap-2 mb-4">
-   117|            <span class="badge badge-sm bg-gray-100 text-gray-600 border-gray-200" x-text="bid.industry"></span>
-   118|            <span class="badge badge-sm bg-gray-100 text-gray-600 border-gray-200" x-text="bid.region"></span>
-   119|            <span class="badge badge-sm bg-gray-100 text-gray-600 border-gray-200" x-text="bid.method"></span>
-   120|          </div>
-   121|
-   122|          <!-- Key Info Grid -->
-   123|          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-gray-50 rounded-lg">
-   124|            <div>
-   125|              <div class="text-xs text-gray-400 mb-1">预算金额</div>
-   126|              <div class="font-semibold text-gray-900 text-sm" x-text="bid.budget || '暂无'"></div>
-   127|            </div>
-   128|            <div>
-   129|              <div class="text-xs text-gray-400 mb-1">投标截止</div>
-   130|              <div class="font-semibold text-gray-900 text-sm" x-text="bid.deadline || '暂无'"></div>
-   131|            </div>
-   132|            <div>
-   133|              <div class="text-xs text-gray-400 mb-1">采购单位</div>
-   134|              <div class="font-semibold text-gray-900 text-sm truncate" x-text="bid.buyer || '暂无'" :title="bid.buyer"></div>
-   135|            </div>
-   136|            <div>
-   137|              <div class="text-xs text-gray-400 mb-1">项目编号</div>
-   138|              <div class="font-semibold text-gray-900 text-sm truncate font-mono" x-text="bid.code || '暂无'"></div>
-   139|            </div>
-   140|          </div>
-   141|        </div>
-   142|
-   143|        <!-- Detail Body -->
-   144|        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sm:p-8 mb-4">
-   145|          <h2 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-   146|            <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-   147|              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-   148|            </svg>
-   149|            公告详情
-   150|          </h2>
-   151|          <!-- 有内容 → 展示 -->
-   152|          <div class="prose-content" x-show="bid.content && bid.content.length > 100" x-html="bid.content"></div>
-   153|          <!-- 无内容 → 引导去官网 -->
-   154|          <div class="text-center py-10" x-show="!bid.content || bid.content.length <= 100">
-   155|            <div class="text-4xl mb-3">📄</div>
-   156|            <p class="text-gray-500 text-sm mb-4">公告全文未收录</p>
-   157|            <a :href="bid.sourceUrl" target="_blank" rel="noopener noreferrer"
-   158|              class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors">
-   159|              查看原文
-   160|              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-   161|                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-   162|              </svg>
-   163|            </a>
-   164|          </div>
-   165|        </div>
-   166|
-   167|        <!-- Source Link -->
-   168|        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
-   169|          <div class="flex items-center justify-between">
-   170|            <span class="text-sm text-gray-500">
-   171|              数据来源：<span class="font-medium" x-text="bid.source"></span>
-   172|            </span>
-   173|            <a :href="bid.sourceUrl" target="_blank" rel="noopener noreferrer"
-   174|              class="inline-flex items-center gap-1 text-sm text-emerald-600 hover:text-emerald-700 font-medium">
-   175|              查看原文
-   176|              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-   177|                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-   178|              </svg>
-   179|            </a>
-   180|          </div>
-   181|        </div>
-   182|
-   183|      </div>
-   184|    </template>
-   185|  </div>
-   186|
-   187|  <!-- Footer -->
-   188|  <footer class="bg-white border-t border-gray-100 mt-12">
-   189|    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-   190|      <div class="text-center text-xs text-gray-400">标讯宝 — 免费标讯查询平台</div>
-   191|    </div>
-   192|    <div class="mt-4 pt-4 border-t border-gray-100 text-center text-xs text-gray-400">
-   193|      © 2026 标讯宝 · 未经许可禁止批量抓取数据
-   194|    </div>
-   195|  </footer>
-   196|
-   197|  <script>
-   198|    // SEO 辅助：更新 meta 和 OG 标签
-   199|    function setMeta(name, content) {
-   200|      // Regular meta
-   201|      let el = document.querySelector('meta[name="' + name + '"]')
-   202|      if (el) { el.content = content; return }
-   203|      // OG meta
-   204|      el = document.querySelector('meta[property="' + name + '"]')
-   205|      if (el) el.content = content
-   206|    }
-   207|
-   208|    function detailApp() {
-   209|      return {
-   210|        bid: null,
-   211|        loading: true,
-   212|
-   213|        async init() {
-   214|          const params = new URLSearchParams(window.location.search);
-   215|          const id = params.get('id');
-   216|          if (!id) { this.loading = false; return; }
-   217|          await this.loadBid(id);
-   218|        },
-   219|
-   220|        async loadBid(id) {
-   221|          try {
-   222|            // Try multiple sources
-   223|            let bids = [];
-   224|            const sources = ['/data/bids.json', 'https://raw.githubusercontent.com/nice705/bxbbidding-site/main/data/bids.json'];
-   225|            for (const url of sources) {
-   226|              try {
-   227|                const resp = await fetch(url);
-   228|                if (resp.ok) {
-   229|                  const text = await resp.text();
-   230|                  const data = JSON.parse(text);
-   231|                  bids = data.bids || [];
-   232|                  if (bids.length > 0) break;
-   233|                }
-   234|              } catch(e) { console.warn('Fetch failed:', url, e); }
-   235|            }
-   236|            this.bid = bids.find(b => b.id === id) || null;
-   237|            if (this.bid) {
-   238|              const b = this.bid
-   239|              // Map fields (兼容不同数据格式)
-   240|              if (!b.region) b.region = b.province || '全国';
-   241|              if (!b.industry) b.industry = b.category || '招标公告';
-   242|              if (!b.method) b.method = b.category || '公开招标';
-   243|              if (!b.budget) b.budget = '';
-   244|              if (!b.deadline) b.deadline = '';
-   245|              if (!b.buyer) b.buyer = '';
-   246|              if (!b.code) b.code = '';
-   247|              if (!b.sourceUrl) b.sourceUrl = b.url || '';
-   248|              // Title
-   249|              document.title = b.title + ' — 标讯宝'
-   250|
-   251|              // Meta description
-   252|              const desc = (b.budget || '') + ' · ' + (b.buyer || '') + ' · ' + (b.deadline || '') + '截止 · ' + (b.region || '')
-   253|              setMeta('description', desc)
-   254|
-   255|              // OG tags
-   256|              setMeta('og:title', b.title)
-   257|              setMeta('og:description', desc)
-   258|              setMeta('og:url', window.location.href)
-   259|
-   260|              // Canonical URL
-   261|              const link = document.querySelector('link[rel="canonical"]')
-   262|              if (link) link.href = window.location.href
-   263|
-   264|              // JSON-LD Breadcrumb
-   265|              const script = document.getElementById('ld-breadcrumb')
-   266|              if (script) {
-   267|                script.textContent = JSON.stringify({
-   268|                  '@context': 'https://schema.org',
-   269|                  '@type': 'BreadcrumbList',
-   270|                  'itemListElement': [
-   271|                    { '@type': 'ListItem', 'position': 1, 'name': '首页', 'item': 'https://bidding-site.pages.dev/' },
-   272|                    { '@type': 'ListItem', 'position': 2, 'name': '标讯大全', 'item': 'https://bidding-site.pages.dev/list.html' },
-   273|                    { '@type': 'ListItem', 'position': 3, 'name': b.title }
-   274|                  ]
-   275|                })
-   276|              }
-   277|            }
-   278|          } catch(e) {
-   279|            console.error(e);
-   280|          }
-   281|          this.loading = false;
-   282|        },
-   283|
-   284|        sourceBadgeClass(source) {
-   285|          const map = {
-   286|            '国招平台': 'bg-blue-50 text-blue-600 border-blue-200',
-   287|            '政府采购网': 'bg-emerald-50 text-emerald-600 border-emerald-200',
-   288|            '省平台': 'bg-purple-50 text-purple-600 border-purple-200',
-   289|            '招标代理': 'bg-orange-50 text-orange-600 border-orange-200',
-   290|            '医院官网': 'bg-rose-50 text-rose-600 border-rose-200',
-   291|            '高校官网': 'bg-cyan-50 text-cyan-600 border-cyan-200',
-   292|          };
-   293|          return map[source] || 'bg-gray-50 text-gray-600 border-gray-200';
-   294|        }
-   295|      }
-   296|    }
-   297|  </script>
-   298|
-   299|  <style>
-   300|    .bid-source-badge { font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 999px; }
-   301|  </style>
-   302|
-   303|  <!-- 订阅浮窗 + 自动弹窗 -->
-   304|  <div x-data="subscribePrompt()">
-   305|    <button @mouseenter="openModal()" @click="openModal()" x-show="!showModal"
-   306|      class="fixed right-0 top-1/2 -translate-y-1/2 z-40
-   307|             bg-emerald-600 text-white rounded-l-lg shadow-lg
-   308|             hover:bg-emerald-700 hover:pr-0.5 transition-all
-   309|             w-14 py-2.5 flex flex-col items-center gap-1.5
-   310|             text-sm leading-tight cursor-pointer font-medium">
-   311|      <span class="text-lg">📢</span>
-   312|      <span>免费订阅</span>
-   313|      <span>微信推送</span>
-   314|    </button>
-   315|    <div x-show="showModal" x-cloak
-   316|      class="fixed inset-0 bg-black/30 z-50 flex items-center justify-center p-4"
-   317|      @click.away="closeModal()">
-   318|      <div class="bg-white rounded-2xl p-6 text-center max-w-xs w-full shadow-xl" x-show="showModal" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
-   319|        <div class="flex justify-end -mt-2 -mr-2 mb-1">
-   320|          <button @click="closeModal()" class="text-gray-300 hover:text-gray-500 transition-colors">
-   321|            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-   322|          </button>
-   323|        </div>
-   324|        <img src="/static/wxpusher-qr.svg" alt="微信扫码关注" class="w-44 mx-auto mb-3">
-   325|        <p class="text-base font-semibold text-gray-800">📢 免费订阅每日标讯</p>
-   326|        <p class="text-xs text-gray-400 mt-1 leading-relaxed">微信扫码关注<br>每天推送最新标讯，不错过任何机会</p>
-   327|        <button @click="closeModal()" class="mt-4 text-xs text-gray-400 hover:text-gray-600 underline underline-offset-2">暂不订阅</button>
-   328|      </div>
-   329|    </div>
-   330|  </div>
-   331|
-   332|  <script>
-   333|    function subscribePrompt() {
-   334|      return {
-   335|        showModal: false,
-   336|        init() {
-   337|          setTimeout(() => {
-   338|            this.showModal = true
-   339|          }, 3000)
-   340|        },
-   341|        openModal() { this.showModal = true },
-   342|        closeModal() { this.showModal = false }
-   343|      }
-   344|    }
-   345|  </script>
-   346|
-   347|
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>标讯详情 — 标讯宝</title>
+  <meta name="description" content="查看招标采购标讯详情，包含项目预算、投标截止时间、采购单位及完整公告内容。">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="标讯详情 — 标讯宝">
+  <meta property="og:description" content="查看招标采购标讯详情，包含项目预算、投标截止时间、采购单位及完整公告内容。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://bidding-site.pages.dev/detail.html">
+  <meta property="og:locale" content="zh_CN">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://bidding-site.pages.dev/detail.html">
+
+  <!-- JSON-LD Base (动态更新在 JS 中) -->
+  <script type="application/ld+json" id="ld-breadcrumb">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://bidding-site.pages.dev/" },
+      { "@type": "ListItem", "position": 2, "name": "标讯大全", "item": "https://bidding-site.pages.dev/list.html" },
+      { "@type": "ListItem", "position": 3, "name": "标讯详情" }
+    ]
+  }
+  </script>
+
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/theme/light.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+    * { font-family: 'Noto Sans SC', -apple-system, sans-serif; }
+    .hero-gradient { background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%); }
+    .prose-content h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #111; }
+    .prose-content h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; color: #1f2937; margin-top: 1.5rem; }
+    .prose-content h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: #374151; }
+    .prose-content p { font-size: 0.95rem; line-height: 1.7; color: #4b5563; margin-bottom: 1rem; }
+    .prose-content ul, .prose-content ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+    .prose-content li { font-size: 0.95rem; line-height: 1.7; color: #4b5563; margin-bottom: 0.25rem; }
+    .prose-content table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+    .prose-content th, .prose-content td { border: 1px solid #e5e7eb; padding: 0.5rem 0.75rem; font-size: 0.9rem; text-align: left; }
+    .prose-content th { background: #f9fafb; font-weight: 600; color: #374151; }
+    .fade-in { animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    [x-cloak] { display: none !important; }
+  </style>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: '#059669' } } } }
+  </script>
+</head>
+<body class="bg-gray-50 min-h-screen overflow-x-hidden pb-20" x-data="detailApp()">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-14">
+        <div class="flex items-center gap-4">
+          <a href="/" class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-lg hero-gradient flex items-center justify-center">
+              <span class="text-white font-bold text-xs">标</span>
+            </div>
+            <span class="text-lg font-bold text-gray-900">标讯宝</span>
+          </a>
+          <span class="text-gray-300">/</span>
+          <a href="/list.html" class="text-sm text-gray-500 hover:text-gray-900">标讯大全</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- Loading -->
+    <div class="text-center py-20" x-show="loading">
+      <div class="loading loading-spinner loading-lg text-emerald-600"></div>
+      <p class="text-gray-500 mt-4">加载中...</p>
+    </div>
+
+    <!-- Not Found -->
+    <div class="text-center py-20" x-show="!loading && !bid">
+      <div class="text-5xl mb-4">😕</div>
+      <p class="text-gray-500 text-lg">未找到该标讯</p>
+      <a href="/list.html" class="text-emerald-600 text-sm mt-4 inline-block">返回标讯大全</a>
+    </div>
+
+    <!-- Content -->
+    <template x-if="bid">
+      <div class="fade-in">
+
+        <!-- Back -->
+        <a href="/list.html" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          返回列表
+        </a>
+
+        <!-- Header Card -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sm:p-8 mb-4">
+          <!-- Source + Date -->
+          <div class="flex items-center justify-between mb-4">
+            <span class="bid-source-badge font-medium text-xs px-2 py-0.5 rounded-full"
+              :class="sourceBadgeClass(bid.source)"
+              x-text="bid.source"></span>
+            <span class="text-sm text-gray-400" x-text="bid.date"></span>
+          </div>
+
+          <!-- Title -->
+          <h1 class="text-xl sm:text-2xl font-bold text-gray-900 leading-snug mb-4" x-text="bid.title"></h1>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="badge badge-sm bg-gray-100 text-gray-600 border-gray-200" x-text="bid.industry"></span>
+            <span class="badge badge-sm bg-gray-100 text-gray-600 border-gray-200" x-text="bid.region"></span>
+            <span class="badge badge-sm bg-gray-100 text-gray-600 border-gray-200" x-text="bid.method"></span>
+          </div>
+
+          <!-- Key Info Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-gray-50 rounded-lg">
+            <div>
+              <div class="text-xs text-gray-400 mb-1">预算金额</div>
+              <div class="font-semibold text-gray-900 text-sm" x-text="bid.budget || '暂无'"></div>
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 mb-1">投标截止</div>
+              <div class="font-semibold text-gray-900 text-sm" x-text="bid.deadline || '暂无'"></div>
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 mb-1">采购单位</div>
+              <div class="font-semibold text-gray-900 text-sm truncate" x-text="bid.buyer || '暂无'" :title="bid.buyer"></div>
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 mb-1">项目编号</div>
+              <div class="font-semibold text-gray-900 text-sm truncate font-mono" x-text="bid.code || '暂无'"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detail Body -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sm:p-8 mb-4">
+          <h2 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            公告详情
+          </h2>
+          <!-- 有内容 → 展示 -->
+          <div class="prose-content" x-show="bid.content && bid.content.length > 100" x-html="bid.content"></div>
+          <!-- 无内容 → 引导去官网 -->
+          <div class="text-center py-10" x-show="!bid.content || bid.content.length <= 100">
+            <div class="text-4xl mb-3">📄</div>
+            <p class="text-gray-500 text-sm mb-4">公告全文未收录</p>
+            <a :href="bid.sourceUrl" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors">
+              查看原文
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Source Link -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-500">
+              数据来源：<span class="font-medium" x-text="bid.source"></span>
+            </span>
+            <a :href="bid.sourceUrl" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-1 text-sm text-emerald-600 hover:text-emerald-700 font-medium">
+              查看原文
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </template>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-100 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="text-center text-xs text-gray-400">标讯宝 — 免费标讯查询平台</div>
+    </div>
+    <div class="mt-4 pt-4 border-t border-gray-100 text-center text-xs text-gray-400">
+      © 2026 标讯宝 · 未经许可禁止批量抓取数据
+    </div>
+  </footer>
+
+  <script>
+    // SEO 辅助：更新 meta 和 OG 标签
+    function setMeta(name, content) {
+      // Regular meta
+      let el = document.querySelector('meta[name="' + name + '"]')
+      if (el) { el.content = content; return }
+      // OG meta
+      el = document.querySelector('meta[property="' + name + '"]')
+      if (el) el.content = content
+    }
+
+    function detailApp() {
+      return {
+        bid: null,
+        loading: true,
+
+        async init() {
+          const params = new URLSearchParams(window.location.search);
+          const id = params.get('id');
+          if (!id) { this.loading = false; return; }
+          await this.loadBid(id);
+        },
+
+        async loadBid(id) {
+          try {
+            // Try multiple sources
+            let bids = [];
+            const sources = ['/data/bids.json', 'https://raw.githubusercontent.com/nice705/bxbbidding-site/main/data/bids.json'];
+            for (const url of sources) {
+              try {
+                const resp = await fetch(url);
+                if (resp.ok) {
+                  const text = await resp.text();
+                  const data = JSON.parse(text);
+                  bids = data.bids || [];
+                  if (bids.length > 0) break;
+                }
+              } catch(e) { console.warn('Fetch failed:', url, e); }
+            }
+            this.bid = bids.find(b => b.id === id) || null;
+            if (this.bid) {
+              const b = this.bid
+              // Map fields (兼容不同数据格式)
+              if (!b.region) b.region = b.province || '全国';
+              if (!b.industry) b.industry = b.category || '招标公告';
+              if (!b.method) b.method = b.category || '公开招标';
+              if (!b.budget) b.budget = '';
+              if (!b.deadline) b.deadline = '';
+              if (!b.buyer) b.buyer = '';
+              if (!b.code) b.code = '';
+              if (!b.sourceUrl) b.sourceUrl = b.url || '';
+              // Title
+              document.title = b.title + ' — 标讯宝'
+
+              // Meta description
+              const desc = (b.budget || '') + ' · ' + (b.buyer || '') + ' · ' + (b.deadline || '') + '截止 · ' + (b.region || '')
+              setMeta('description', desc)
+
+              // OG tags
+              setMeta('og:title', b.title)
+              setMeta('og:description', desc)
+              setMeta('og:url', window.location.href)
+
+              // Canonical URL
+              const link = document.querySelector('link[rel="canonical"]')
+              if (link) link.href = window.location.href
+
+              // JSON-LD Breadcrumb
+              const script = document.getElementById('ld-breadcrumb')
+              if (script) {
+                script.textContent = JSON.stringify({
+                  '@context': 'https://schema.org',
+                  '@type': 'BreadcrumbList',
+                  'itemListElement': [
+                    { '@type': 'ListItem', 'position': 1, 'name': '首页', 'item': 'https://bidding-site.pages.dev/' },
+                    { '@type': 'ListItem', 'position': 2, 'name': '标讯大全', 'item': 'https://bidding-site.pages.dev/list.html' },
+                    { '@type': 'ListItem', 'position': 3, 'name': b.title }
+                  ]
+                })
+              }
+            }
+          } catch(e) {
+            console.error(e);
+          }
+          this.loading = false;
+        },
+
+        sourceBadgeClass(source) {
+          const map = {
+            '国招平台': 'bg-blue-50 text-blue-600 border-blue-200',
+            '政府采购网': 'bg-emerald-50 text-emerald-600 border-emerald-200',
+            '省平台': 'bg-purple-50 text-purple-600 border-purple-200',
+            '招标代理': 'bg-orange-50 text-orange-600 border-orange-200',
+            '医院官网': 'bg-rose-50 text-rose-600 border-rose-200',
+            '高校官网': 'bg-cyan-50 text-cyan-600 border-cyan-200',
+          };
+          return map[source] || 'bg-gray-50 text-gray-600 border-gray-200';
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .bid-source-badge { font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 999px; }
+  </style>
+
+  <!-- 订阅浮窗 + 自动弹窗 -->
+  <div x-data="subscribePrompt()">
+    <button @mouseenter="openModal()" @click="openModal()" x-show="!showModal"
+      class="fixed right-0 top-1/2 -translate-y-1/2 z-40
+             bg-emerald-600 text-white rounded-l-lg shadow-lg
+             hover:bg-emerald-700 hover:pr-0.5 transition-all
+             w-14 py-2.5 flex flex-col items-center gap-1.5
+             text-sm leading-tight cursor-pointer font-medium">
+      <span class="text-lg">📢</span>
+      <span>免费订阅</span>
+      <span>微信推送</span>
+    </button>
+    <div x-show="showModal" x-cloak
+      class="fixed inset-0 bg-black/30 z-50 flex items-center justify-center p-4"
+      @click.away="closeModal()">
+      <div class="bg-white rounded-2xl p-6 text-center max-w-xs w-full shadow-xl" x-show="showModal" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
+        <div class="flex justify-end -mt-2 -mr-2 mb-1">
+          <button @click="closeModal()" class="text-gray-300 hover:text-gray-500 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <img src="/static/wxpusher-qr.svg" alt="微信扫码关注" class="w-44 mx-auto mb-3">
+        <p class="text-base font-semibold text-gray-800">📢 免费订阅每日标讯</p>
+        <p class="text-xs text-gray-400 mt-1 leading-relaxed">微信扫码关注<br>每天推送最新标讯，不错过任何机会</p>
+        <button @click="closeModal()" class="mt-4 text-xs text-gray-400 hover:text-gray-600 underline underline-offset-2">暂不订阅</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function subscribePrompt() {
+      return {
+        showModal: false,
+        init() {
+          setTimeout(() => {
+            this.showModal = true
+          }, 3000)
+        },
+        openModal() { this.showModal = true },
+        closeModal() { this.showModal = false }
+      }
+    }
+  </script>
+
+
   <!-- Bottom Navigation -->
   <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
     <div class="max-w-7xl mx-auto px-4">
@@ -372,5 +372,4 @@
   </nav>
 
 </body>
-   348|</html>
-   349|
+</html>
