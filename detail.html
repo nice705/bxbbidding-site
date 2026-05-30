@@ -10,11 +10,11 @@
   <meta property="og:title" content="标讯详情 — 标讯宝">
   <meta property="og:description" content="查看招标采购标讯详情，包含项目预算、投标截止时间、采购单位及完整公告内容。">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://bidding-site.pages.dev/detail.html">
+  <meta property="og:url" content="https://qgbxb.com/detail.html">
   <meta property="og:locale" content="zh_CN">
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://bidding-site.pages.dev/detail.html">
+  <link rel="canonical" href="https://qgbxb.com/detail.html">
 
   <!-- JSON-LD Base (动态更新在 JS 中) -->
   <script type="application/ld+json" id="ld-breadcrumb">
@@ -22,8 +22,8 @@
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://bidding-site.pages.dev/" },
-      { "@type": "ListItem", "position": 2, "name": "标讯大全", "item": "https://bidding-site.pages.dev/list.html" },
+      { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://qgbxb.com/" },
+      { "@type": "ListItem", "position": 2, "name": "标讯大全", "item": "https://qgbxb.com/list.html" },
       { "@type": "ListItem", "position": 3, "name": "标讯详情" }
     ]
   }
@@ -32,11 +32,12 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5/theme/light.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://lib.baomitu.com/alpinejs/3.14.9/cdn.min.js" defer></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
     * { font-family: 'Noto Sans SC', -apple-system, sans-serif; }
     .hero-gradient { background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%); }
+    .prose-content { white-space: pre-line; }
     .prose-content h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #111; }
     .prose-content h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; color: #1f2937; margin-top: 1.5rem; }
     .prose-content h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: #374151; }
@@ -49,12 +50,44 @@
     .fade-in { animation: fadeIn 0.3s ease; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     [x-cloak] { display: none !important; }
+    /* 暗色模式 */
+    @media (prefers-color-scheme: dark) {
+      body { background: #1f2937; }
+      nav { background: #1f2937 !important; border-color: #374151 !important; }
+      nav a, nav span { color: #d1d5db !important; }
+      nav .text-gray-900 { color: #f3f4f6 !important; }
+      [class*="bg-white"] { background: #374151 !important; border-color: #4b5563 !important; }
+      [class*="text-gray-900"] { color: #f3f4f6 !important; }
+      [class*="text-gray-500"], [class*="text-gray-400"] { color: #9ca3af !important; }
+      [class*="text-emerald-600"] { color: #6ee7b7 !important; }
+      [class*="bg-gray-50"] { background: #111827 !important; }
+      [class*="bg-emerald-50"] { background: #064e3b !important; }
+      [class*="border-gray-100"] { border-color: #374151 !important; }
+      .prose-content p, .prose-content li, .prose-content td { color: #d1d5db !important; }
+      .prose-content h1, .prose-content h2, .prose-content h3 { color: #f3f4f6 !important; }
+      .prose-content th { background: #1f2937 !important; color: #d1d5db !important; }
+      .prose-content th, .prose-content td { border-color: #4b5563 !important; }
+    }
   </style>
   <script>
     tailwind.config = { theme: { extend: { colors: { primary: '#059669' } } } }
   </script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "bcb4a0d224e14f5e93f5a0b2ff7c1b32"}'></script>
 </head>
-<body class="bg-gray-50 min-h-screen overflow-x-hidden pb-20" x-data="detailApp()">
+<body>
+<script>
+  // Clean up Cloudflare SEO injection
+  document.addEventListener("DOMContentLoaded", function() {
+    var h1 = document.querySelector("body > h1[style]");
+    if (h1) h1.remove();
+    var body = document.body;
+    while (body.firstChild && body.firstChild.nodeType === 3) {
+      body.removeChild(body.firstChild);
+    }
+  });
+</script>
+<div class="bg-gray-50 min-h-screen overflow-x-hidden pb-16" x-data="detailApp()">
 
   <!-- Navbar -->
   <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
@@ -70,6 +103,7 @@
           <span class="text-gray-300">/</span>
           <a href="/list.html" class="text-sm text-gray-500 hover:text-gray-900">标讯大全</a>
         </div>
+        <div class="flex items-center"></div>
       </div>
     </div>
   </nav>
@@ -77,65 +111,88 @@
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
     <!-- Loading -->
-    <div class="text-center py-20" x-show="loading">
+    <div class="text-center py-20" x-show="loading" x-cloak style="display:none">
       <div class="loading loading-spinner loading-lg text-emerald-600"></div>
       <p class="text-gray-500 mt-4">加载中...</p>
     </div>
 
     <!-- Not Found -->
-    <div class="text-center py-20" x-show="!loading && !bid">
+    <div class="text-center py-20" x-show="!loading && !bid" x-cloak style="display:none">
       <div class="text-5xl mb-4">😕</div>
       <p class="text-gray-500 text-lg">未找到该标讯</p>
       <a href="/list.html" class="text-emerald-600 text-sm mt-4 inline-block">返回标讯大全</a>
-    </div>
+          </div>
 
     <!-- Content -->
     <template x-if="bid">
       <div class="fade-in">
 
         <!-- Back -->
-        <a href="/list.html" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4 transition-colors">
+        <a :href="'/list.html' + (keywords.length > 0 ? '?q=' + encodeURIComponent(keywords.join(',')) : '')" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4 transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
           返回列表
         </a>
 
         <!-- Header Card -->
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sm:p-8 mb-4">
-          <!-- Source + Date -->
-          <div class="flex items-center justify-between mb-4">
-            <span class="bid-source-badge font-medium text-xs px-2 py-0.5 rounded-full"
-              :class="sourceBadgeClass(bid.source)"
-              x-text="bid.source"></span>
-            <span class="text-sm text-gray-400" x-text="bid.date"></span>
+          <!-- Row 1: Type badge + Source + Date + Favorite -->
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="inline-block text-xs font-medium px-2 py-0.5 rounded"
+                :class="methodBadgeClass(bid.method)"
+                x-text="bid.method || '公告'"></span>
+              <span class="bid-source-badge font-medium text-xs px-2 py-0.5 rounded-full"
+                :class="sourceBadgeClass(bid.source)"
+                x-text="bid.source"></span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-sm text-gray-400" x-text="bid.date"></span>
+              <button @click="toggleFav(bid, $event)"
+                class="flex items-center gap-0.5 px-2 py-1 rounded hover:bg-gray-100 transition-colors text-xs"
+                :title="isFav(bid.id) ? '取消收藏' : '收藏'">
+                <svg class="w-4 h-4" :class="isFav(bid.id) ? 'text-yellow-400' : 'text-gray-300 hover:text-yellow-400'" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <span class="text-gray-400" x-text="isFav(bid.id) ? '取消收藏' : '收藏'"></span>
+              </button>
+            </div>
           </div>
 
           <!-- Title -->
-          <h1 class="text-xl sm:text-2xl font-bold text-gray-900 leading-snug mb-4" x-text="bid.title"></h1>
+          <h1 class="text-xl sm:text-2xl font-bold text-gray-900 leading-snug mb-3" x-html="bid._title || bid.title"></h1>
 
-          <!-- Tags -->
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="badge badge-sm bg-gray-100 text-gray-600 border-gray-200" x-text="bid.industry"></span>
-            <span class="badge badge-sm bg-gray-100 text-gray-600 border-gray-200" x-text="bid.region"></span>
-            <span class="badge badge-sm bg-gray-100 text-gray-600 border-gray-200" x-text="bid.method"></span>
+          <!-- Product tags -->
+          <div class="flex flex-wrap gap-1.5 mb-4" x-show="bid.products && bid.products.length > 0">
+            <template x-for="p in bid.products" :key="p">
+              <span class="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 border border-blue-100" x-text="p"></span>
+            </template>
           </div>
 
-          <!-- Key Info Grid -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-gray-50 rounded-lg">
-            <div>
-              <div class="text-xs text-gray-400 mb-1">预算金额</div>
-              <div class="font-semibold text-gray-900 text-sm" x-text="bid.budget || '暂无'"></div>
-            </div>
-            <div>
-              <div class="text-xs text-gray-400 mb-1">投标截止</div>
-              <div class="font-semibold text-gray-900 text-sm" x-text="bid.deadline || '暂无'"></div>
-            </div>
+          <!-- 基本信息卡 -->
+          <div class="grid grid-cols-2 gap-4 p-4 bg-gray-50 rounded-lg">
             <div>
               <div class="text-xs text-gray-400 mb-1">采购单位</div>
-              <div class="font-semibold text-gray-900 text-sm truncate" x-text="bid.buyer || '暂无'" :title="bid.buyer"></div>
+              <div class="font-medium text-gray-900 text-sm truncate" x-text="bid.buyer || '暂无'" :title="bid.buyer"></div>
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 mb-1">省份城市</div>
+              <div class="font-medium text-gray-900 text-sm" x-text="bid.region || '暂无'"></div>
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 mb-1">公告类型</div>
+              <div class="font-medium text-gray-900 text-sm" x-text="bid.method || '暂无'"></div>
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 mb-1">报名截止</div>
+              <div class="font-medium text-gray-900 text-sm" x-text="bid.deadline || '暂无'"></div>
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 mb-1">递交截止</div>
+              <div class="font-medium text-gray-900 text-sm" x-text="bid.deadline || '暂无'"></div>
             </div>
             <div>
               <div class="text-xs text-gray-400 mb-1">项目编号</div>
-              <div class="font-semibold text-gray-900 text-sm truncate font-mono" x-text="bid.code || '暂无'"></div>
+              <div class="font-medium text-gray-900 text-sm truncate font-mono" x-text="bid.code || '暂无'"></div>
             </div>
           </div>
         </div>
@@ -148,12 +205,22 @@
             </svg>
             公告详情
           </h2>
+          <!-- 有内容 → 展示（排除屏蔽页面） -->
           <!-- 有内容 → 展示 -->
-          <div class="prose-content" x-show="bid.content && bid.content.length > 100" x-html="bid.content"></div>
+          <div class="prose-content" x-show="bid.content && bid.content.length > 20" x-html="bid._content || bid.content"></div>
           <!-- 无内容 → 引导去官网 -->
-          <div class="text-center py-10" x-show="!bid.content || bid.content.length <= 100">
+          <div class="text-center py-10" x-show="!bid.content || bid.content.length <= 20">
             <div class="text-4xl mb-3">📄</div>
-            <p class="text-gray-500 text-sm mb-4">公告全文未收录</p>
+            <p class="text-gray-500 text-sm mb-4">公告全文未收录，请前往官方平台查看</p>
+            <a :href="bid.sourceUrl" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors shadow-sm">
+              查看原文
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          </div>
+
             <a :href="bid.sourceUrl" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors">
               查看原文
@@ -164,12 +231,14 @@
           </div>
         </div>
 
-        <!-- Source Link -->
+        <!-- Source Link + Favorite -->
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
           <div class="flex items-center justify-between">
-            <span class="text-sm text-gray-500">
-              数据来源：<span class="font-medium" x-text="bid.source"></span>
-            </span>
+            <div class="flex items-center gap-3">
+              <span class="text-sm text-gray-500">
+                数据来源：<span class="font-medium" x-text="bid.source"></span>
+              </span>
+            </div>
             <a :href="bid.sourceUrl" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-1 text-sm text-emerald-600 hover:text-emerald-700 font-medium">
               查看原文
@@ -208,72 +277,76 @@
     function detailApp() {
       return {
         bid: null,
+        bidId: null,
         loading: true,
+        pageSize: 20,
+        keywords: [],
+        favedIds: {},
 
         async init() {
+          this.loadFavs();
           const params = new URLSearchParams(window.location.search);
           const id = params.get('id');
+          const q = params.get('q');
+          if (q) {
+            this.keywords = q.split(',').map(k => k.trim()).filter(k => k);
+          }
           if (!id) { this.loading = false; return; }
           await this.loadBid(id);
         },
 
+        loadFavs() {
+          for (let i = 0; i < localStorage.length; i++) {
+            const k = localStorage.key(i);
+            if (k && k.startsWith('fav_') && !k.startsWith('fav_meta_')) {
+              this.favedIds[k.slice(4)] = true;
+            }
+          }
+        },
+
+        highlightText(text) {
+          if (!text || this.keywords.length === 0) return text;
+          let result = text;
+          this.keywords.forEach(kw => {
+            if (!kw) return;
+            const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(${escaped})`, 'gi');
+            result = result.replace(regex, '<span style="color:red">$1</span>');
+          });
+          return result;
+        },
+
         async loadBid(id) {
           try {
-            // Try multiple sources
-            let bids = [];
-            const sources = ['/data/bids.json', 'https://raw.githubusercontent.com/nice705/bxbbidding-site/main/data/bids.json'];
-            for (const url of sources) {
-              try {
-                const resp = await fetch(url);
-                if (resp.ok) {
-                  const text = await resp.text();
-                  const data = JSON.parse(text);
-                  bids = data.bids || [];
-                  if (bids.length > 0) break;
-                }
-              } catch(e) { console.warn('Fetch failed:', url, e); }
-            }
-            this.bid = bids.find(b => b.id === id) || null;
-            if (this.bid) {
-              const b = this.bid
-              // Map fields (兼容不同数据格式)
-              if (!b.region) b.region = b.province || '全国';
-              if (!b.industry) b.industry = b.category || '招标公告';
-              if (!b.method) b.method = b.category || '公开招标';
-              if (!b.budget) b.budget = '';
-              if (!b.deadline) b.deadline = '';
-              if (!b.buyer) b.buyer = '';
-              if (!b.code) b.code = '';
-              if (!b.sourceUrl) b.sourceUrl = b.url || '';
-              // Title
-              document.title = b.title + ' — 标讯宝'
+            const resp = await fetch('/api/bids/' + id);
+            if (!resp.ok) { this.loading = false; return; }
+            const data = await resp.json();
+            const b = data.bid;
+            if (!b) { this.loading = false; return; }
+            // Highlight title & content
+            b._title = this.highlightText(b.title);
+            b._content = b.content ? this.highlightText(b.content) : '';
+            this.bid = b;
 
-              // Meta description
-              const desc = (b.budget || '') + ' · ' + (b.buyer || '') + ' · ' + (b.deadline || '') + '截止 · ' + (b.region || '')
-              setMeta('description', desc)
-
-              // OG tags
-              setMeta('og:title', b.title)
-              setMeta('og:description', desc)
-              setMeta('og:url', window.location.href)
-
-              // Canonical URL
-              const link = document.querySelector('link[rel="canonical"]')
-              if (link) link.href = window.location.href
-
-              // JSON-LD Breadcrumb
-              const script = document.getElementById('ld-breadcrumb')
-              if (script) {
-                script.textContent = JSON.stringify({
-                  '@context': 'https://schema.org',
-                  '@type': 'BreadcrumbList',
-                  'itemListElement': [
-                    { '@type': 'ListItem', 'position': 1, 'name': '首页', 'item': 'https://bidding-site.pages.dev/' },
-                    { '@type': 'ListItem', 'position': 2, 'name': '标讯大全', 'item': 'https://bidding-site.pages.dev/list.html' },
-                    { '@type': 'ListItem', 'position': 3, 'name': b.title }
-                  ]
-                })
-              }
+            document.title = b.title + ' — 标讯宝'
+            const desc = b.budget + ' · ' + b.buyer + ' · ' + b.deadline + '截止 · ' + b.region
+            setMeta('description', desc)
+            setMeta('og:title', b.title)
+            setMeta('og:description', desc)
+            setMeta('og:url', window.location.href)
+            const link = document.querySelector('link[rel="canonical"]')
+            if (link) link.href = window.location.href
+            const script = document.getElementById('ld-breadcrumb')
+            if (script) {
+              script.textContent = JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'BreadcrumbList',
+                'itemListElement': [
+                  { '@type': 'ListItem', 'position': 1, 'name': '首页', 'item': 'https://qgbxb.com/' },
+                  { '@type': 'ListItem', 'position': 2, 'name': '标讯大全', 'item': 'https://qgbxb.com/list.html' },
+                  { '@type': 'ListItem', 'position': 3, 'name': b.title }
+                ]
+              })
             }
           } catch(e) {
             console.error(e);
@@ -291,6 +364,95 @@
             '高校官网': 'bg-cyan-50 text-cyan-600 border-cyan-200',
           };
           return map[source] || 'bg-gray-50 text-gray-600 border-gray-200';
+        },
+
+        // —— 类型Badge颜色 ——
+        methodBadgeClass(method) {
+          const map = {
+            '公开招标': 'bg-blue-50 text-blue-600',
+            '中标公告': 'bg-green-50 text-green-600',
+            '中标/成交': 'bg-green-50 text-green-600',
+            '更正公告': 'bg-orange-50 text-orange-600',
+            '废标': 'bg-red-50 text-red-600',
+            '竞争性磋商': 'bg-purple-50 text-purple-600',
+            '竞争性谈判': 'bg-purple-50 text-purple-600',
+            '询价': 'bg-cyan-50 text-cyan-600',
+            '询价公告': 'bg-cyan-50 text-cyan-600',
+            '单一来源': 'bg-pink-50 text-pink-600',
+            '其他公告': 'bg-gray-50 text-gray-500',
+            '预告': 'bg-amber-50 text-amber-600',
+            '方案征集': 'bg-gray-50 text-gray-600',
+            '竞价': 'bg-yellow-50 text-yellow-600',
+          };
+          return map[method] || 'bg-gray-50 text-gray-600';
+        },
+
+        // —— 倒计时 ——
+        countdownText(deadline) {
+          if (!deadline) return '';
+          const now = new Date();
+          const end = new Date(deadline);
+          const diff = Math.ceil((end - now) / (1000 * 60 * 60 * 24));
+          if (diff <= 0) return '⏰ 已截止';
+          if (diff === 1) return '⏰ 今日截止';
+          return `⏰ 剩余${diff}天`;
+        },
+        countdownClass(deadline) {
+          if (!deadline) return 'text-gray-400';
+          const now = new Date();
+          const end = new Date(deadline);
+          const diff = Math.ceil((end - now) / (1000 * 60 * 60 * 24));
+          if (diff <= 0) return 'text-red-500 font-medium';
+          if (diff <= 3) return 'text-orange-500 font-medium';
+          return 'text-gray-500';
+        },
+
+        // —— 收藏 ——
+        toggleFav(bid, event) {
+          const id = bid.id || bid._id;
+          const title = bid.title || '';
+          if (this.favedIds[id]) {
+            delete this.favedIds[id];
+            localStorage.removeItem('fav_' + id);
+            localStorage.removeItem('fav_meta_' + id);
+            window.__toast && window.__toast('已取消收藏', 'info');
+          } else {
+            this.favedIds[id] = true;
+            localStorage.setItem('fav_' + id, 'true');
+            localStorage.setItem('fav_meta_' + id, JSON.stringify({
+              title,
+              method: bid.method || '',
+              source: bid.source || '',
+              industry: bid.industry || '',
+              region: bid.region || '',
+              budget: bid.budget || '',
+              date: bid.date || '',
+              deadline: bid.deadline || '',
+              savedAt: new Date().toISOString(),
+            }));
+          }
+          if (event) event.stopPropagation();
+        },
+        isFav(id) {
+          return !!this.favedIds[id];
+        },
+
+        isContentBlocked(content) {
+          return content && (content.includes('页面访问提示') || content.includes('暂停访问') || content.includes('PDF 文件'));
+        },
+
+        // —— 来源文本颜色 ——
+        sourceTextClass(source) {
+          const map = {
+            '国招平台': 'text-blue-600',
+            '政府采购网': 'text-emerald-600',
+            '省平台': 'text-purple-600',
+            '招标代理': 'text-orange-600',
+            '医院官网': 'text-rose-600',
+            '高校官网': 'text-cyan-600',
+            '招标投标公共服务平台': 'text-blue-600',
+          };
+          return map[source] || 'text-gray-500';
         }
       }
     }
@@ -300,54 +462,84 @@
     .bid-source-badge { font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 999px; }
   </style>
 
-  <!-- 订阅浮窗 + 自动弹窗 -->
-  <div x-data="subscribePrompt()">
-    <button @mouseenter="openModal()" @click="openModal()" x-show="!showModal"
-      class="fixed right-0 top-1/2 -translate-y-1/2 z-40
-             bg-emerald-600 text-white rounded-l-lg shadow-lg
-             hover:bg-emerald-700 hover:pr-0.5 transition-all
-             w-14 py-2.5 flex flex-col items-center gap-1.5
-             text-sm leading-tight cursor-pointer font-medium">
-      <span class="text-lg">📢</span>
-      <span>免费订阅</span>
-      <span>微信推送</span>
-    </button>
-    <div x-show="showModal" x-cloak
-      class="fixed inset-0 bg-black/30 z-50 flex items-center justify-center p-4"
-      @click.away="closeModal()">
-      <div class="bg-white rounded-2xl p-6 text-center max-w-xs w-full shadow-xl" x-show="showModal" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
-        <div class="flex justify-end -mt-2 -mr-2 mb-1">
-          <button @click="closeModal()" class="text-gray-300 hover:text-gray-500 transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-          </button>
-        </div>
-        <img src="/static/wxpusher-qr.svg" alt="微信扫码关注" class="w-44 mx-auto mb-3">
-        <p class="text-base font-semibold text-gray-800">📢 免费订阅每日标讯</p>
-        <p class="text-xs text-gray-400 mt-1 leading-relaxed">微信扫码关注<br>每天推送最新标讯，不错过任何机会</p>
-        <button @click="closeModal()" class="mt-4 text-xs text-gray-400 hover:text-gray-600 underline underline-offset-2">暂不订阅</button>
-      </div>
+  <!-- Toast -->
+  <div x-data="toastManager()">
+    <div x-show="show" x-cloak
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0 translate-y-4"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-200"
+      x-transition:leave-start="opacity-100 translate-y-0"
+      x-transition:leave-end="opacity-0 translate-y-4"
+      class="fixed bottom-20 left-1/2 -translate-x-1/2 z-[60] px-5 py-2.5 rounded-xl shadow-lg text-sm font-medium pointer-events-none"
+      :class="type === 'success' ? 'bg-emerald-600 text-white' : 'bg-gray-700 text-white'"
+      x-text="message">
     </div>
   </div>
 
   <script>
-    function subscribePrompt() {
+    // 全局收藏管理器 — 使用 fav_{id} = true/false 存储在 localStorage
+    window.favoriteManager = {
+      getFavs() {
+        const all = {};
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && key.startsWith('fav_')) {
+            all[key] = localStorage.getItem(key) === 'true';
+          }
+        }
+        return all;
+      },
+      isFaved(id) {
+        return localStorage.getItem('fav_' + id) === 'true';
+      },
+      toggle(id, title) {
+        const key = 'fav_' + id;
+        const current = localStorage.getItem(key);
+        if (current === 'true') {
+          localStorage.setItem(key, 'false');
+          window.__toast && window.__toast('已取消收藏', 'info');
+        } else {
+          localStorage.setItem(key, 'true');
+          window.__toast && window.__toast('已收藏', 'success');
+        }
+        // Force Alpine re-evaluation by dispatching a custom event
+        window.dispatchEvent(new CustomEvent('fav-changed'));
+      },
+      getCount() {
+        let count = 0;
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && key.startsWith('fav_') && localStorage.getItem(key) === 'true') {
+            count++;
+          }
+        }
+        return count;
+      }
+    };
+
+    function toastManager() {
       return {
-        showModal: false,
+        show: false,
+        message: '',
+        type: 'success',
+        timeout: null,
         init() {
-          setTimeout(() => {
-            this.showModal = true
-          }, 3000)
-        },
-        openModal() { this.showModal = true },
-        closeModal() { this.showModal = false }
+          window.__toast = (msg, type) => {
+            this.message = msg;
+            this.type = type || 'success';
+            this.show = true;
+            clearTimeout(this.timeout);
+            this.timeout = setTimeout(() => { this.show = false; }, 2000);
+          };
+        }
       }
     }
   </script>
 
-
-  <!-- Bottom Navigation -->
+  <!-- Bottom Tab Navigation -->
   <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
-    <div class="max-w-7xl mx-auto px-4">
+    <div class="max-w-4xl mx-auto px-4">
       <div class="flex items-center justify-around h-16" style="padding-bottom: max(0, env(safe-area-inset-bottom));">
         <a href="/" class="flex flex-col items-center gap-0.5 group">
           <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -361,9 +553,9 @@
           </svg>
           <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">标讯大全</span>
         </a>
-                <a href="/favorites.html" class="flex flex-col items-center gap-0.5 group">
+        <a href="/favorites.html" class="flex flex-col items-center gap-0.5 group">
           <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
           <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">我的收藏</span>
         </a>
@@ -377,5 +569,6 @@
     </div>
   </nav>
 
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --></div>
 </body>
 </html>
