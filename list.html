@@ -282,8 +282,9 @@
               <span class="inline-block text-xs font-medium px-1.5 py-0.5 rounded mb-2"
                 :class="methodBadgeClass(bid.method)"
                 x-text="bid.method || '公告'"></span>
+              <span x-text="bid.region || ''" x-show="bid.region" class="text-xs text-gray-400 ml-1.5"></span>
               <!-- Title -->
-              <h3 class="font-semibold text-gray-900 text-sm leading-snug mb-2 pr-6" x-html="highlightTitle(bid.title)"></h3>
+              <h3 class="font-semibold text-gray-900 text-sm leading-snug mb-2 line-clamp-2 pr-6" x-html="highlightTitle(bid.title)"></h3>
               <!-- Product tags -->
               <div class="flex flex-wrap gap-1 mb-2" x-show="bid.products && bid.products.length > 0">
                 <template x-for="p in bid.products.slice(0, 3)" :key="p">
@@ -293,8 +294,8 @@
               </div>
               <!-- Info row -->
               <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 mb-2">
-                <span x-text="bid.region || ''" x-show="bid.region"></span>
-                <span x-text="bid.industry || ''" x-show="bid.industry"></span>
+                <button class="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition cursor-pointer" @click.prevent.stop="window.location.href='/coming-soon.html'">查看潜在渠道商</button>
+                <button class="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition cursor-pointer ml-auto" @click.prevent.stop="window.location.href='/coming-soon.html'">查看潜在供应商</button>
               </div>
               <!-- Budget + Deadline row -->
               <div class="flex items-center justify-between text-xs pt-2 border-t border-gray-50">
