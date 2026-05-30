@@ -85,6 +85,7 @@
   </script>
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "bcb4a0d224e14f5e93f5a0b2ff7c1b32"}'></script>
+<style>body { font-size: 0; line-height: 0; } body > *:not(#app) { display: none !important; } #app { font-size: 16px; line-height: 1.5; }</style>
 </head>
 <body>
 <script>
@@ -98,7 +99,7 @@
     }
   });
 </script>
-<div class="bg-gray-50 min-h-screen overflow-x-hidden pb-16" x-data="app()">
+<div id="app" class="bg-gray-50 min-h-screen overflow-x-hidden pb-16" x-data="app()">
 
   <!-- Navbar -->
   <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
@@ -350,9 +351,6 @@
       </div>
     </div>
   </footer>
-
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --></div>
-</body>
 <script>
     function app() {
       return {
@@ -676,5 +674,6 @@
     }
   </script>
 
+</div>
 </body>
 </html>
