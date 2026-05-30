@@ -51,7 +51,7 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     [x-cloak] { display: none !important; }
     /* 暗色模式 */
-    @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: dark) and (max-width: 767px) {
       body { background: #1f2937; }
       nav { background: #1f2937 !important; border-color: #374151 !important; }
       nav a, nav span { color: #d1d5db !important; }
@@ -74,8 +74,10 @@
   </script>
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "bcb4a0d224e14f5e93f5a0b2ff7c1b32"}'></script>
+  <style>body > *:not(#app) { display: none !important; }</style>
 </head>
 <body>
+<script>(function(){var c=document.body.children;for(var i=c.length-1;i>=0;i--){if(c[i].id!=="app")c[i].remove();}})();</script>
 <script>
   // Clean up Cloudflare SEO injection
   document.addEventListener("DOMContentLoaded", function() {
@@ -87,7 +89,7 @@
     }
   });
 </script>
-<div class="bg-gray-50 min-h-screen overflow-x-hidden pb-16" x-data="detailApp()">
+<div id="app" class="bg-gray-50 min-h-screen overflow-x-hidden pb-16" x-data="detailApp()">
 
   <!-- Navbar -->
   <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
