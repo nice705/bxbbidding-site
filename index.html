@@ -292,8 +292,8 @@
           </div>
           <!-- Info row -->
           <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 mb-2">
-            <a href="/coming-soon.html" class="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition cursor-pointer" @click.stop>查看潜在渠道商</a>
-            <a href="/coming-soon.html" class="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition cursor-pointer ml-auto" @click.stop>查看潜在供应商</a>
+            <button class="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition cursor-pointer" @click.prevent.stop="window.location.href='/coming-soon.html'">查看潜在渠道商</button>
+            <button class="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition cursor-pointer ml-auto" @click.prevent.stop="window.location.href='/coming-soon.html'">查看潜在供应商</button>
           </div>
           <!-- Budget + Deadline -->
           <div class="flex items-center justify-between text-xs pt-2 border-t border-gray-50">
