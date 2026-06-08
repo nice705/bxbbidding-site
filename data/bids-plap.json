@@ -1,6 +1,6 @@
 {
   "todayCount": 300,
-  "updatedAt": "2026-06-07T20:00:22+08:00",
+  "updatedAt": "2026-06-08T08:00:17+08:00",
   "bids": [
     {
       "id": "ac3228b6f46e",
@@ -2433,21 +2433,6 @@
       "content": ""
     },
     {
-      "id": "357522bb46e8",
-      "title": "鄂州市某部维修窗户及加装隐形防盗网项目废标公示（2026-JWHUEZ-G1007）",
-      "source": "军队采购-结果公告",
-      "industry": "",
-      "region": "湖北省",
-      "method": "公开招标",
-      "budget": "",
-      "date": "2026-06-05",
-      "deadline": "",
-      "buyer": "湖北省",
-      "code": "2026-JWHUEZ-G1007",
-      "sourceUrl": "https://www.plap.mil.cn/freecms-glht/freecms-glht/site/juncai/ggxx/info/2026/8a1d04c59e9211fe019e96c8f3b125fb.html",
-      "content": ""
-    },
-    {
       "id": "bae75d1e2a93",
       "title": "某部变配电室改造升级工程采购结果公示(2026-JLZLAC-G1009)(第1包)",
       "source": "军队采购-中标公告",
@@ -2460,6 +2445,21 @@
       "buyer": "河北省",
       "code": "2026-JLZLAC-G1009",
       "sourceUrl": "https://www.plap.mil.cn/freecms-glht/freecms-glht/site/juncai/ggxx/info/2026/8a1d04c69e921212019e96db46202adb.html",
+      "content": ""
+    },
+    {
+      "id": "357522bb46e8",
+      "title": "鄂州市某部维修窗户及加装隐形防盗网项目废标公示（2026-JWHUEZ-G1007）",
+      "source": "军队采购-结果公告",
+      "industry": "",
+      "region": "湖北省",
+      "method": "公开招标",
+      "budget": "",
+      "date": "2026-06-05",
+      "deadline": "",
+      "buyer": "湖北省",
+      "code": "2026-JWHUEZ-G1007",
+      "sourceUrl": "https://www.plap.mil.cn/freecms-glht/freecms-glht/site/juncai/ggxx/info/2026/8a1d04c59e9211fe019e96c8f3b125fb.html",
       "content": ""
     },
     {
