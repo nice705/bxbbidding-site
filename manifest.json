@@ -1,0 +1,10 @@
+{
+  "name": "标讯宝",
+  "short_name": "标讯宝",
+  "description": "免费全网招标采购信息查询平台",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9fafb",
+  "theme_color": "#059669",
+  "icons": []
+}

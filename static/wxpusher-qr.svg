@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#f0fdf4" rx="20"/>
+  <text x="200" y="100" text-anchor="middle" font-size="18" fill="#059669" font-family="sans-serif">微信扫码关注</text>
+  <!-- 模拟二维码格子 -->
+  <g fill="#059669">
+    <rect x="80" y="120" width="40" height="40" rx="4"/>
+    <rect x="130" y="120" width="40" height="40" rx="4"/>
+    <rect x="180" y="120" width="40" height="40" rx="4"/>
+    <rect x="230" y="120" width="40" height="40" rx="4"/>
+    <rect x="80" y="170" width="40" height="40" rx="4"/>
+    <rect x="180" y="170" width="40" height="40" rx="4"/>
+    <rect x="280" y="170" width="40" height="40" rx="4"/>
+    <rect x="130" y="220" width="40" height="40" rx="4"/>
+    <rect x="230" y="220" width="40" height="40" rx="4"/>
+    <rect x="280" y="220" width="40" height="40" rx="4"/>
+    <rect x="80" y="270" width="40" height="40" rx="4"/>
+    <rect x="130" y="270" width="40" height="40" rx="4"/>
+    <rect x="280" y="270" width="40" height="40" rx="4"/>
+  </g>
+  <g fill="#d1d5db">
+    <rect x="280" y="120" width="40" height="40" rx="4"/>
+    <rect x="230" y="170" width="40" height="40" rx="4"/>
+    <rect x="80" y="220" width="40" height="40" rx="4"/>
+    <rect x="180" y="270" width="40" height="40" rx="4"/>
+    <rect x="230" y="270" width="40" height="40" rx="4"/>
+  </g>
+  <text x="200" y="350" text-anchor="middle" font-size="12" fill="#9ca3af" font-family="sans-serif">→ 请替换为 WxPusher 真实二维码</text>
+</svg>

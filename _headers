@@ -1,0 +1,26 @@
+# Cloudflare Pages 安全响应头
+# 部署到 Pages 时自动生效
+
+# 所有页面（开放收录）
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# API 端点（禁止收录）
+/api/*
+  Cache-Control: public, max-age=120, s-maxage=300
+  X-Robots-Tag: noindex, nofollow
+
+# 数据目录（禁止收录）
+/data/*
+  X-Robots-Tag: noindex
+
+# JSON 文件（禁止收录）
+*.json
+  X-Robots-Tag: noindex
+  Access-Control-Allow-Origin: *
+
+# 静态资源（二维码等）
+/static/*
+  Cache-Control: public, max-age=86400
