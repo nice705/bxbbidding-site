@@ -1,0 +1,19 @@
+name: 部署到 Cloudflare Pages
+
+on:
+  push:
+    branches: [main, preview-*]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: 部署到 Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          command: pages deploy . --project-name bxbbidding-site-final-v3 --branch ${{ github.ref_name }}
