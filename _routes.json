@@ -1,5 +1,9 @@
 {
   "version": 1,
-  "include": ["/api/*", "/data/bids.json"],
+  "include": [
+    "/api/track",
+    "/api/proxy-attachment",
+    "/data/bids.json"
+  ],
   "exclude": []
 }
