@@ -10,16 +10,17 @@
   <meta property="og:title" content="我的收藏 — 标讯宝">
   <meta property="og:description" content="查看收藏的招标采购标讯，按状态筛选，快速找到关注的项目。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://qgbxb.com/favorites.html">
+  <meta property="og:url" content="https://qgbxb.com/favorites">
   <meta property="og:locale" content="zh_CN">
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://qgbxb.com/favorites.html">
+  <link rel="canonical" href="https://qgbxb.com/favorites">
+  <link rel="icon" href="/favicon.ico" sizes="any">
 
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5/theme/light.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://lib.baomitu.com/alpinejs/3.14.9/cdn.min.js" defer></script>
+  <script src="https://lib.baomitu.com/alpinejs/3.14.3/cdn.min.js" defer></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
     * { font-family: 'Noto Sans SC', -apple-system, sans-serif; }
@@ -35,7 +36,18 @@
   </script>
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "bcb4a0d224e14f5e93f5a0b2ff7c1b32"}'></script>
-</head>
+<script>
+(function(){
+  var _ts=Date.now();
+  var _tp=function(p,d){
+    try{new Image().src='https://qgbxb.com/api/track?p='+encodeURIComponent(p||'/')+'&d='+(d||0)+'&r='+encodeURIComponent(document.referrer||'')+'&_='+Date.now()}catch(e){}
+  };
+  _tp(window.location.pathname,0);
+  var _tb=function(){_tp(window.location.pathname,Math.round((Date.now()-_ts)/1000));window.removeEventListener('beforeunload',_tb);window.removeEventListener('pagehide',_tb)};
+  window.addEventListener('beforeunload',_tb);
+  window.addEventListener('pagehide',_tb);
+})();
+</script></head>
 <body>
 <script>
   // Clean up Cloudflare SEO injection
@@ -63,8 +75,8 @@
           </a>
           <div class="hidden md:flex items-center gap-6">
             <a href="/" class="text-gray-500 hover:text-gray-900 text-sm transition-colors">首页</a>
-            <a href="/list.html" class="text-gray-500 hover:text-gray-900 text-sm transition-colors">标讯大全</a>
-            <a href="/favorites.html" class="text-emerald-600 font-medium text-sm">我的收藏</a>
+            <a href="/list" class="text-gray-500 hover:text-gray-900 text-sm transition-colors">标讯大全</a>
+            <a href="/favorites" class="text-emerald-600 font-medium text-sm">我的收藏</a>
           </div>
         </div>
       </div>
@@ -115,7 +127,7 @@
         <!-- Bid Cards -->
         <div class="space-y-3" x-show="!loading && filteredFavs.length > 0">
           <template x-for="bid in filteredFavs" :key="bid.id">
-            <a :href="'/detail.html?id=' + bid.id" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in relative">
+            <a :href="'/detail?id=' + bid.id" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in relative">
               <!-- Status indicator dot -->
               <span x-show="getFavStatus(bid.id) === 'unread'"
                 class="absolute top-3 left-3 w-2 h-2 rounded-full bg-emerald-500"
@@ -151,11 +163,10 @@
               <div class="flex items-center justify-between text-xs pt-2 border-t border-gray-50">
                 <span class="text-gray-500">💰 <span x-text="bid.budget || '暂无'"></span></span>
                 <span>
-                  <span x-show="bid.deadline" class="inline-flex items-center gap-1"
-                    :class="countdownClass(bid.deadline)">
-                    <span x-text="countdownText(bid.deadline)"></span>
+                  <span class="inline-flex items-center gap-1"
+                    :class="deadlineClass(bid.date)">
+                    <span x-text="shortDate(bid.date) + ' ' + deadlineText(bid.date)"></span>
                   </span>
-                  <span x-show="!bid.deadline" class="text-gray-400" x-text="bid.date || ''"></span>
                 </span>
               </div>
             </a>
@@ -167,7 +178,7 @@
           <div class="text-5xl mb-4">⭐</div>
           <p class="text-gray-500 text-lg mb-2">还没有收藏任何标讯</p>
           <p class="text-gray-400 text-sm mb-6">去标讯大全浏览并收藏感兴趣的标讯</p>
-          <a href="/list.html" class="inline-block px-5 py-2 bg-emerald-600 text-white text-sm rounded-lg hover:bg-emerald-700 transition-colors">浏览标讯</a>
+          <a href="/list" class="inline-block px-5 py-2 bg-emerald-600 text-white text-sm rounded-lg hover:bg-emerald-700 transition-colors">浏览标讯</a>
         </div>
 
       </div>
@@ -286,24 +297,29 @@
           return map[method] || 'bg-gray-50 text-gray-600';
         },
 
-        // —— 倒计时 ——
-        countdownText(deadline) {
-          if (!deadline) return '';
-          const now = new Date();
-          const end = new Date(deadline);
-          const diff = Math.ceil((end - now) / (1000 * 60 * 60 * 24));
+        // —— 截止倒计时（基于发布时间+30天估算） ——
+        deadlineText(dateStr) {
+          if (!dateStr) return '';
+          const deadline = new Date(dateStr);
+          deadline.setDate(deadline.getDate() + 30);
+          const diff = Math.ceil((deadline - new Date()) / 86400000);
           if (diff <= 0) return '⏰ 已截止';
           if (diff === 1) return '⏰ 今日截止';
           return `⏰ 剩余${diff}天`;
         },
-        countdownClass(deadline) {
-          if (!deadline) return 'text-gray-400';
-          const now = new Date();
-          const end = new Date(deadline);
-          const diff = Math.ceil((end - now) / (1000 * 60 * 60 * 24));
+        deadlineClass(dateStr) {
+          if (!dateStr) return 'text-gray-400';
+          const deadline = new Date(dateStr);
+          deadline.setDate(deadline.getDate() + 30);
+          const diff = Math.ceil((deadline - new Date()) / 86400000);
           if (diff <= 0) return 'text-red-500 font-medium';
           if (diff <= 3) return 'text-orange-500 font-medium';
           return 'text-gray-500';
+        },
+        // —— 短日期格式 ——
+        shortDate(d) {
+          if (!d) return '';
+          return d.slice(0, 10);
         },
 
         // —— 来源文本颜色 ——
@@ -333,20 +349,20 @@
           </svg>
           <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">首页</span>
         </a>
-        <a href="/list.html" class="flex flex-col items-center gap-0.5 group">
+        <a href="/customers" class="flex flex-col items-center gap-0.5 group">
           <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
           </svg>
-          <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">标讯大全</span>
+          <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">客户资源</span>
         </a>
-        <a href="/favorites.html" class="flex flex-col items-center gap-0.5 group relative">
+        <a href="/favorites" class="flex flex-col items-center gap-0.5 group relative">
           <span class="absolute -top-1 w-1 h-1 rounded-full bg-emerald-600"></span>
           <svg class="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
           </svg>
           <span class="text-xs font-medium text-emerald-600">我的收藏</span>
         </a>
-        <a href="/subscribe.html" class="flex flex-col items-center gap-0.5 group">
+        <a href="/subscribe" class="flex flex-col items-center gap-0.5 group">
           <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
           </svg>
@@ -356,6 +372,5 @@
     </div>
   </nav>
 
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --></div>
 </body>
 </html>

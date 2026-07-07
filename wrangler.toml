@@ -1,0 +1,10 @@
+name = "bxbbidding-site-final-v3"
+pages_build_output_dir = "."
+
+[env.production]
+compatibility_date = "2025-05-20"
+compatibility_flags = []
+
+[env.preview]
+compatibility_date = "2026-05-23"
+compatibility_flags = []

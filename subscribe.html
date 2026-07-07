@@ -9,14 +9,15 @@
   <meta property="og:title" content="订阅管理 — 标讯宝">
   <meta property="og:description" content="管理您的关键词分组订阅，接收微信推送通知，第一时间获取最新标讯。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://bidding-site.pages.dev/subscribe.html">
+  <meta property="og:url" content="https://qgbxb.com/subscribe">
   <meta property="og:locale" content="zh_CN">
-  <link rel="canonical" href="https://bidding-site.pages.dev/subscribe.html">
+  <link rel="canonical" href="https://qgbxb.com/subscribe">
+  <link rel="icon" href="/favicon.ico" sizes="any">
 
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5/theme/light.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://lib.baomitu.com/alpinejs/3.14.9/cdn.min.js" defer></script>
+  <script src="https://lib.baomitu.com/alpinejs/3.14.3/cdn.min.js" defer></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
     * { font-family: 'Noto Sans SC', -apple-system, sans-serif; }
@@ -71,10 +72,21 @@
   </script>
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "bcb4a0d224e14f5e93f5a0b2ff7c1b32"}'></script>
-<meta name="baidu-site-verification" content="REPLACE_WITH_YOUR_BAIDU_CODE" />
-<meta name="robots" content="index,follow" />
+  <meta name="robots" content="index,follow" />
 <script type="application/ld+json">{ "@context": "https://schema.org", "@type": "Organization", "name": "标讯宝", "url": "https://qgbxb.com", "description": "免费全网招标采购信息查询平台", "alternateName": "标讯宝招标采购信息平台" }</script>
-</head>
+<meta name="baidu-site-verification" content="REPLACE_WITH_YOUR_BAIDU_CODE" />
+<script>
+(function(){
+  var _ts=Date.now();
+  var _tp=function(p,d){
+    try{new Image().src='https://qgbxb.com/api/track?p='+encodeURIComponent(p||'/')+'&d='+(d||0)+'&r='+encodeURIComponent(document.referrer||'')+'&_='+Date.now()}catch(e){}
+  };
+  _tp(window.location.pathname,0);
+  var _tb=function(){_tp(window.location.pathname,Math.round((Date.now()-_ts)/1000));window.removeEventListener('beforeunload',_tb);window.removeEventListener('pagehide',_tb)};
+  window.addEventListener('beforeunload',_tb);
+  window.addEventListener('pagehide',_tb);
+})();
+</script></head>
 <body>
 <script>
   // Clean up Cloudflare SEO injection
@@ -337,14 +349,18 @@
         <p class="text-gray-400 text-sm">订阅关键词后将展示匹配标讯</p>
       </div>
 
-      <div x-show="allKeywordsCount > 0 && matchedBids.length === 0" class="text-center py-6">
+      <div x-show="allKeywordsCount > 0 && matchedBids.length === 0 && !loadingMatched" class="text-center py-6">
         <div class="text-2xl mb-1">🔍</div>
         <p class="text-gray-400 text-sm">暂无新匹配</p>
       </div>
 
+      <div x-show="loadingMatched" class="text-center py-6">
+        <p class="text-gray-400 text-sm">⏳ 正在加载全量数据...</p>
+      </div>
+
       <div x-show="matchedBids.length > 0" class="space-y-1.5">
         <template x-for="(bid, idx) in matchedBids.slice(0, 3)" :key="idx">
-          <a :href="'/detail.html?id=' + bid.id" class="block bg-gray-50 rounded-lg p-2.5 hover:bg-emerald-50 transition-colors">
+          <a :href="'/detail?id=' + bid.id" class="block bg-gray-50 rounded-lg p-2.5 hover:bg-emerald-50 transition-colors">
             <div class="flex items-center justify-between mb-0.5">
               <span class="text-xs text-emerald-600 font-medium" x-text="bid.source"></span>
               <span class="text-xs text-gray-400" x-text="bid.date"></span>
@@ -396,19 +412,19 @@
           </svg>
           <span class="text-xs text-gray-400 group-hover:text-emerald-600">首页</span>
         </a>
-        <a href="/list.html" class="flex flex-col items-center gap-0.5 group">
+        <a href="/customers" class="flex flex-col items-center gap-0.5 group">
           <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
           </svg>
-          <span class="text-xs text-gray-400 group-hover:text-emerald-600">标讯大全</span>
+          <span class="text-xs text-gray-400 group-hover:text-emerald-600">客户资源</span>
         </a>
-        <a href="/favorites.html" class="flex flex-col items-center gap-0.5 group">
+        <a href="/favorites" class="flex flex-col items-center gap-0.5 group">
           <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
           <span class="text-xs text-gray-400 group-hover:text-emerald-600">我的收藏</span>
         </a>
-        <a href="/subscribe.html" class="flex flex-col items-center gap-0.5 relative">
+        <a href="/subscribe" class="flex flex-col items-center gap-0.5 relative">
           <span class="absolute -top-1 w-1 h-1 rounded-full bg-emerald-600"></span>
           <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
@@ -439,10 +455,12 @@
         pushFrequency: 'realtime',
         pushTime: '08:00',
         matchedBids: [],
+        loadingMatched: false,
         showToast: false,
         toastMessage: '',
         toastTimer: null,
         feedbackText: '',
+        _dbPromise: null,
 
         // —— Computed ——
         get currentGroupName() {
@@ -586,25 +604,97 @@
           this.loadMatchedBids();
         },
 
+        // —— IndexedDB Helpers ——
+        openDB() {
+          if (this._dbPromise) return this._dbPromise;
+          this._dbPromise = new Promise((res, rej) => {
+            const req = indexedDB.open('BiddingSite', 1);
+            req.onupgradeneeded = e => {
+              const db = e.target.result;
+              if (!db.objectStoreNames.contains('bids'))
+                db.createObjectStore('bids', { keyPath: 'id' });
+            };
+            req.onsuccess = () => res(req.result);
+            req.onerror = () => rej(req.error);
+          });
+          return this._dbPromise;
+        },
+        async getOnlineUpdatedAt() {
+          // 只读第一个chunk（~8KB）获取updatedAt，不下载全文件
+          try {
+            const resp = await fetch('/data/bids-homepage.json');
+            const reader = resp.body.getReader();
+            const { value } = await reader.read();
+            reader.cancel();
+            const text = new TextDecoder().decode(value);
+            const m = text.match(/"updatedAt"\s*:\s*"([^"]+)"/);
+            return m ? m[1] : null;
+          } catch(e) { return null; }
+        },
+        async downloadFullData() {
+          this.loadingMatched = true;
+          const resp = await fetch('/data/bids.json.gz');
+          const blob = await resp.blob();
+          // 浏览器解压 gzip
+          const ds = new DecompressionStream('gzip');
+          const stream = blob.stream().pipeThrough(ds);
+          const reader = stream.getReader();
+          const chunks = [];
+          while (true) { const {done,value} = await reader.read(); if (done) break; chunks.push(value); }
+          let txt = ''; const dec = new TextDecoder();
+          for (const c of chunks) txt += dec.decode(c, {stream:true});
+          txt += dec.decode();
+          const data = JSON.parse(txt);
+          const allBids = data.bids || [];
+          // 存入 IndexedDB
+          const db = await this.openDB();
+          const tx = db.transaction('bids', 'readwrite');
+          const store = tx.objectStore('bids');
+          store.clear();
+          for (const b of allBids) store.put(b);
+          await new Promise((r, j) => { tx.oncomplete = r; tx.onerror = j; });
+          localStorage.setItem('bids_updatedAt', data.updatedAt || '');
+          localStorage.setItem('bids_total', String(allBids.length));
+          this.loadingMatched = false;
+          return allBids;
+        },
+        async loadFromCache() {
+          const db = await this.openDB();
+          const tx = db.transaction('bids', 'readonly');
+          const store = tx.objectStore('bids');
+          return new Promise((r, j) => { const q = store.getAll(); q.onsuccess = () => r(q.result); q.onerror = () => j(q.error); });
+        },
+
         // —— Matched Bids ——
         async loadMatchedBids() {
           if (this.allKeywordsCount === 0) { this.matchedBids = []; return; }
           try {
-            const resp = await fetch('/api/bids?page=1&pageSize=100');
-            const data = await resp.json();
-            const allBids = data.items || [];
+            let allBids;
+            const cachedUpdatedAt = localStorage.getItem('bids_updatedAt');
+            if (cachedUpdatedAt) {
+              const onlineUpdatedAt = await this.getOnlineUpdatedAt();
+              if (onlineUpdatedAt === cachedUpdatedAt) {
+                allBids = await this.loadFromCache();
+              } else {
+                allBids = await this.downloadFullData();
+              }
+            } else {
+              allBids = await this.downloadFullData();
+            }
+            // 多字段关键词匹配
             const allKw = [];
             for (const g of this.groups) for (const kw of g.keywords) allKw.push(kw);
             const matched = [];
             for (const bid of allBids) {
               if (matched.length >= 6) break;
-              const title = (bid.title || '').toLowerCase();
+              const txt = [bid.title, bid.content, bid.region, bid.buyer, bid.method, bid.source]
+                .filter(Boolean).join(' ').toLowerCase();
               for (const kw of allKw) {
-                if (title.includes(kw.toLowerCase())) { matched.push(bid); break; }
+                if (txt.includes(kw.toLowerCase())) { matched.push(bid); break; }
               }
             }
             this.matchedBids = matched.slice(0, 3);
-          } catch(e) { this.matchedBids = []; }
+          } catch(e) { console.error('最近匹配失败', e); this.matchedBids = []; }
         },
 
         // —— Toast ——
@@ -631,6 +721,5 @@
     }
   </script>
 
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --></div>
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --></body>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --><!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --><!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --><!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --></body>
 </html>

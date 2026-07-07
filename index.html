@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
-<head>
+<head><link rel="manifest" href="/manifest.json">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>标讯宝 — 免费全网招标采购信息查询平台</title>
@@ -15,6 +15,7 @@
 
   <!-- Canonical -->
   <link rel="canonical" href="https://qgbxb.com/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -28,7 +29,7 @@
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://qgbxb.com/list.html?q={query}"
+        "urlTemplate": "https://qgbxb.com/list?q={query}"
       },
       "query-input": "required name=query"
     }
@@ -38,7 +39,7 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5/theme/light.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://lib.baomitu.com/alpinejs/3.14.9/cdn.min.js" defer></script>
+  <script src="https://lib.baomitu.com/alpinejs/3.14.3/cdn.min.js" defer></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
     * { font-family: 'Noto Sans SC', -apple-system, sans-serif; }
@@ -51,6 +52,12 @@
     .fade-in { animation: fadeIn 0.3s ease; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     [x-cloak] { display: none !important; }
+    /* 三点闪动动画 */
+    @keyframes dotBlink {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+    .dot-blink { animation: dotBlink 1.2s infinite ease-in-out; }
     /* 暗色模式 — 柔和化亮绿 */
     @media (prefers-color-scheme: dark) and (max-width: 767px) {
       .hero-gradient { background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%); }
@@ -83,9 +90,23 @@
     }
   </script>
   <!-- Cloudflare Web Analytics -->
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "bcb4a0d224e14f5e93f5a0b2ff7c1b32"}'></script>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "bcb4a0...1b32"}'></script>
 <style>body { font-size: 0; line-height: 0; } body > *:not(#app) { display: none !important; } #app { font-size: 16px; line-height: 1.5; }</style>
-</head>
+  <script src="/static/holiday-utils.js"></script>
+<meta name="robots" content="index,follow" />
+<script type="application/ld+json">{ "@context": "https://schema.org", "@type": "Organization", "name": "标讯宝", "url": "https://qgbxb.com", "description": "免费全网招标采购信息查询平台", "alternateName": "标讯宝招标采购信息平台" }</script>
+<script>
+(function(){
+  var _ts=Date.now();
+  var _tp=function(p,d){
+    try{new Image().src='https://qgbxb.com/api/track?p='+encodeURIComponent(p||'/')+'&d='+(d||0)+'&r='+encodeURIComponent(document.referrer||'')+'&_='+Date.now()}catch(e){}
+  };
+  _tp(window.location.pathname,0);
+  var _tb=function(){_tp(window.location.pathname,Math.round((Date.now()-_ts)/1000));window.removeEventListener('beforeunload',_tb);window.removeEventListener('pagehide',_tb)};
+  window.addEventListener('beforeunload',_tb);
+  window.addEventListener('pagehide',_tb);
+})();
+</script></head>
 <body>
 <script>
   // Clean up Cloudflare SEO injection
@@ -113,7 +134,7 @@
           </a>
           <div class="hidden md:flex items-center gap-5">
             <a href="/" class="text-emerald-600 font-medium text-sm">首页</a>
-            <a href="/list.html" class="text-gray-500 hover:text-gray-900 text-sm transition-colors">标讯大全</a>
+            <a href="/list" class="text-gray-500 hover:text-gray-900 text-sm transition-colors">标讯大全</a>
           </div>
         </div>
         <div class="flex items-center gap-3">
@@ -159,7 +180,7 @@
           </div>
           <!-- Hot Tags -->
           <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 mt-3" x-show="hotTags.length > 0">
-            <span class="text-emerald-100 text-xs font-medium">热门搜索：</span>
+            <span class="text-emerald-100 text-xs font-medium" x-text="hotTagLabel">热门搜索：</span>
             <template x-for="tag in hotTags" :key="tag">
               <span
                 class="tag-pill px-2 py-0.5 bg-white/20 text-white text-xs rounded-full hover:bg-white/30 transition-colors"
@@ -178,11 +199,8 @@
 
     <!-- Bids Section -->
     <div class="flex items-center justify-between mb-3">
-      <h2 class="text-base font-bold text-gray-900">
-        最新标讯
-        <span class="text-sm font-normal text-gray-400 ml-1" x-text="'(' + visibleCount + '/' + filteredAll.length + ')'"></span>
-      </h2>
-      <a href="/list.html" class="text-sm text-emerald-600 hover:text-emerald-700 font-medium flex items-center gap-1">
+      <h2 class="text-base font-bold text-gray-900">全部标讯</h2>
+      <a href="/list" class="text-sm text-emerald-600 hover:text-emerald-700 font-medium flex items-center gap-1">
         查看全部
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
       </a>
@@ -266,10 +284,10 @@
     <!-- Bids Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
       <template x-for="(bid, idx) in visibleBids" :key="bid.id">
-        <a :href="'/detail.html?id=' + bid.id" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in relative">
+        <a :href="'/detail?id=' + bid.id" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in relative">
           <!-- Favorite star -->
           <button @click.prevent="toggleFav(bid, $event)"
-            class="absolute top-2 right-2 flex items-center gap-0.5 px-1.5 py-1 rounded-full hover:bg-gray-100 transition-colors z-10 text-xs"
+            class="absolute top-4 right-2 flex items-center gap-0.5 px-1.5 py-1 rounded-full hover:bg-gray-100 transition-colors z-10 text-xs"
             :title="isFav(bid.id) ? '取消收藏' : '收藏'">
             <svg class="w-3.5 h-3.5" :class="isFav(bid.id) ? 'text-yellow-400' : 'text-gray-300 hover:text-yellow-400'" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -280,30 +298,36 @@
           <span class="inline-block text-xs font-medium px-1.5 py-0.5 rounded mb-2"
             :class="methodBadgeClass(bid.method)"
             x-text="bid.method || '公告'"></span>
-          <span x-text="bid.region || ''" x-show="bid.region" class="text-xs text-gray-400 ml-1.5"></span>
           <!-- Title -->
           <h3 class="font-semibold text-gray-900 text-sm leading-snug mb-2 line-clamp-2 pr-6" x-text="bid.title"></h3>
-          <!-- Product tags -->
-          <div class="flex flex-wrap gap-1 mb-2" x-show="bid.products && bid.products.length > 0">
-            <template x-for="p in bid.products.slice(0, 3)" :key="p">
+          <!-- Buyer + Products + Type: info row -->
+          <div class="flex flex-wrap gap-x-2 gap-y-1 text-xs text-gray-500 mb-2 items-center">
+            <span x-text="bid.buyer" class="font-medium text-gray-700 truncate max-w-[140px]" x-show="bid.buyer" :title="bid.buyer"></span>
+            <template x-for="p in (bid.products || []).slice(0, 3)" :key="p">
               <span class="text-xs px-1.5 py-0.5 rounded-full bg-blue-50 text-blue-600 border border-blue-100" x-text="p"></span>
             </template>
-            <span x-show="bid.products && bid.products.length > 3" class="text-xs text-gray-400">+<span x-text="bid.products.length - 3"></span></span>
+            <span x-text="(bid.products || []).length > 3 ? '+' + ((bid.products || []).length - 3) : ''" x-show="(bid.products || []).length > 3" class="text-xs text-gray-400"></span>
+            <span x-text="bid.region || ''" x-show="!bid.products || bid.products.length === 0" class="text-gray-400"></span>
+            <span class="text-xs px-1.5 py-0.5 rounded-full bg-gray-50 text-gray-500 border border-gray-200" x-text="bid.industry || '货物'"></span>
           </div>
-          <!-- Info row -->
-          <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 mb-2">
-            <button class="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition cursor-pointer" @click.prevent.stop="window.location.href='/coming-soon.html'">查看潜在渠道商</button>
-            <button class="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition cursor-pointer ml-auto" @click.prevent.stop="window.location.href='/coming-soon.html'">查看潜在供应商</button>
+          <!-- 附件标记 -->
+          <div class="mb-2" x-show="bid.hasAttachment">
+            <span class="inline-flex items-center gap-0.5 text-xs text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/>
+              </svg>
+              含附件
+            </span>
           </div>
           <!-- Budget + Deadline -->
           <div class="flex items-center justify-between text-xs pt-2 border-t border-gray-50">
             <span class="text-gray-500">💰 <span x-text="bid.budget || '暂无'"></span></span>
-            <span>
-              <span x-show="bid.deadline" class="inline-flex items-center gap-1"
-                :class="countdownClass(bid.deadline)">
-                <span x-text="countdownText(bid.deadline)"></span>
+            <span class="text-gray-400">
+              <span x-text="shortDate(bid.date)"></span>
+              <span class="ml-1.5 inline-flex items-center gap-1"
+                :class="deadlineClass(bid.date)">
+                <span x-text="deadlineText(bid.date)"></span>
               </span>
-              <span x-show="!bid.deadline" class="text-gray-400" x-text="bid.date || ''"></span>
             </span>
           </div>
         </a>
@@ -313,19 +337,55 @@
     <!-- Loading trigger -->
     <div id="scroll-trigger" class="h-4"></div>
 
+    <!-- 加载完整数据（首次进入底部时触发） -->
+    <div class="text-center py-6" x-show="!fullLoaded && allBids.length > 0 && visibleLimit >= allBids.length">
+      <div x-show="loadingFull">
+        <div class="flex items-center justify-center gap-1.5 mb-3">
+          <span class="dot-blink w-2 h-2 rounded-full bg-emerald-400 inline-block" style="animation-delay: 0s"></span>
+          <span class="dot-blink w-2 h-2 rounded-full bg-emerald-400 inline-block" style="animation-delay: 0.2s"></span>
+          <span class="dot-blink w-2 h-2 rounded-full bg-emerald-400 inline-block" style="animation-delay: 0.4s"></span>
+        </div>
+        <p class="text-gray-400 text-xs">加载中...</p>
+      </div>
+      <button @click="searchAll()"
+        class="btn btn-outline btn-sm border-emerald-200 text-emerald-600 hover:bg-emerald-50">
+        加载全部标讯
+      </button>
+    </div>
+
     <!-- Loading spinner -->
-    <div class="text-center py-8" x-show="loadingMore">
-      <div class="loading loading-spinner loading-md text-emerald-600"></div>
-      <p class="text-gray-400 text-xs mt-2">加载更多...</p>
+    <div class="text-center py-8" x-show="loadingMore && !loadingFull">
+      <div class="flex items-center justify-center gap-1.5 mb-3">
+        <span class="dot-blink w-2 h-2 rounded-full bg-emerald-400 inline-block" style="animation-delay: 0s"></span>
+        <span class="dot-blink w-2 h-2 rounded-full bg-emerald-400 inline-block" style="animation-delay: 0.2s"></span>
+        <span class="dot-blink w-2 h-2 rounded-full bg-emerald-400 inline-block" style="animation-delay: 0.4s"></span>
+      </div>
+      <p class="text-gray-400 text-xs">加载中...</p>
     </div>
 
     <!-- No more -->
-    <div class="text-center py-8" x-show="!loadingMore && visibleCount >= filteredAll.length && filteredAll.length > 0">
+    <div class="text-center py-8" x-show="fullLoaded && !loadingMore && visibleCount >= filteredAll.length && filteredAll.length > 0">
       <p class="text-gray-400 text-xs">— 已显示全部 <span class="font-medium" x-text="filteredAll.length"></span> 条标讯 —</p>
     </div>
 
-    <!-- Empty state -->
-    <div class="text-center py-16" x-show="filteredAll.length === 0">
+    <!-- 加载中（数据未就绪） -->
+    <div class="text-center py-16" x-show="false">
+      <div class="flex items-center justify-center gap-1.5 mb-3">
+        <span class="dot-blink w-2 h-2 rounded-full bg-emerald-400 inline-block" style="animation-delay: 0s"></span>
+        <span class="dot-blink w-2 h-2 rounded-full bg-emerald-400 inline-block" style="animation-delay: 0.2s"></span>
+        <span class="dot-blink w-2 h-2 rounded-full bg-emerald-400 inline-block" style="animation-delay: 0.4s"></span>
+      </div>
+      <p class="text-gray-400 text-sm">加载中...</p>
+    </div>
+
+    <!-- 超时（8秒仍未就绪） -->
+    <div class="text-center py-16" x-show="!dataReady && loadingTimeout" x-cloak>
+      <div class="text-4xl mb-4">📭</div>
+      <p class="text-gray-500">暂无数据</p>
+    </div>
+
+    <!-- 无匹配（数据已就绪但筛选后为空） -->
+    <div class="text-center py-16" x-show="dataReady && filteredAll.length === 0" x-cloak>
       <div class="text-4xl mb-4">📭</div>
       <p class="text-gray-500">暂无匹配的标讯</p>
     </div>
@@ -361,19 +421,19 @@
           </svg>
           <span class="text-xs font-medium text-emerald-600">首页</span>
         </a>
-        <a href="/list.html" class="flex flex-col items-center gap-0.5 group">
+        <a href="/customers" class="flex flex-col items-center gap-0.5 group">
           <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
           </svg>
-          <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">标讯大全</span>
+          <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">客户资源</span>
         </a>
-        <a href="/favorites.html" class="flex flex-col items-center gap-0.5 group">
+        <a href="/favorites" class="flex flex-col items-center gap-0.5 group">
           <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
           <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">我的收藏</span>
         </a>
-        <a href="/subscribe.html" class="flex flex-col items-center gap-0.5 group">
+        <a href="/subscribe" class="flex flex-col items-center gap-0.5 group">
           <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
           </svg>
@@ -389,9 +449,10 @@
       return {
         searchKeyword: '',
         selectedIndustry: '',
-        hotTags: ['CT', '核磁共振', 'DSA', '彩超', '内窥镜', '信息化建设', '物业服务', '教学设备'],
+        hotTags: ['CT', '核磁共振', 'DSA', '彩超', '内窥镜', '信息化建设', '物业服务', '教学设备', '医疗设备', '工程建设'],
+        hotTagLabel: '热门搜索：',
         industries: ['医疗设备', 'IT信息化', '工程建设', '教育科研', '后勤服务', '纺织服装', '交通运输', '环保能源'],
-        stats: { todayCount: 0 },
+        stats: { todayCount: 0, total: 0 },
         // 筛选状态
         filters: {
           region: '',
@@ -407,11 +468,22 @@
         pageSize: 15,
         visibleLimit: 15,
         loadingMore: false,
+        fullLoaded: false,
+        loadingFull: false,
         observer: null,
         favedIds: {},
+        dataReady: true,
+        loadingTimeout: false,
 
         async init() {
           this.loadFavs();
+          // 判断工作日/非工作日
+          try {
+            const isNonWorkday = await HolidayUtils.init();
+            this.hotTagLabel = isNonWorkday ? '近期热点：' : '本周热点：';
+          } catch(e) { /* 降级：保持默认 */ }
+          // 20秒超时兜底
+          setTimeout(() => { if (!this.dataReady) this.loadingTimeout = true; }, 20000);
           await this.loadData();
           // 从实际数据动态提取采购方式（按出现次数降序）
           const methodCount = {};
@@ -431,13 +503,75 @@
 
         async loadData() {
           try {
-            const resp = await fetch('/data/bids-homepage.json');
+            const resp = await fetch('/data/bids-homepage.json', { cache: 'no-cache' });
+            if (!resp.ok) throw new Error('HTTP ' + resp.status);
             const data = await resp.json();
             this.allBids = data.bids || [];
             this.stats.todayCount = data.todayCount || 0;
+            this.stats.total = data.total || this.allBids.length;
+            this.hotTags = data.hotTags || this.hotTags;
+            this.hotTags = this.mergeHotTags(this.hotTags);
           } catch(e) {
+            console.error('首页数据加载失败:', e);
             this.allBids = [];
             this.stats.todayCount = 0;
+          } finally {
+            this.dataReady = true;
+            if (this.$forceUpdate) this.$forceUpdate();
+          }
+        },
+
+        // 搜索历史管理
+        getSearchHistory() {
+          try {
+            const raw = localStorage.getItem('search_history');
+            return raw ? JSON.parse(raw) : [];
+          } catch(e) { return []; }
+        },
+        saveSearchHistory(kw) {
+          try {
+            const history = this.getSearchHistory();
+            // 移除重复（保留最新位置）
+            const filtered = history.filter(h => h !== kw);
+            filtered.unshift(kw); // 最新搜索放最前
+            // 保留最近10条
+            localStorage.setItem('search_history', JSON.stringify(filtered.slice(0, 10)));
+          } catch(e) { /* ignore */ }
+        },
+
+        // 订阅关键词 + 搜索历史 + 行业关键词合并（最多10个）
+        mergeHotTags(industryTags) {
+          try {
+            const maxTags = 10;
+            const seen = new Set();
+            const result = [];
+            // 1. 搜索历史（最近5条，去顶）
+            const history = this.getSearchHistory();
+            for (const h of history) {
+              if (!seen.has(h)) { seen.add(h); result.push(h); }
+              if (result.length >= maxTags) break;
+            }
+            // 2. 订阅关键词
+            const raw = localStorage.getItem('subscription_groups');
+            if (raw) {
+              const data = JSON.parse(raw);
+              const groups = Array.isArray(data) ? data : (data.groups || []);
+              for (const g of groups) {
+                for (const kw of (g.keywords || [])) {
+                  if (!seen.has(kw)) { seen.add(kw); result.push(kw); }
+                  if (result.length >= maxTags) break;
+                }
+                if (result.length >= maxTags) break;
+              }
+            }
+            // 3. 热门推荐词填充剩余
+            for (const kw of industryTags) {
+              if (!seen.has(kw)) { seen.add(kw); result.push(kw); }
+              if (result.length >= maxTags) break;
+            }
+            return result;
+          } catch(e) {
+            return industryTags;
           }
         },
 
@@ -510,7 +644,7 @@
           const params = new URLSearchParams();
           if (this.filters.keyword.trim()) params.set('q', this.filters.keyword.trim());
           if (this.filters.region) params.set('region', this.filters.region);
-          return '/list.html?' + params.toString();
+          return '/list?' + params.toString();
         },
 
         // 当前可见的数据（分页截取）
@@ -549,17 +683,48 @@
 
         loadMore() {
           this.loadingMore = true;
-          // 模拟加载延迟（让用户体验到加载感）
           setTimeout(() => {
             this.visibleLimit += this.pageSize;
             this.loadingMore = false;
           }, 300);
         },
 
+        async loadFullData() {
+          this.loadingFull = true;
+          try {
+            const resp = await fetch('/data/bids.json');
+            const data = await resp.json();
+            this.allBids = data.bids || [];
+            this.stats.todayCount = data.todayCount || this.stats.todayCount;
+            this.fullLoaded = true;
+            this.visibleLimit = this.pageSize;
+            // 重新提取采购方式
+            const methodCount = {};
+            this.allBids.forEach(b => { if (b.method) methodCount[b.method] = (methodCount[b.method] || 0) + 1; });
+            this.methods = Object.keys(methodCount).sort((a, b) => methodCount[b] - methodCount[a]);
+          } catch(e) {
+            console.error('加载完整数据失败', e);
+          } finally {
+            this.loadingFull = false;
+            this.loadingMore = false;
+            this.$nextTick(() => {
+              if (this.observer) this.observer.disconnect();
+              this.setupInfiniteScroll();
+            });
+          }
+        },
+
 
         doSearch() {
           if (!this.searchKeyword.trim()) return;
-          window.location.href = '/list.html?q=' + encodeURIComponent(this.searchKeyword.trim());
+          this.saveSearchHistory(this.searchKeyword.trim());
+          window.location.href = '/list?q=' + encodeURIComponent(this.searchKeyword.trim());
+        },
+
+        // —— 短日期格式 ——
+        shortDate(d) {
+          if (!d) return '';
+          return d.slice(0, 10);
         },
 
         // —— 类型Badge颜色 ——
@@ -568,20 +733,31 @@
           return map[m] || 'bg-gray-50 text-gray-600';
         },
 
-        // —— 倒计时 ——
-        countdownText(d) {
-          if (!d) return '';
-          const diff = Math.ceil((new Date(d) - new Date()) / 86400000);
+        // —— 截止倒计时（基于发布时间+30天估算） ——
+        deadlineText(dateStr) {
+          if (!dateStr) return '';
+          const deadline = new Date(dateStr);
+          deadline.setDate(deadline.getDate() + 30);
+          const diff = Math.ceil((deadline - new Date()) / 86400000);
           if (diff <= 0) return '⏰ 已截止';
           if (diff === 1) return '⏰ 今日截止';
           return `⏰ 剩余${diff}天`;
         },
-        countdownClass(d) {
-          if (!d) return 'text-gray-400';
-          const diff = Math.ceil((new Date(d) - new Date()) / 86400000);
+        deadlineClass(dateStr) {
+          if (!dateStr) return 'text-gray-400';
+          const deadline = new Date(dateStr);
+          deadline.setDate(deadline.getDate() + 30);
+          const diff = Math.ceil((deadline - new Date()) / 86400000);
           if (diff <= 0) return 'text-red-500 font-medium';
           if (diff <= 3) return 'text-orange-500 font-medium';
           return 'text-gray-500';
+        },
+        shortDate(d) {
+          if (!d) return '';
+          return d.slice(0, 10);
+        },
+        searchAll() {
+          window.location.href = '/list';
         },
 
         // —— 收藏 ——
@@ -648,9 +824,10 @@
     function subscribePrompt() {
       return {
         showModal: false,
-        init() {
+        async init() {
           if (window.innerWidth >= 768) {
-            setTimeout(() => { this.showModal = true }, 3000)
+            const delay = (await HolidayUtils.init()) ? 10000 : 3000;
+            setTimeout(() => { this.showModal = true }, delay)
           }
         },
         openModal() { this.showModal = true },
@@ -660,5 +837,36 @@
   </script>
 
 </div>
-</body>
+
+<!-- 工作日/非工作日 底部导航切换 -->
+<script>
+(async () => {
+  const isNonWorkday = await HolidayUtils.init();
+  if (isNonWorkday) {
+    const homeLink = document.querySelector('nav a[href="/"]');
+    const customerLink = document.querySelector('nav a[href="/customers"]');
+    if (homeLink) {
+      homeLink.querySelector('.absolute').style.display = 'none';
+      const svg = homeLink.querySelector('svg');
+      if (svg) svg.classList.replace('text-emerald-600', 'text-gray-400');
+      const span = homeLink.querySelector('span');
+      if (span) span.classList.replace('text-emerald-600', 'text-gray-400');
+    }
+    if (customerLink) {
+      const dot = customerLink.querySelector('.absolute');
+      if (!dot) {
+        const d = document.createElement('span');
+        d.className = 'absolute -top-1 w-1 h-1 rounded-full bg-emerald-600';
+        customerLink.appendChild(d);
+      }
+      const svg = customerLink.querySelector('svg');
+      if (svg) svg.classList.replace('text-gray-400', 'text-emerald-600');
+      const span = customerLink.querySelector('span');
+      if (span) span.classList.replace('text-gray-400', 'text-emerald-600');
+    }
+  }
+})();</script>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --></body>
 </html>
+ 
+<!-- redeploy 1782557702 -->

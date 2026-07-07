@@ -24,3 +24,47 @@
 # 静态资源（二维码等）
 /static/*
   Cache-Control: public, max-age=86400
+
+# GZ 数据文件（无扩展名，避免 CF 自动压缩截断）
+/data/bids
+  Content-Type: application/gzip
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+  Access-Control-Allow-Origin: *
+
+/data/bids.json.gz
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+  Content-Type: application/gzip
+
+# 附件文件（Cloudflare 自动检测 Content-Type）
+/data/attachments/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=86400
+# redeploy Sat Jun 27 13:42:52 CST 2026
+
+# 详情数据文件（防CF缓存截断）
+/data/bids-detail.json
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: noindex
+
+/data/bids-homepage.json
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+  X-Robots-Tag: noindex
+
+/data/*.json
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: noindex
+# redeploy 1782558050
+# deploy 1782668619
+
+# 分片 gzip 数据文件
+/data/bids-*.json.gz
+  Content-Type: application/gzip
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+  Access-Control-Allow-Origin: *
+
+/data/bids-index.json.gz
+  Content-Type: application/gzip
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+  Access-Control-Allow-Origin: *

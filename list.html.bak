@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>标讯大全 — 免费全网招标采购信息平台 | 标讯宝</title>
+  <meta name="description" content="浏览全部招标采购标讯，按地区、时间精准筛选。支持关键词搜索，覆盖医疗设备、IT信息化、工程建设等8大行业，每日更新。">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="标讯大全 — 免费全网招标采购信息平台 | 标讯宝">
+  <meta property="og:description" content="浏览全部招标采购标讯，按地区、时间精准筛选。覆盖医疗设备、IT信息化、工程建设等8大行业，每日更新。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://qgbxb.com/list">
+  <meta property="og:locale" content="zh_CN">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://qgbxb.com/list">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://qgbxb.com/" },
+      { "@type": "ListItem", "position": 2, "name": "标讯大全" }
+    ]
+  }
+  </script>
+
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/theme/light.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+    * { font-family: 'Noto Sans SC', -apple-system, sans-serif; }
+    .hero-gradient { background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%); }
+    .card-hover { transition: all 0.2s ease; }
+    .card-hover:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -8px rgba(0,0,0,0.1); }
+    .bid-source-badge { font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 999px; }
+    .fade-in { animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    [x-cloak] { display: none !important; }
+    /* 暗色模式 */
+    @media (prefers-color-scheme: dark) {
+      .hero-gradient { background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%); }
+      body { background: #1f2937; }
+      nav { background: #1f2937 !important; border-color: #374151 !important; }
+      nav a, nav span { color: #d1d5db !important; }
+      nav .text-gray-900 { color: #f3f4f6 !important; }
+      .badge { background: #374151 !important; border-color: #4b5563 !important; }
+      [class*="bg-white"] { background: #374151 !important; border-color: #4b5563 !important; }
+      [class*="text-gray-900"] { color: #f3f4f6 !important; }
+      [class*="text-gray-500"], [class*="text-gray-400"] { color: #9ca3af !important; }
+      [class*="text-emerald-600"] { color: #6ee7b7 !important; }
+      [class*="bg-gray-50"] { background: #111827 !important; }
+      [class*="bg-emerald-50"] { background: #064e3b !important; }
+      [class*="border-gray-100"] { border-color: #374151 !important; }
+      input, select { background: #374151 !important; color: #f3f4f6 !important; border-color: #4b5563 !important; }
+      input::placeholder { color: #9ca3af !important; }
+    }
+  </style>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: '#059669', 'primary-dark': '#047857' } } } }
+  </script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "bcb4a0d224e14f5e93f5a0b2ff7c1b32"}'></script>
+  <script src="/static/holiday-utils.js"></script>
+<meta name="robots" content="index,follow" />
+<script type="application/ld+json">{ "@context": "https://schema.org", "@type": "Organization", "name": "标讯宝", "url": "https://qgbxb.com", "description": "免费全网招标采购信息查询平台", "alternateName": "标讯宝招标采购信息平台" }</script>
+<script>
+(function(){
+  var _ts=Date.now();
+  var _tp=function(p,d){
+    try{new Image().src='https://qgbxb.com/api/track?p='+encodeURIComponent(p||'/')+'&d='+(d||0)+'&r='+encodeURIComponent(document.referrer||'')+'&_='+Date.now()}catch(e){}
+  };
+  _tp(window.location.pathname,0);
+  var _tb=function(){_tp(window.location.pathname,Math.round((Date.now()-_ts)/1000));window.removeEventListener('beforeunload',_tb);window.removeEventListener('pagehide',_tb)};
+  window.addEventListener('beforeunload',_tb);
+  window.addEventListener('pagehide',_tb);
+})();
+</script></head>
+<body class="bg-gray-50 min-h-screen overflow-x-hidden pb-16" x-data="listApp()">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-8">
+          <a href="/" class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg hero-gradient flex items-center justify-center">
+              <span class="text-white font-bold text-sm">标</span>
+            </div>
+            <span class="text-xl font-bold text-gray-900">标讯宝</span>
+          </a>
+          <div class="hidden md:flex items-center gap-6">
+            <a href="/" class="text-gray-500 hover:text-gray-900 text-sm transition-colors">首页</a>
+            <a href="/list" class="text-emerald-600 font-medium text-sm">标讯大全</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Search Bar -->
+  <div class="bg-white border-b border-gray-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="space-y-3">
+        <div class="flex gap-2">
+          <div class="relative flex-1">
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <input
+              type="text"
+              placeholder="输入关键词搜索标讯..."
+              class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-200"
+              x-model="keyword"
+              @keydown.enter="search()"
+            />
+          </div>
+          <button class="px-4 py-2.5 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors flex-shrink-0" @click="search()">搜索</button>
+        </div>
+        <!-- Keyword chips -->
+        <div class="flex flex-wrap gap-1" x-show="filters.keywords.length > 0">
+          <template x-for="(kw, idx) in filters.keywords" :key="idx">
+            <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-xs rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200">
+              <span x-text="kw"></span>
+              <button @click="removeKeyword(idx)" class="hover:text-red-500 leading-none">&times;</button>
+            </span>
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="flex gap-6">
+
+      <!-- Sidebar Filters -->
+      <div class="hidden lg:block w-56 flex-shrink-0 overflow-hidden">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 sticky top-24">
+
+          <div class="mb-5">
+            <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">地区</h3>
+            <div class="space-y-1.5">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="region" value="" x-model="filters.region" @change="search()" class="radio radio-sm radio-emerald-500" />
+                <span class="text-sm text-gray-600">全国</span>
+              </label>
+              <template x-for="reg in regions" :key="reg">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="region" :value="reg" x-model="filters.region" @change="search()" class="radio radio-sm radio-emerald-500" />
+                  <span class="text-sm text-gray-600" x-text="reg"></span>
+                </label>
+              </template>
+            </div>
+          </div>
+
+          <div class="mb-5">
+            <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">来源</h3>
+            <div class="space-y-1.5">
+              <template x-for="src in sources" :key="src">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" :value="src" x-model="filters.sources" class="checkbox checkbox-sm checkbox-emerald-500" />
+                  <span class="text-sm text-gray-600" x-text="src"></span>
+                </label>
+              </template>
+            </div>
+          </div>
+
+          <button class="btn btn-sm w-full mt-4 bg-emerald-600 text-white hover:bg-emerald-700 border-0" @click="resetFilters()">重置筛选</button>
+        </div>
+      </div>
+
+      <!-- Main List -->
+      <div class="flex-1 min-w-0">
+
+        <!-- Results Info -->
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-sm text-gray-500">
+            共找到 <span class="font-bold text-gray-900" x-text="totalResults"></span> 条标讯
+            <span x-show="totalPages > 1" class="text-gray-400 ml-1">
+              · 第 <span class="font-medium" x-text="currentPage"></span>/<span x-text="totalPages"></span> 页
+            </span>
+            <span x-show="keyword" class="text-gray-400">
+              ，搜索 " <span class="text-emerald-600 font-medium" x-text="keyword"></span> "
+            </span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-gray-400 shrink-0 whitespace-nowrap">排序：</span>
+            <select x-model="filters.sort" class="select select-bordered select-xs text-xs">
+              <option value="newest">最新</option>
+              <option value="relevant">最相关</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Mobile Region + Time Filter -->
+        <div class="flex lg:hidden gap-2 mb-4 overflow-x-auto pb-2">
+          <button
+            class="px-3 py-1.5 text-xs rounded-lg whitespace-nowrap transition-colors"
+            :class="!filters.region ? 'bg-emerald-600 text-white' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
+            @click="filters.region = ''; search()"
+          >全国</button>
+          <template x-for="reg in regions" :key="reg">
+            <button
+              class="px-3 py-1.5 text-xs rounded-lg whitespace-nowrap transition-colors"
+              :class="filters.region === reg ? 'bg-emerald-600 text-white' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
+              @click="filters.region = filters.region === reg ? '' : reg; search()"
+              x-text="reg"
+            ></button>
+          </template>
+        </div>
+
+        <!-- Mobile Category + Time Filter -->
+        <div class="flex lg:hidden gap-2 mb-4 overflow-x-auto pb-2">
+          <button
+            class="px-3 py-1.5 text-xs rounded-lg whitespace-nowrap transition-colors"
+            :class="!filters.category ? 'bg-emerald-600 text-white' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
+            @click="filters.category = ''; search()"
+          >全部</button>
+          <template x-for="cat in categories" :key="cat">
+            <button
+              class="px-3 py-1.5 text-xs rounded-lg whitespace-nowrap transition-colors"
+              :class="filters.category === cat ? 'bg-emerald-600 text-white' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
+              @click="filters.category = filters.category === cat ? '' : cat; search()"
+              x-text="cat"
+            ></button>
+          </template>
+        </div>
+
+        <!-- Mobile Time Filter -->
+        <div class="flex lg:hidden gap-2 mb-4 overflow-x-auto pb-2">
+          <button
+            class="px-3 py-1.5 text-xs rounded-lg whitespace-nowrap transition-colors"
+            :class="filters.dateRange === 'all' ? 'bg-emerald-600 text-white' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
+            @click="filters.dateRange = 'all'; search()"
+          >全部</button>
+          <button
+            class="px-3 py-1.5 text-xs rounded-lg whitespace-nowrap transition-colors"
+            :class="filters.dateRange === 'today' ? 'bg-emerald-600 text-white' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
+            @click="filters.dateRange = 'today'; search()"
+          >今天</button>
+          <button
+            class="px-3 py-1.5 text-xs rounded-lg whitespace-nowrap transition-colors"
+            :class="filters.dateRange === '3days' ? 'bg-emerald-600 text-white' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
+            @click="filters.dateRange = '3days'; search()"
+          >近3天</button>
+          <button
+            class="px-3 py-1.5 text-xs rounded-lg whitespace-nowrap transition-colors"
+            :class="filters.dateRange === 'week' ? 'bg-emerald-600 text-white' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
+            @click="filters.dateRange = 'week'; search()"
+          >近一周</button>
+          <button
+            class="px-3 py-1.5 text-xs rounded-lg whitespace-nowrap transition-colors"
+            :class="filters.dateRange === 'month' ? 'bg-emerald-600 text-white' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
+            @click="filters.dateRange = 'month'; search()"
+          >近一月</button>
+        </div>
+
+        <!-- Loading -->
+        <div class="text-center py-16" x-show="loading">
+          <div class="loading loading-spinner loading-lg text-emerald-600"></div>
+          <p class="text-gray-500 mt-3">搜索中...</p>
+        </div>
+
+        <!-- Bid Cards -->
+        <div class="space-y-3" x-show="!loading">
+          <template x-for="bid in pagedBids" :key="bid.id">
+            <a :href="'/detail?id=' + bid.id + (keyword.trim() ? '&q=' + encodeURIComponent(keyword.trim()) : '') + (filters.region ? '&region=' + encodeURIComponent(filters.region) : '')" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in relative">
+              <!-- Favorite star -->
+              <button @click.prevent="toggleFav(bid.id, bid.title)"
+                class="absolute top-3 right-3 flex items-center gap-0.5 px-1.5 py-1 rounded-full hover:bg-gray-100 transition-colors z-10 text-xs"
+                :title="isFav(bid.id) ? '取消收藏' : '收藏'">
+                <svg class="w-3.5 h-3.5" :class="isFav(bid.id) ? 'text-yellow-400' : 'text-gray-300 hover:text-yellow-400'" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <span class="text-gray-400" x-text="isFav(bid.id) ? '取消收藏' : '收藏'"></span>
+              </button>
+              <!-- Type badge -->
+              <span class="inline-block text-xs font-medium px-1.5 py-0.5 rounded mb-2"
+                :class="methodBadgeClass(bid.method)"
+                x-text="bid.method || '公告'"></span>
+              <!-- Title -->
+              <h3 class="font-semibold text-gray-900 text-sm leading-snug mb-2 pr-6" x-html="highlightTitle(bid.title)"></h3>
+              <!-- Product tags -->
+              <div class="flex flex-wrap gap-1 mb-2" x-show="bid.products && bid.products.length > 0">
+                <template x-for="p in bid.products.slice(0, 3)" :key="p">
+                  <span class="text-xs px-1.5 py-0.5 rounded-full bg-blue-50 text-blue-600 border border-blue-100" x-text="p"></span>
+                </template>
+                <span x-show="bid.products && bid.products.length > 3" class="text-xs text-gray-400">+<span x-text="bid.products.length - 3"></span></span>
+              </div>
+              <!-- Info row -->
+              <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 mb-2">
+                <span x-text="bid.source" class="font-medium" :class="sourceTextClass(bid.source)"></span>
+                <span x-text="bid.region || ''" x-show="bid.region"></span>
+                <span x-text="bid.industry || ''" x-show="bid.industry"></span>
+              </div>
+              <!-- Budget + Deadline row -->
+              <div class="flex items-center justify-between text-xs pt-2 border-t border-gray-50">
+                <span class="text-gray-500">💰 <span x-text="bid.budget || '暂无'"></span></span>
+                <span class="text-gray-400">
+                  <span x-text="shortDate(bid.date)"></span>
+                  <span class="ml-1.5 inline-flex items-center gap-1"
+                    :class="deadlineClass(bid.date)">
+                    <span x-text="deadlineText(bid.date)"></span>
+                  </span>
+                </span>
+              </div>
+            </a>
+          </template>
+        </div>
+
+        <!-- Empty / Error -->
+        <div class="text-center py-20" x-show="!loading && pagedBids.length === 0">
+          <template x-if="apiError">
+            <div>
+              <div class="text-5xl mb-4">⚠️</div>
+              <p class="text-gray-500 text-lg mb-2">数据加载失败</p>
+              <p class="text-gray-400 text-sm mb-4">服务器暂时不可用，请稍后重试</p>
+              <button @click="loadData()" class="px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm hover:bg-emerald-700 transition-colors">重新加载</button>
+            </div>
+          </template>
+          <template x-if="!apiError">
+            <div>
+              <div class="text-5xl mb-4">🔍</div>
+              <p class="text-gray-500 text-lg mb-2">没有找到匹配的标讯</p>
+              <p class="text-gray-400 text-sm">试试换个关键词或筛选条件</p>
+            </div>
+          </template>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex items-center justify-center gap-1 mt-8 flex-wrap" x-show="totalPages > 1">
+          <button
+            class="px-2.5 py-1.5 text-sm rounded-lg transition-colors"
+            :class="currentPage === 1 ? 'text-gray-300 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-100'"
+            :disabled="currentPage === 1"
+            @click="goToPage(currentPage - 1)"
+          >上一页</button>
+          <template x-for="p in getPageWindow()" :key="p">
+            <button
+              class="w-8 h-8 text-sm rounded-lg transition-colors"
+              :class="currentPage === p ? 'bg-emerald-600 text-white' : 'text-gray-600 hover:bg-gray-100'"
+              @click="goToPage(p)"
+              x-text="p"
+            ></button>
+          </template>
+          <span class="text-xs text-gray-400 px-1" x-show="totalPages > 7">...</span>
+          <button
+            class="px-2.5 py-1.5 text-sm rounded-lg transition-colors"
+            :class="currentPage === totalPages ? 'text-gray-300 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-100'"
+            :disabled="currentPage === totalPages"
+            @click="goToPage(currentPage + 1)"
+          >下一页</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-100 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div class="text-xs text-gray-400">标讯宝 — 免费标讯查询平台</div>
+        <div class="text-xs text-gray-400">数据来源：国家级平台 · 省级平台 · 招标代理 · 医院高校</div>
+      </div>
+      <div class="mt-4 pt-4 border-t border-gray-100 text-center text-xs text-gray-400">
+        © 2026 标讯宝 · 未经许可禁止批量抓取数据
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function listApp() {
+      return {
+        keyword: '',
+        filters: { region: '', category: '', sources: [], dateRange: 'all', sort: 'newest', keywords: [] },
+        subscriptionGroups: [],
+        totalKeywords: 0,
+        currentPage: 1,
+        pageSize: 15,
+        regions: ['北京','上海','天津','重庆','河北','山西','内蒙古','辽宁','吉林','黑龙江','江苏','浙江','安徽','福建','江西','山东','河南','湖北','湖南','广东','广西','海南','四川','贵州','云南','西藏','陕西','甘肃','青海','宁夏','新疆'],
+        categories: [],
+        sources: ['国招平台', '政府采购网', '省平台', '招标代理', '医院官网', '高校官网'],
+        bids: [],
+        totalResults: 0,
+        totalPages: 1,
+        loading: false,
+        apiError: false,
+        favedIds: {},
+
+        async init() {
+          this.loadFavs();
+          const params = new URLSearchParams(window.location.search);
+          if (params.get('q')) this.keyword = params.get('q');
+          if (params.get('region')) this.filters.region = params.get('region');
+          if (params.get('cat')) this.filters.category = params.get('cat');
+          if (params.get('time')) this.filters.dateRange = params.get('time');
+          if (params.get('page')) this.currentPage = parseInt(params.get('page'), 10) || 1;
+          // 采购方式列表（硬编码，不需额外加载）
+          this.categories = ['公开招标','中标公告','竞争性磋商','询价','更正公告','单一来源','竞争性谈判','邀请招标','中标/成交','中标候选人','合同公告','废标公告','其他公告'];
+          // Load subscription groups from localStorage
+          try {
+            const data = localStorage.getItem('subscription_groups');
+            if (data) {
+              this.subscriptionGroups = JSON.parse(data);
+            } else {
+              // Legacy: old flat keywords format
+              const legacy = localStorage.getItem('subscription_keywords');
+              if (legacy) {
+                const oldKws = JSON.parse(legacy);
+                if (Array.isArray(oldKws) && oldKws.length > 0) {
+                  this.subscriptionGroups = [{ name: '默认', keywords: oldKws }];
+                }
+              }
+            }
+            // Ensure all groups have keywords array
+            this.subscriptionGroups.forEach(g => {
+              if (!g.keywords) g.keywords = [];
+            });
+            // Count total
+            this.totalKeywords = 0;
+            this.subscriptionGroups.forEach(g => { this.totalKeywords += g.keywords.length; });
+          } catch(e) {
+            this.subscriptionGroups = [];
+            this.totalKeywords = 0;
+          }
+          await this.loadData();
+        },
+
+        loadFavs() {
+          for (let i = 0; i < localStorage.length; i++) {
+            const k = localStorage.key(i);
+            if (k && k.startsWith('fav_') && !k.startsWith('fav_meta_')) {
+              this.favedIds[k.slice(4)] = true;
+            }
+          }
+        },
+
+        async loadData() {
+          this.loading = true;
+          this.apiError = false;
+          const q = this.keyword.trim();
+          const reg = this.filters.region;
+          const cat = this.filters.category;
+          const kwStr = this.filters.keywords.join(' ');
+          const searchQ = [q, kwStr].filter(Boolean).join(' ');
+          // Load lightweight search JSON directly (no server function needed)
+          try {
+            if (!window._searchData) {
+              const resp = await fetch('/data/bids-search.json');
+              if (!resp.ok) throw new Error('HTTP ' + resp.status);
+              window._searchData = (await resp.json()).bids || [];
+            }
+            let allBids = window._searchData.filter(b => b.is_bidding !== false);
+            // Client-side filtering
+            if (searchQ) {
+              const kw = searchQ.toLowerCase().split(/[ ,]+/).filter(Boolean);
+              allBids = allBids.filter(b => {
+                const t = (b.title||'').toLowerCase();
+                const s = (b.source||'').toLowerCase();
+                const r = (b.region||'').toLowerCase();
+                const text = t + ' ' + s + ' ' + r;
+                return kw.every(k => text.includes(k));
+              });
+            }
+            if (reg) allBids = allBids.filter(b => b.region === reg);
+            if (cat) allBids = allBids.filter(b => b.method === cat);
+            // Date filter
+            if (this.filters.dateRange !== 'all') {
+              const now = new Date();
+              let cutoff;
+              if (this.filters.dateRange === 'today') cutoff = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+              else if (this.filters.dateRange === '3days') cutoff = new Date(now.getTime() - 3*24*60*60*1000);
+              const cutoffStr = cutoff.toISOString().slice(0,10);
+              allBids = allBids.filter(b => b.date >= cutoffStr);
+            }
+            // Sort by date
+            allBids.sort((a,b) => (b.date||'').localeCompare(a.date||''));
+            // Paginate
+            this.totalResults = allBids.length;
+            this.totalPages = Math.max(1, Math.ceil(this.totalResults / this.pageSize));
+            this.bids = allBids.slice((this.currentPage-1)*this.pageSize, this.currentPage*this.pageSize);
+            // Sync URL
+              const urlObj = new URL(window.location);
+              if (q) urlObj.searchParams.set('q', q); else urlObj.searchParams.delete('q');
+              if (reg) urlObj.searchParams.set('region', reg); else urlObj.searchParams.delete('region');
+              if (cat) urlObj.searchParams.set('cat', cat); else urlObj.searchParams.delete('cat');
+              if (this.filters.dateRange !== 'all') urlObj.searchParams.set('time', this.filters.dateRange); else urlObj.searchParams.delete('time');
+              if (this.currentPage > 1) urlObj.searchParams.set('page', this.currentPage); else urlObj.searchParams.delete('page');
+              window.history.replaceState({}, '', urlObj);
+              this.loading = false;
+            } catch(e) {
+              console.error('数据加载失败', e);
+              this.apiError = true;
+              this.bids = [];
+              this.totalResults = 0;
+              this.totalPages = 1;
+              this.loading = false;
+            }
+        },
+
+        search() {
+          this.currentPage = 1;
+          this.loadData();
+        },
+        selectKeyword(kw) {
+          if (this.filters.keywords.includes(kw)) {
+            this.filters.keywords = this.filters.keywords.filter(k => k !== kw);
+          } else {
+            this.filters.keywords.push(kw);
+          }
+          this.currentPage = 1;
+        },
+        selectAllGroup(group) {
+          const allInGroup = group.keywords;
+          const allSelected = allInGroup.every(kw => this.filters.keywords.includes(kw));
+          if (allSelected) {
+            // Remove all from this group
+            this.filters.keywords = this.filters.keywords.filter(k => !allInGroup.includes(k));
+          } else {
+            // Add all from this group
+            for (const kw of allInGroup) {
+              if (!this.filters.keywords.includes(kw)) {
+                this.filters.keywords.push(kw);
+              }
+            }
+          }
+          this.currentPage = 1;
+        },
+        allGroupSelected(group) {
+          return group.keywords.length > 0 && group.keywords.every(kw => this.filters.keywords.includes(kw));
+        },
+        removeKeyword(idx) {
+          this.filters.keywords.splice(idx, 1);
+          this.currentPage = 1;
+        },
+
+        goToPage(p) {
+          if (p < 1 || p > this.totalPages) return;
+          this.currentPage = p;
+          this.loadData();
+        },
+
+        resetFilters() {
+          this.filters = { region: '', category: '', sources: [], dateRange: 'all', sort: 'newest', keywords: [] };
+          this.keyword = '';
+          this.currentPage = 1;
+          const url = new URL(window.location);
+          url.searchParams.delete('q');
+          url.searchParams.delete('region');
+          url.searchParams.delete('cat');
+          url.searchParams.delete('time');
+          url.searchParams.delete('page');
+          window.history.replaceState({}, '', url);
+          this.loadData();
+        },
+
+        highlightTitle(text) {
+          if (!text || !this.keyword.trim()) return text;
+          const keywords = this.keyword.trim().split(',').map(k => k.trim()).filter(k => k);
+          let result = text;
+          keywords.forEach(kw => {
+            if (!kw) return;
+            const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(${escaped})`, 'gi');
+            result = result.replace(regex, '<span style="color:red">$1</span>');
+          });
+          return result;
+        },
+
+        // Client-side filters applied on API page data
+        get filteredBids() {
+          let result = this.bids;
+          if (this.filters.category) {
+            result = result.filter(b => b.method === this.filters.category);
+          }
+          if (this.filters.sources.length > 0) {
+            result = result.filter(b => this.filters.sources.includes(b.source));
+          }
+          if (this.filters.dateRange !== 'all') {
+            const now = new Date();
+            const ranges = { 'today': 1, '3days': 3, 'week': 7, 'month': 30 };
+            const days = ranges[this.filters.dateRange] || 0;
+            if (days > 0) {
+              const cutoff = new Date(now.setDate(now.getDate() - days));
+              result = result.filter(b => b.date && new Date(b.date) >= cutoff);
+            }
+          }
+          if (this.filters.sort === 'newest') {
+            result.sort((a, b) => new Date(b.date) - new Date(a.date));
+          }
+          return result;
+        },
+
+        get pagedBids() {
+          return this.filteredBids;
+        },
+
+        dateRangeLabel(val) {
+          const map = { 'all': '时间', 'today': '今天', '3days': '近3天', 'week': '近一周', 'month': '近一月' };
+          return map[val] || '时间';
+        },
+
+        sourceBadgeClass(source) {
+          const map = {
+            '国招平台': 'bg-blue-50 text-blue-600 border-blue-200',
+            '政府采购网': 'bg-emerald-50 text-emerald-600 border-emerald-200',
+            '省平台': 'bg-purple-50 text-purple-600 border-purple-200',
+            '招标代理': 'bg-orange-50 text-orange-600 border-orange-200',
+            '医院官网': 'bg-rose-50 text-rose-600 border-rose-200',
+            '高校官网': 'bg-cyan-50 text-cyan-600 border-cyan-200',
+          };
+          return map[source] || 'bg-gray-50 text-gray-600 border-gray-200';
+        },
+
+        getPageWindow() {
+          const total = this.totalPages;
+          const current = this.currentPage;
+          const maxVisible = 7;
+          if (total <= maxVisible) {
+            return Array.from({length: total}, (_, i) => i + 1);
+          }
+          const half = Math.floor(maxVisible / 2);
+          let start = Math.max(1, current - half);
+          let end = Math.min(total, start + maxVisible - 1);
+          if (end - start + 1 < maxVisible) {
+            start = Math.max(1, end - maxVisible + 1);
+          }
+          return Array.from({length: end - start + 1}, (_, i) => start + i);
+        },
+
+        // —— 类型Badge颜色 ——
+        methodBadgeClass(method) {
+          const map = {
+            '公开招标': 'bg-blue-50 text-blue-600',
+            '中标公告': 'bg-green-50 text-green-600',
+            '中标/成交': 'bg-green-50 text-green-600',
+            '中标候选人': 'bg-teal-50 text-teal-600',
+            '更正公告': 'bg-orange-50 text-orange-600',
+            '合同公告': 'bg-sky-50 text-sky-600',
+            '废标': 'bg-red-50 text-red-600',
+            '废标公告': 'bg-red-50 text-red-600',
+            '竞争性磋商': 'bg-purple-50 text-purple-600',
+            '竞争性谈判': 'bg-purple-50 text-purple-600',
+            '询价': 'bg-cyan-50 text-cyan-600',
+            '询价公告': 'bg-cyan-50 text-cyan-600',
+            '单一来源': 'bg-pink-50 text-pink-600',
+            '预告': 'bg-amber-50 text-amber-600',
+            '其他': 'bg-gray-50 text-gray-500',
+            '其他公告': 'bg-gray-50 text-gray-500',
+            '方案征集': 'bg-gray-50 text-gray-600',
+            '竞价': 'bg-yellow-50 text-yellow-600',
+            '比选': 'bg-violet-50 text-violet-600',
+            '资格预审': 'bg-indigo-50 text-indigo-600',
+            '邀请招标': 'bg-blue-50 text-blue-600',
+          };
+          return map[method] || 'bg-gray-50 text-gray-600';
+        },
+
+        // —— 截止倒计时（基于发布时间+30天估算） ——
+        deadlineText(dateStr) {
+          if (!dateStr) return '';
+          const deadline = new Date(dateStr);
+          deadline.setDate(deadline.getDate() + 30);
+          const diff = Math.ceil((deadline - new Date()) / 86400000);
+          if (diff <= 0) return '⏰ 已截止';
+          if (diff === 1) return '⏰ 今日截止';
+          return `⏰ 剩余${diff}天`;
+        },
+        deadlineClass(dateStr) {
+          if (!dateStr) return 'text-gray-400';
+          const deadline = new Date(dateStr);
+          deadline.setDate(deadline.getDate() + 30);
+          const diff = Math.ceil((deadline - new Date()) / 86400000);
+          if (diff <= 0) return 'text-red-500 font-medium';
+          if (diff <= 3) return 'text-orange-500 font-medium';
+          return 'text-gray-500';
+        },
+
+        // —— 短日期格式 ——
+        shortDate(d) {
+          if (!d) return '';
+          return d.slice(0, 10);
+        },
+
+        // —— 收藏 ——
+        toggleFav(id, title) {
+          if (this.favedIds[id]) {
+            delete this.favedIds[id];
+            localStorage.removeItem('fav_' + id);
+            localStorage.removeItem('fav_meta_' + id);
+          } else {
+            this.favedIds[id] = true;
+            localStorage.setItem('fav_' + id, 'true');
+            localStorage.setItem('fav_meta_' + id, JSON.stringify({ title, date: new Date().toISOString() }));
+          }
+        },
+        isFav(id) {
+          return !!this.favedIds[id];
+        },
+
+        // —— 来源文本颜色 ——
+        sourceTextClass(source) {
+          const map = {
+            '国招平台': 'text-blue-600',
+            '政府采购网': 'text-emerald-600',
+            '省平台': 'text-purple-600',
+            '招标代理': 'text-orange-600',
+            '医院官网': 'text-rose-600',
+            '高校官网': 'text-cyan-600',
+            '招标投标公共服务平台': 'text-blue-600',
+          };
+          return map[source] || 'text-gray-500';
+        },
+      }
+    }
+  </script>
+<!-- Bottom Tab Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-around h-16" style="padding-bottom: max(0, env(safe-area-inset-bottom));">
+        <a href="/" class="flex flex-col items-center gap-0.5 group">
+          <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+          <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">首页</span>
+        </a>
+        <a href="/customers" class="flex flex-col items-center gap-0.5 group">
+          <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+          </svg>
+          <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">客户资源</span>
+        </a>
+        <a href="/favorites" class="flex flex-col items-center gap-0.5 group">
+          <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">我的收藏</span>
+        </a>
+        <a href="/subscribe" class="flex flex-col items-center gap-0.5 group">
+          <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+          </svg>
+          <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">订阅管理</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+<!-- 工作日/非工作日 底部导航切换 -->
+<script>
+(async () => {
+  const isNonWorkday = await HolidayUtils.init();
+  if (isNonWorkday) {
+    const homeLink = document.querySelector('nav a[href="/"]');
+    const customerLink = document.querySelector('nav a[href="/customers"]');
+    if (homeLink) {
+      const dot = homeLink.querySelector('.absolute');
+      if (dot) dot.style.display = 'none';
+      const svg = homeLink.querySelector('svg');
+      if (svg) svg.classList.replace('text-emerald-600', 'text-gray-400');
+      const span = homeLink.querySelector('span');
+      if (span) span.classList.replace('text-emerald-600', 'text-gray-400');
+    }
+    if (customerLink) {
+      const dot = customerLink.querySelector('.absolute');
+      if (!dot) {
+        const d = document.createElement('span');
+        d.className = 'absolute -top-1 w-1 h-1 rounded-full bg-emerald-600';
+        customerLink.appendChild(d);
+      } else {
+        dot.style.display = '';
+      }
+      const svg = customerLink.querySelector('svg');
+      if (svg) svg.classList.replace('text-gray-400', 'text-emerald-600');
+      const span = customerLink.querySelector('span');
+      if (span) span.classList.replace('text-gray-400', 'text-emerald-600');
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

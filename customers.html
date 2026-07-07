@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>客户资源 — 标讯宝</title>
+  <meta name="description" content="采购单位、中标供应商、品牌厂商智能挖掘，商业线索每日更新。">
+  <meta property="og:title" content="客户资源 — 标讯宝">
+  <meta property="og:description" content="采购单位、中标供应商、品牌厂商智能挖掘，商业线索每日更新。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://qgbxb.com/customers">
+  <link rel="canonical" href="https://qgbxb.com/customers">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"首页","item":"https://qgbxb.com/"},
+    {"@type":"ListItem","position":2,"name":"客户资源"}
+  ]}
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/theme/light.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://lib.baomitu.com/alpinejs/3.14.3/cdn.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+    * { font-family: 'Noto Sans SC', -apple-system, sans-serif; }
+    .hero-gradient { background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%); }
+    [x-cloak] { display: none !important; }
+    .tab-active { background: #059669 !important; color: #fff !important; }
+    .card-highlight { border-left: 3px solid #f59e0b; }
+    .sort-active { background: #ecfdf5 !important; color: #059669 !important; }
+    select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.5rem center; padding-right: 1.8rem; }
+    @media (prefers-color-scheme: dark) {
+      .hero-gradient { background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%); }
+      body { background: #1f2937; }
+      nav { background: #1f2937 !important; border-color: #374151 !important; }
+      nav a, nav span { color: #d1d5db !important; }
+      [class*="bg-white"] { background: #374151 !important; border-color: #4b5563 !important; }
+      [class*="text-gray-900"] { color: #f3f4f6 !important; }
+      [class*="text-gray-500"],[class*="text-gray-400"] { color: #9ca3af !important; }
+      [class*="text-emerald-600"] { color: #6ee7b7 !important; }
+      [class*="bg-gray-50"] { background: #111827 !important; }
+      [class*="bg-emerald-50"] { background: #064e3b !important; }
+      [class*="border-gray-100"] { border-color: #374151 !important; }
+    }
+  </style>
+  <script>tailwind.config={theme:{extend:{colors:{primary:'#059669','primary-dark':'#047857'}}}}</script>
+  <script src="/static/holiday-utils.js"></script>
+<meta name="robots" content="index,follow" />
+<script type="application/ld+json">{ "@context": "https://schema.org", "@type": "Organization", "name": "标讯宝", "url": "https://qgbxb.com", "description": "免费全网招标采购信息查询平台", "alternateName": "标讯宝招标采购信息平台" }</script>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+<script>
+(function(){
+  var _ts=Date.now();
+  var _tp=function(p,d){
+    try{new Image().src='https://qgbxb.com/api/track?p='+encodeURIComponent(p||'/')+'&d='+(d||0)+'&r='+encodeURIComponent(document.referrer||'')+'&_='+Date.now()}catch(e){}
+  };
+  _tp(window.location.pathname,0);
+  var _tb=function(){_tp(window.location.pathname,Math.round((Date.now()-_ts)/1000));window.removeEventListener('beforeunload',_tb);window.removeEventListener('pagehide',_tb)};
+  window.addEventListener('beforeunload',_tb);
+  window.addEventListener('pagehide',_tb);
+})();
+</script></head>
+<body>
+<div id="app" class="bg-gray-50 min-h-screen pb-24" x-data="customerApp()" x-init="init()">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-8">
+          <a href="/" class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg hero-gradient flex items-center justify-center">
+              <span class="text-white font-bold text-sm">标</span>
+            </div>
+            <span class="text-xl font-bold text-gray-900">标讯宝</span>
+          </a>
+          <div class="hidden md:flex items-center gap-6">
+            <a href="/" class="text-gray-500 hover:text-gray-900 text-sm transition-colors">首页</a>
+            <a href="/list" class="text-gray-500 hover:text-gray-900 text-sm transition-colors">标讯大全</a>
+            <a href="/customers" class="text-emerald-600 font-medium text-sm">客户资源</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Banner -->
+  <div class="hero-gradient text-white">
+    <div class="max-w-7xl mx-auto px-4 py-8">
+      <h1 class="text-2xl font-bold mb-2">智能客户挖掘</h1>
+      <p class="text-emerald-100 text-sm mb-4">
+        覆盖 <span class="font-bold text-white" x-text="stats.terminal">0</span> 家采购单位 ·
+        <span class="font-bold text-white" x-text="stats.channel">0</span> 家中标供应商 ·
+        <span class="font-bold text-white" x-text="stats.brands">0</span> 个品牌
+        · 每日更新
+      </p>
+      <div class="flex items-center gap-4">
+        <a href="/subscribe" class="px-4 py-2 bg-white text-emerald-700 rounded-lg text-sm font-medium hover:bg-emerald-50 transition-colors">
+          获取最新客户动态
+        </a>
+        <span class="text-xs text-emerald-200" x-text="'更新于 '+stats.updated">更新于 2026-06-06</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab Nav -->
+  <div class="bg-white border-b border-gray-100 shadow-sm sticky top-[72px] z-40">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex gap-2">
+      <button class="px-5 py-2 rounded-lg text-sm font-medium transition-colors"
+        :class="activeTab==='terminal'?'tab-active':'text-gray-500 bg-gray-100 hover:bg-gray-200'"
+        @click="activeTab='terminal'">终端客户</button>
+      <button class="px-5 py-2 rounded-lg text-sm font-medium transition-colors"
+        :class="activeTab==='channel'?'tab-active':'text-gray-500 bg-gray-100 hover:bg-gray-200'"
+        @click="activeTab='channel'">渠道资源</button>
+      <button class="px-5 py-2 rounded-lg text-sm font-medium transition-colors"
+        :class="activeTab==='brand'?'tab-active':'text-gray-500 bg-gray-100 hover:bg-gray-200'"
+        @click="activeTab='brand'">厂商品牌</button>
+    </div>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="max-w-7xl mx-auto px-4 py-3">
+    <div class="flex flex-wrap items-center gap-2">
+      <!-- Search -->
+      <input type="text" placeholder="搜索公司名或品牌..." x-model="search"
+        class="flex-1 min-w-[140px] px-3 py-2 rounded-lg border border-gray-200 bg-white text-sm focus:outline-none focus:border-emerald-500"
+        @input="applyFilters()">
+
+      <!-- Region filter -->
+      <select x-model="filterRegion" @change="applyFilters()"
+        class="px-3 py-2 rounded-lg border border-gray-200 bg-white text-sm text-gray-600 focus:outline-none focus:border-emerald-500 w-[90px]">
+        <option value="">全部地区</option>
+        <template x-for="r in regions" :key="r">
+          <option :value="r" x-text="r"></option>
+        </template>
+      </select>
+
+      <!-- Tier filter -->
+      <select x-model="filterTier" @change="applyFilters()"
+        class="px-3 py-2 rounded-lg border border-gray-200 bg-white text-sm text-gray-600 focus:outline-none focus:border-emerald-500 w-[80px]">
+        <option value="">全部分层</option>
+        <option value="活跃型">活跃</option>
+        <option value="沉睡型">沉睡</option>
+        <option value="流失型">流失</option>
+        <option value="新增型">新增</option>
+      </select>
+
+      <!-- Sort -->
+      <div class="flex rounded-lg border border-gray-200 overflow-hidden">
+        <button @click="sortBy='count'; applyFilters()"
+          class="px-3 py-2 text-xs transition-colors"
+          :class="sortBy==='count'?'sort-active font-medium':'text-gray-500 bg-white hover:bg-gray-50'">次数</button>
+        <button @click="sortBy='amount'; applyFilters()"
+          class="px-3 py-2 text-xs border-l border-gray-200 transition-colors"
+          :class="sortBy==='amount'?'sort-active font-medium':'text-gray-500 bg-white hover:bg-gray-50'">金额</button>
+        <button @click="sortBy='date'; applyFilters()"
+          class="px-3 py-2 text-xs border-l border-gray-200 transition-colors"
+          :class="sortBy==='date'?'sort-active font-medium':'text-gray-500 bg-white hover:bg-gray-50'">时间</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terminal Tab -->
+  <div x-show="activeTab==='terminal'" x-cloak class="max-w-7xl mx-auto px-4">
+    <template x-for="c in filteredTerminal" :key="c.buyer+'_'+c.bid_id">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-3 cursor-pointer hover:shadow-md hover:border-emerald-300 transition-all"
+        :class="{'card-highlight': c.amount >= 1000}"
+        @click="goToDetail(c.buyer, 'buyer')">
+        <div class="flex items-start justify-between">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-medium text-gray-900 truncate" x-text="c.buyer">公司名</span>
+              <span x-show="c.amount >= 1000" class="px-1.5 py-0.5 bg-amber-100 text-amber-700 text-xs rounded font-medium shrink-0">推荐</span>
+            </div>
+            <div class="flex items-center gap-3 text-xs text-gray-400">
+              <span x-show="c.region" x-text="c.region" class="text-emerald-600 font-medium">地区</span>
+              <span>采购 <b class="text-gray-600" x-text="c.count">0</b> 次</span>
+              <span x-show="c.amount>0">金额 <b class="text-gray-600" x-text="c.amount+'万'">0万</b></span>
+              <span x-show="c.date" class="text-gray-300" x-text="c.date">日期</span>
+            </div>
+            <p class="text-xs text-gray-400 mt-1 truncate" x-text="c.title">标题</p>
+          </div>
+        </div>
+      </div>
+    </template>
+    <div x-show="filteredTerminal.length===0" class="text-center py-12 text-gray-400 text-sm">暂无匹配结果</div>
+  </div>
+
+  <!-- Channel Tab -->
+  <div x-show="activeTab==='channel'" x-cloak class="max-w-7xl mx-auto px-4">
+    <template x-for="c in filteredChannel" :key="c.bidder+'_'+c.bid_id">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-3 cursor-pointer hover:shadow-md hover:border-emerald-300 transition-all"
+        :class="{'card-highlight': c.amount >= 1000}"
+        @click="goToDetail(c.bidder, 'bidder')">
+        <div class="flex items-start justify-between">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-medium text-gray-900 truncate" x-text="c.bidder">公司名</span>
+              <span x-show="c.amount >= 1000" class="px-1.5 py-0.5 bg-amber-100 text-amber-700 text-xs rounded font-medium shrink-0">推荐</span>
+            </div>
+            <div class="flex items-center gap-3 text-xs text-gray-400">
+              <span x-show="c.region" x-text="c.region" class="text-emerald-600 font-medium">地区</span>
+              <span>中标 <b class="text-gray-600" x-text="c.count">0</b> 次</span>
+              <span x-show="c.amount>0">金额 <b class="text-gray-600" x-text="c.amount+'万'">0万</b></span>
+              <span x-show="c.date" class="text-gray-300" x-text="c.date">日期</span>
+            </div>
+            <p class="text-xs text-gray-400 mt-1 truncate" x-text="c.title">标题</p>
+          </div>
+        </div>
+      </div>
+    </template>
+    <div x-show="filteredChannel.length===0" class="text-center py-12 text-gray-400 text-sm">暂无匹配结果</div>
+  </div>
+
+  <!-- Brand Tab -->
+  <div x-show="activeTab==='brand'" x-cloak class="max-w-7xl mx-auto px-4">
+    <template x-for="c in filteredBrand" :key="c.bidder">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-3 cursor-pointer hover:shadow-md hover:border-emerald-300 transition-all"
+        @click="goToDetail(c.bidder, 'brand')">
+        <div class="flex items-start justify-between">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-medium text-gray-900 truncate" x-text="c.bidder">品牌</span>
+              <span class="px-1.5 py-0.5 bg-blue-50 text-blue-700 text-xs rounded" x-text="c.count+'次'">0次</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+    <div x-show="filteredBrand.length===0" class="text-center py-12 text-gray-400 text-sm">暂无匹配结果</div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-100 mt-4">
+    <div class="max-w-7xl mx-auto px-4 py-4 text-center text-xs text-gray-400">
+      覆盖全国34省市 · 每日自动更新 · 智能推荐匹配
+    </div>
+    <div class="max-w-7xl mx-auto px-4 pb-20 text-center text-xs text-gray-300" x-text="'数据更新时间：'+stats.updated+'，每周一自动更新'">
+      数据更新时间：2026-06-06，每周一自动更新
+    </div>
+  <!-- Bottom Nav -->
+  <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-around h-16" style="padding-bottom:max(0,env(safe-area-inset-bottom))">
+        <a href="/" class="flex flex-col items-center gap-0.5 group">
+          <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+          <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">首页</span>
+        </a>
+        <a href="/customers" class="flex flex-col items-center gap-0.5 group relative">
+          <span class="absolute -top-1 w-1 h-1 rounded-full bg-emerald-600"></span>
+          <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+          </svg>
+          <span class="text-xs font-medium text-emerald-600">客户资源</span>
+        </a>
+        <a href="/favorites" class="flex flex-col items-center gap-0.5 group">
+          <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">我的收藏</span>
+        </a>
+        <a href="/subscribe" class="flex flex-col items-center gap-0.5 group">
+          <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+          </svg>
+          <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">订阅管理</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+  </footer>
+
+</div>
+
+<script>
+function customerApp() {
+  return {
+    activeTab: 'terminal',
+    search: '',
+    filterRegion: '',
+    filterTier: '',
+    sortBy: 'count',
+    stats: {terminal:0,channel:0,brands:0,high_value:0,updated:'2026-06-06'},
+    all: [],
+    regions: [],
+    filteredTerminal: [],
+    filteredChannel: [],
+    filteredBrand: [],
+
+    async init() {
+      try {
+        const resp = await fetch('/data/customers.json');
+        const data = await resp.json();
+        this.stats = data.stats;
+        this.all = data.customers;
+        // 提取地区
+        const rset = new Set();
+        this.all.forEach(c => { if (c.region) rset.add(c.region); });
+        this.regions = Array.from(rset).sort();
+        this.applyFilters();
+      } catch(e) {
+        console.error('加载客户数据失败:', e);
+      }
+    },
+
+    goToDetail(name, type) {
+      if (name) {
+        window.location.href = '/customer-detail?name=' + encodeURIComponent(name) + '&type=' + type;
+      }
+    },
+
+    applyFilters() {
+      const q = this.search.toLowerCase().trim();
+      const region = this.filterRegion;
+
+      const match = (c) => {
+        if (q) {
+          const n = ((c.buyer||'') + (c.bidder||'')).toLowerCase();
+          if (!n.includes(q)) return false;
+        }
+        if (region && c.region !== region) return false;
+        if (this.filterTier && c.tier !== this.filterTier) return false;
+        return true;
+      };
+
+      const sortFn = (a, b) => {
+        if (this.sortBy === 'amount') return (b.amount||0) - (a.amount||0);
+        if (this.sortBy === 'date') return (b.date||'').localeCompare(a.date||'');
+        return (b.count||0) - (a.count||0); // count default
+      };
+
+      this.filteredTerminal = this.all.filter(c => c.category==='terminal' && match(c)).sort(sortFn);
+      this.filteredChannel = this.all.filter(c => c.category==='channel' && match(c)).sort(sortFn);
+      this.filteredBrand = this.all.filter(c => c.category==='brand' && match(c)).sort(sortFn);
+    }
+  }
+}
+</script>
+
+<!-- 工作日/非工作日 底部导航切换 -->
+<script>
+(async () => {
+  const isNonWorkday = await HolidayUtils.init();
+  if (isNonWorkday) {
+    const homeLink = document.querySelector('nav a[href="/"]');
+    const customerLink = document.querySelector('nav a[href="/customers"]');
+    if (homeLink) {
+      const dot = homeLink.querySelector('.absolute');
+      if (dot) dot.style.display = 'none';
+      const svg = homeLink.querySelector('svg');
+      if (svg) svg.classList.replace('text-emerald-600', 'text-gray-400');
+      const span = homeLink.querySelector('span');
+      if (span) span.classList.replace('text-emerald-600', 'text-gray-400');
+    }
+    if (customerLink) {
+      const dot = customerLink.querySelector('.absolute');
+      if (!dot) {
+        const d = document.createElement('span');
+        d.className = 'absolute -top-1 w-1 h-1 rounded-full bg-emerald-600';
+        customerLink.appendChild(d);
+      } else {
+        dot.style.display = '';
+      }
+      const svg = customerLink.querySelector('svg');
+      if (svg) svg.classList.replace('text-gray-400', 'text-emerald-600');
+      const span = customerLink.querySelector('span');
+      if (span) span.classList.replace('text-gray-400', 'text-emerald-600');
+    }
+  }
+})();
+</script>
+
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --><!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --></body>
+</html>

@@ -1,9 +1,9 @@
-User-agent: *
+User-agent: Baiduspider
 Allow: /
-
-# 以下目录对爬虫关闭（不上搜索引擎）
-Disallow: /api/
+Allow: /detail
+Allow: /list
 Disallow: /data/
-Disallow: /static/
-
-Sitemap: https://bidding-site.pages.dev/sitemap.xml
+Sitemap: https://qgbxb.com/sitemap.xml
+User-agent: *
+Disallow: /data/
+Disallow: /attachments/

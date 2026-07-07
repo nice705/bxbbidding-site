@@ -3,7 +3,16 @@
   "include": [
     "/api/track",
     "/api/proxy-attachment",
-    "/data/bids.json"
+    "/attachments/*",
+    "/data/bids-homepage.json",
+    "/data/customers.json",
+    "/data/customer_history.json",
+    "/data/*.json",
+    "/list",
+    "/favourites",
+    "/favorites",
+    "/data/*.json.gz",
+    "/data/bids-detail.json"
   ],
   "exclude": []
 }

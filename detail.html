@@ -10,11 +10,12 @@
   <meta property="og:title" content="标讯详情 — 标讯宝">
   <meta property="og:description" content="查看招标采购标讯详情，包含项目预算、投标截止时间、采购单位及完整公告内容。">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://qgbxb.com/detail.html">
+  <meta property="og:url" content="https://qgbxb.com/detail">
   <meta property="og:locale" content="zh_CN">
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://qgbxb.com/detail.html">
+  <link rel="canonical" href="https://qgbxb.com/detail">
+  <link rel="icon" href="/favicon.ico" sizes="any">
 
   <!-- JSON-LD Base (动态更新在 JS 中) -->
   <script type="application/ld+json" id="ld-breadcrumb">
@@ -23,7 +24,7 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://qgbxb.com/" },
-      { "@type": "ListItem", "position": 2, "name": "标讯大全", "item": "https://qgbxb.com/list.html" },
+      { "@type": "ListItem", "position": 2, "name": "标讯大全", "item": "https://qgbxb.com/list" },
       { "@type": "ListItem", "position": 3, "name": "标讯详情" }
     ]
   }
@@ -32,25 +33,29 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5/theme/light.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://lib.baomitu.com/alpinejs/3.14.9/cdn.min.js" defer></script>
+  <script src="https://lib.baomitu.com/alpinejs/3.14.3/cdn.min.js" defer></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
     * { font-family: 'Noto Sans SC', -apple-system, sans-serif; }
     .hero-gradient { background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%); }
-    .prose-content { white-space: pre-line; }
+    .prose-content { white-space: normal; }
     .prose-content h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #111; }
     .prose-content h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; color: #1f2937; margin-top: 1.5rem; }
     .prose-content h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: #374151; }
-    .prose-content p { font-size: 0.95rem; line-height: 1.7; color: #4b5563; margin-bottom: 1rem; }
+    .prose-content p { margin: 0; }
     .prose-content ul, .prose-content ol { margin-bottom: 1rem; padding-left: 1.5rem; }
     .prose-content li { font-size: 0.95rem; line-height: 1.7; color: #4b5563; margin-bottom: 0.25rem; }
-    .prose-content table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
-    .prose-content th, .prose-content td { border: 1px solid #e5e7eb; padding: 0.5rem 0.75rem; font-size: 0.9rem; text-align: left; }
-    .prose-content th { background: #f9fafb; font-weight: 600; color: #374151; }
+    .prose-content table { max-width: 100%; }
+    .prose-content th, .prose-content td { font-size: 0.9rem; }
     .fade-in { animation: fadeIn 0.3s ease; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     [x-cloak] { display: none !important; }
-    /* 暗色模式 */
+    /* 三点闪动动画 */
+    @keyframes dotBlink {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+    .dot-blink { animation: dotBlink 1.2s infinite ease-in-out; }
     @media (prefers-color-scheme: dark) and (max-width: 767px) {
       body { background: #1f2937; }
       nav { background: #1f2937 !important; border-color: #374151 !important; }
@@ -75,6 +80,30 @@
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "bcb4a0d224e14f5e93f5a0b2ff7c1b32"}'></script>
   <style>body { font-size: 0; line-height: 0; } body > *:not(#app) { display: none !important; } #app { font-size: 16px; line-height: 1.5; }</style>
+  <script src="/static/holiday-utils.js"></script>
+<meta name="robots" content="index,follow" />
+<script type="application/ld+json">{ "@context": "https://schema.org", "@type": "Organization", "name": "标讯宝", "url": "https://qgbxb.com", "description": "免费全网招标采购信息查询平台", "alternateName": "标讯宝招标采购信息平台" }</script>
+<meta name="baidu-site-verification" content="REPLACE_WITH_YOUR_BAIDU_CODE" />
+  <script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+(function(){
+  var _ts=Date.now();
+  var _tp=function(p,d){
+    try{new Image().src='https://qgbxb.com/api/track?p='+encodeURIComponent(p||'/')+'&d='+(d||0)+'&r='+encodeURIComponent(document.referrer||'')+'&_='+Date.now()}catch(e){}
+  };
+  _tp(window.location.pathname,0);
+  var _tb=function(){_tp(window.location.pathname,Math.round((Date.now()-_ts)/1000));window.removeEventListener('beforeunload',_tb);window.removeEventListener('pagehide',_tb)};
+  window.addEventListener('beforeunload',_tb);
+  window.addEventListener('pagehide',_tb);
+})();
+</script>  <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
 </head>
 <body>
 <script>(function(){var c=document.body.children;for(var i=c.length-1;i>=0;i--){if(c[i].id!=="app")c[i].remove();}})();</script>
@@ -103,7 +132,7 @@
             <span class="text-lg font-bold text-gray-900">标讯宝</span>
           </a>
           <span class="text-gray-300">/</span>
-          <a href="/list.html" class="text-sm text-gray-500 hover:text-gray-900">标讯大全</a>
+          <a href="/list" class="text-sm text-gray-500 hover:text-gray-900">标讯大全</a>
         </div>
         <div class="flex items-center"></div>
       </div>
@@ -113,16 +142,20 @@
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
     <!-- Loading -->
-    <div class="text-center py-20" x-show="loading" x-cloak style="display:none">
-      <div class="loading loading-spinner loading-lg text-emerald-600"></div>
-      <p class="text-gray-500 mt-4">加载中...</p>
+    <div class="text-center py-20" x-show="loading">
+      <div class="flex items-center justify-center gap-1.5 mb-3">
+        <span class="dot-blink w-2 h-2 rounded-full bg-emerald-400 inline-block" style="animation-delay: 0s"></span>
+        <span class="dot-blink w-2 h-2 rounded-full bg-emerald-400 inline-block" style="animation-delay: 0.2s"></span>
+        <span class="dot-blink w-2 h-2 rounded-full bg-emerald-400 inline-block" style="animation-delay: 0.4s"></span>
+      </div>
+      <p class="text-gray-400 text-sm">加载中...</p>
     </div>
 
     <!-- Not Found -->
     <div class="text-center py-20" x-show="!loading && !bid" x-cloak style="display:none">
       <div class="text-5xl mb-4">😕</div>
       <p class="text-gray-500 text-lg">未找到该标讯</p>
-      <a href="/list.html" class="text-emerald-600 text-sm mt-4 inline-block">返回标讯大全</a>
+      <a href="/list" class="text-emerald-600 text-sm mt-4 inline-block">返回标讯大全</a>
           </div>
 
     <!-- Content -->
@@ -130,7 +163,7 @@
       <div class="fade-in">
 
         <!-- Back -->
-        <a :href="'/list.html' + (keywords.length > 0 ? '?q=' + encodeURIComponent(keywords.join(',')) : '')" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4 transition-colors">
+        <a :href="'/list' + (keywords.length > 0 ? '?q=' + encodeURIComponent(keywords.join(',')) : '')" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4 transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
           返回列表
         </a>
@@ -206,21 +239,90 @@
           </h2>
           <!-- 有内容 → 展示（排除屏蔽页面） -->
           <!-- 有内容 → 展示 -->
-          <div class="prose-content" x-show="bid.content && bid.content.length > 20 && !isContentBlocked(bid.content)" x-html="bid._content || bid.content"></div>
-          <!-- 无内容 → 引导去官网 -->
-          <div class="text-center py-10" x-show="!bid.content || bid.content.length <= 20 || isContentBlocked(bid.content)">
-            <div class="text-4xl mb-3">📄</div>
-            <p class="text-gray-500 text-sm">公告全文暂未收录</p>
+          <div class="prose-content" x-show="(bid.html || bid.content) && (bid.html || bid.content).length > 20 && !isContentBlocked(bid.html || bid.content)" x-html="bid.html || bid._html || bid._content || bid.content"></div>
+          <!-- 无内容 → 显示元数据 + 原文链接 -->
+          <div class="text-center py-6" x-show="!bid.html && (!bid.content || bid.content.length <= 20 || isContentBlocked(bid.content))">
+            <div class="text-3xl mb-2">📋</div>
+            <p class="text-gray-600 text-sm font-medium mb-3">公告正文需跳转原文查看</p>
+            <div class="flex flex-wrap justify-center gap-2 mb-4">
+              <span class="text-xs px-2 py-1 rounded bg-gray-100 text-gray-600" x-show="bid.source" x-text="bid.source"></span>
+              <span class="text-xs px-2 py-1 rounded bg-gray-100 text-gray-600" x-show="bid.region" x-text="bid.region"></span>
+              <span class="text-xs px-2 py-1 rounded bg-gray-100 text-gray-600" x-show="bid.method" x-text="bid.method"></span>
+            </div>
+            <a :href="bid.sourceUrl" target="_blank" rel="noopener"
+              class="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors shadow">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              查看原文
+            </a>
+            <p class="text-xs text-gray-400 mt-2">点击跳转到发布方官网查看完整公告</p>
           </div>
         </div>
 
-        <!-- Source Link + Favorite -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-            </div>
-
+        <!-- Attachments Section -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sm:p-8 mb-4" x-show="bid.attachments && bid.attachments.length > 0">
+          <h2 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            附件下载
+            <span class="text-xs text-amber-600 font-normal ml-2" x-show="bid.attachments.some(a => a.source_only)">（部分源站附件暂不支持站内下载）</span>
+          </h2>
+          <div class="space-y-2">
+            <template x-for="(att, idx) in bid.attachments" :key="idx">
+              <div class="flex items-center gap-3 p-3 rounded-lg border border-gray-100" x-show="att && att.name">
+                <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 text-lg"
+                  :class="attExtClass(att?.ext || '')">
+                  <span x-text="attExtIcon(att?.ext || '')"></span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-sm font-medium text-gray-900 truncate" x-text="att.name"></div>
+                  <div class="text-xs text-gray-400 mt-0.5">
+                    <template x-if="att && att.ext === 'link'">源站链接</template>
+                    <template x-if="att && att.ext === 'download'">下载文件</template>
+                    <template x-if="att && att.ext !== 'link' && att.ext !== 'download'"><span x-text="'.' + att.ext.toUpperCase() + ' 文件'"></span></template>
+                  </div>
+                </div>
+                <!-- 本地已下载的附件（部署到本站的） -->
+                <template x-if="att.local_file && bid.id">
+                  <a :href="localFileUrl(att)" target="_blank"
+                    :download="att.local_file"
+                    class="flex-shrink-0 px-2 py-1 rounded-lg bg-emerald-500 text-white text-xs font-medium hover:bg-emerald-600 transition-colors cursor-pointer whitespace-nowrap">
+                    下载
+                  </a>
+                </template>
+                <!-- 源站附件（已知源站下载系统损坏，跳转到源站详情页） -->
+                <template x-if="att.url && !att.local_file && att.source_only">
+                  <a :href="bid.detail_url || bid.url || '#'" target="_blank" rel="noreferrer"
+                    class="flex-shrink-0 px-2 py-1 rounded-lg bg-amber-50 text-amber-700 text-xs font-medium hover:bg-amber-100 transition-colors cursor-pointer whitespace-nowrap"
+                    title="该附件暂不支持站内下载，点击前往源站查看">
+                    <span class="flex items-center gap-1">
+                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                      源站附件
+                    </span>
+                  </a>
+                </template>
+                <!-- 附件下载（代理或源站）— local_file存在时隐藏 -->
+                <template x-if="att.url && !att.local_file && !att.source_only">
+                  <a :href="attachmentUrl(att)" target="_blank"
+                    @click.prevent="handleAttachmentClick(att, $event)"
+                    class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center hover:bg-emerald-200 transition-colors cursor-pointer"
+                    :title="needsSession(att.url) ? '从源站下载' : '下载文件'">
+                    <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                  </a>
+                </template>
+                <!-- 无任何下载链接 -->
+                <template x-if="!att.local_file && !att.url">
+                  <a :href="bid.url" target="_blank"
+                    class="flex-shrink-0 px-2 py-1 rounded-lg bg-amber-50 text-amber-700 text-xs font-medium hover:bg-amber-100 transition-colors cursor-pointer whitespace-nowrap">
+                    源站下载
+                  </a>
+                </template>
+              </div>
+            </template>
           </div>
+<p class="text-xs text-gray-400 mt-3" x-show="bid.attachments.some(a => a.source_only)"><span>部分附件暂不支持站内下载，可点击「源站附件」前往源站查看</span></p>
         </div>
 
       </div>
@@ -260,10 +362,17 @@
         async init() {
           this.loadFavs();
           const params = new URLSearchParams(window.location.search);
-          const id = params.get('id');
+          let id = params.get('id');
           const q = params.get('q');
           if (q) {
             this.keywords = q.split(',').map(k => k.trim()).filter(k => k);
+          }
+          // Fallback: extract id from pathname (e.g. /detail/{id}.html)
+          if (!id) {
+            const match = window.location.pathname.match(/\/detail\/([^/]+?)(?:\.html)?$/);
+            if (match) {
+              id = match[1];
+            }
           }
           if (!id) { this.loading = false; return; }
           await this.loadBid(id);
@@ -280,6 +389,26 @@
 
         highlightText(text) {
           if (!text || this.keywords.length === 0) return text;
+          // 如果是 HTML（包含 <tag>），不要破坏结构 — 仅对纯文本做高亮
+          if (text.includes('<') && text.includes('>')) {
+            // 用占位符保护 HTML 标签
+            let parts = text.split(/(<[^>]*>)/g);
+            let result = parts.map((part, i) => {
+              if (i % 2 === 0) {
+                // 文本部分 — 应用高亮
+                this.keywords.forEach(kw => {
+                  if (!kw) return;
+                  const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                  const regex = new RegExp(`(${escaped})`, 'gi');
+                  part = part.replace(regex, '<span style="color:red">$1</span>');
+                });
+                return part;
+              }
+              return part; // HTML 标签原样保留
+            });
+            return result.join('');
+          }
+          // 纯文本 — 直接高亮
           let result = text;
           this.keywords.forEach(kw => {
             if (!kw) return;
@@ -290,16 +419,226 @@
           return result;
         },
 
-        async loadBid(id) {
+        localFileUrl(att) {
+            if (att.local_file) {
+                const t = Date.now();
+                return 'https://121.40.176.240/attachments/' + encodeURIComponent(att.local_file) + '?t=' + t;
+            }
+            return '';
+        },
+
+        needsSession(url) {
+          if (!url) return false;
+          const sessionDomains = ['jsggzy.jszwfw.gov.cn', 'ggzyfw.fujian.gov.cn', 'www.ccgp-hebei.gov.cn', 'www.cqggzy.com', 'ggzyjy.fzggw.nx.gov.cn', 'www.qhggzyjy.gov.cn'];
+          return sessionDomains.some(d => url.includes(d));
+        },
+
+        // 需session的源站 → 直接打开
+        attachmentUrl(att) {
+          // 有本地文件 → 直接返回VPS附件路径  
+          if (att && att.local_file) {
+            const t = Date.now();
+            return 'https://121.40.176.240/attachments/' + encodeURIComponent(att.local_file) + '?t=' + t;
+          }
+          if (!att || !att.url) return '';
+          // 需session的源站 → 直接打开
+          if (this.needsSession(att.url)) return att.url;
+          // 没有本地文件 → 直接返回源站URL
+          return att.url;
+        },
+
+                // 需session的附件：先fetch，失败则跳转源站
+        async handleAttachmentClick(att, event) {
+          if (!att || !att.url) return true;
+          if (!this.needsSession(att.url)) return true;
+          event.preventDefault();
+          const btn = event.currentTarget;
+          btn.classList.add('opacity-50', 'pointer-events-none');
+          btn.title = '下载中...';
           try {
-            const resp = await fetch('/api/bids/' + id);
+            const resp = await fetch(att.url, {
+              credentials: 'include',
+              mode: 'cors',
+              headers: { 'Accept': '*/*' }
+            });
+            if (resp.ok) {
+              const blob = await resp.blob();
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = att.name || 'download';
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              setTimeout(() => URL.revokeObjectURL(url), 60000);
+              btn.title = '下载完成';
+              btn.classList.remove('opacity-50', 'pointer-events-none');
+              return false;
+            }
+          } catch(e) {}
+          btn.title = '跳转源站';
+          btn.classList.remove('opacity-50', 'pointer-events-none');
+          const detailUrl = (this.bid && this.bid.sourceUrl) || '';
+          if (detailUrl) window.open(detailUrl, '_blank');
+          else window.open(att.url, '_blank');
+          return false;
+        },
+
+        async _decompressGzip(buf) {
+          const uint8 = new Uint8Array(buf);
+          // pako.ungzip handles gzip format natively (header + deflate)
+          try {
+            return new TextDecoder('utf-8').decode(pako.ungzip(uint8));
+          } catch(e1) {
+            // Fallback to native DecompressionStream
+            try {
+              const ds = new DecompressionStream('gzip');
+              const writer = ds.writable.getWriter();
+              writer.write(uint8);
+              writer.close();
+              const reader = ds.readable.getReader();
+              const chunks = [];
+              while (true) { const { done, value } = await reader.read(); if (done) break; chunks.push(value); }
+              const total = chunks.reduce((a, c) => a + c.byteLength, 0);
+              const merged = new Uint8Array(total);
+              let offset = 0;
+              for (const chunk of chunks) { merged.set(chunk, offset); offset += chunk.byteLength; }
+              return new TextDecoder('utf-8').decode(merged);
+            } catch(e2) {
+              throw new Error('decompress failed');
+            }
+          }
+        },
+
+        async loadBid(id) {
+          const _st = setTimeout(() => { if (this.loading) { this.bid = { id: id, title: '标讯加载中...', content: '数据较大，正在努力加载。如长时间未显示请刷新页面重试。', source: '', date: '', region: '' }; this.loading = false; } }, 35000);
+          try {
+            // 先尝试加载单个标讯的小 JSON 文件（更快）
+            let data = null;
+            const smallResp = await fetch('/data/bid/' + id + '.json');
+            if (smallResp.ok && smallResp.headers.get('content-type')?.includes('json')) {
+              data = await smallResp.json();
+              if (data && data.id) {
+                data._title = this.highlightText(data.title);
+                data._html = data.html || '';
+                data._content = data._content || (data.content ? this.highlightText(data.content) : '');
+                this.bid = data;
+                document.title = data.title + ' — 标讯宝';
+                const desc = (data.budget || '') + ' · ' + (data.buyer || '') + ' · ' + (data.deadline || '') + '截止 · ' + (data.region || '');
+                setMeta('description', desc);
+                setMeta('og:title', data.title);
+                setMeta('og:description', desc);
+                setMeta('og:url', window.location.href);
+                const link = document.querySelector('link[rel="canonical"]');
+                if (link) link.href = window.location.href;
+                const script = document.getElementById('ld-breadcrumb');
+                if (script) {
+                  script.textContent = JSON.stringify({
+                    '@context': 'https://schema.org',
+                    '@type': 'BreadcrumbList',
+                    'itemListElement': [
+                      { '@type': 'ListItem', 'position': 1, 'name': '首页', 'item': 'https://qgbxb.com/' },
+                      { '@type': 'ListItem', 'position': 2, 'name': '标讯大全', 'item': 'https://qgbxb.com/list' },
+                      { '@type': 'ListItem', 'position': 3, 'name': data.title }
+                    ]
+                  });
+                }
+                this.loading = false;
+                return;
+              }
+            }
+            // 直接尝试分片加载（轻量+全正文，永远不超25MB）
+            // 注：bids-detail.json已废弃，改为直接从分片加载
+            try {
+              const idxResp = await fetch('/data/bids-index.json.gz', { signal: AbortSignal.timeout(15000) });
+              if (idxResp.ok) {
+                const idxBuf = await idxResp.arrayBuffer();
+                const idxText = await this._decompressGzip(idxBuf);
+                const idx = JSON.parse(idxText);
+                const chunkNum = idx[String(id)];
+                if (chunkNum !== undefined) {
+                  const chunkResp = await fetch('/data/bids-' + chunkNum + '.json.gz', { signal: AbortSignal.timeout(20000) });
+                  if (chunkResp.ok) {
+                    const buf = await chunkResp.arrayBuffer();
+                    const text = await this._decompressGzip(buf);
+                    const chunkData = JSON.parse(text);
+                    const found = (chunkData.bids || []).find(b => String(b.id) === String(id));
+                    if (found) {
+                      found._title = this.highlightText(found.title);
+                      found._content = found.content ? this.highlightText(found.content) : '';
+                      if (found.html) {
+                        found._content = found.html;
+                        found.content = found.content || found.html;
+                      }
+                      this.bid = found;
+                      document.title = found.title + ' — 标讯宝';
+                      this.loading = false;
+                      return;
+                    }
+                  }
+                }
+              }
+            } catch(e) {}
+            // 仍没找到，从完整 gz 加载（最慢）
+            const gzPaths = ['/data/bids.json.gz', '/data/bids', '/data/bids.gzip'];
+            let resp = null;
+            for (const p of gzPaths) {
+              resp = await fetch(p, { headers: { 'Accept-Encoding': 'identity' } });
+              if (resp.ok && resp.headers.get('content-type')?.includes('gzip')) break;
+            }
             if (!resp.ok) { this.loading = false; return; }
-            const data = await resp.json();
-            const b = data.bid;
+            const buf = await resp.arrayBuffer();
+            // 如果返回的已经是 JSON（浏览器自动解压），直接解析
+            const ct = resp.headers.get('content-type') || '';
+            if (ct.includes('json')) {
+              const text = new TextDecoder().decode(buf);
+              const jsonData = JSON.parse(text);
+              // _processFullData inline (function was never defined)
+              const bidsList = jsonData.bids || [];
+              const bidFound = bidsList.find(x => String(x.id) === String(id));
+              if (bidFound) {
+                bidFound._title = this.highlightText(bidFound.title);
+                bidFound._content = bidFound.content ? this.highlightText(bidFound.content) : '';
+                bidFound._html = bidFound.html || '';
+                this.bid = bidFound;
+                document.title = bidFound.title + ' — 标讯宝';
+              }
+              clearTimeout(_st); this.loading = false;
+              return;
+            }
+            // Try native DecompressionStream (modern browsers), fallback to pako (WeChat X5 etc.)
+            const uint8 = new Uint8Array(buf);
+            let decompressed;
+            try {
+              const ds = new DecompressionStream('gzip');
+              const writer = ds.writable.getWriter();
+              writer.write(uint8);
+              writer.close();
+              const reader = ds.readable.getReader();
+              const chunks = [];
+              while (true) { const { done, value } = await reader.read(); if (done) break; chunks.push(value); }
+              const total = chunks.reduce((a, c) => a + c.byteLength, 0);
+              const merged = new Uint8Array(total);
+              let offset = 0;
+              for (const chunk of chunks) { merged.set(chunk, offset); offset += chunk.byteLength; }
+              decompressed = merged;
+            } catch(e) {
+              decompressed = pako.inflate(uint8);
+            }
+            data = JSON.parse(new TextDecoder('utf-8').decode(decompressed));
+            const bids = data.bids || [];
+            const b = bids.find(x => String(x.id) === String(id));
             if (!b) { this.loading = false; return; }
             // Highlight title & content
             b._title = this.highlightText(b.title);
-            b._content = b.content ? this.highlightText(b.content) : '';
+            if (b._content) {
+              // 已有预清洁HTML，仅高亮（注意不破坏HTML结构）
+              b._content = this.highlightText(b._content);
+            } else if (b.content) {
+              b._content = this.highlightText(b.content);
+            } else {
+              b._content = '';
+            }
             this.bid = b;
 
             document.title = b.title + ' — 标讯宝'
@@ -317,7 +656,7 @@
                 '@type': 'BreadcrumbList',
                 'itemListElement': [
                   { '@type': 'ListItem', 'position': 1, 'name': '首页', 'item': 'https://qgbxb.com/' },
-                  { '@type': 'ListItem', 'position': 2, 'name': '标讯大全', 'item': 'https://qgbxb.com/list.html' },
+                  { '@type': 'ListItem', 'position': 2, 'name': '标讯大全', 'item': 'https://qgbxb.com/list' },
                   { '@type': 'ListItem', 'position': 3, 'name': b.title }
                 ]
               })
@@ -335,6 +674,7 @@
               this.bid = { id: id, title: decodeURIComponent(title), source: decodeURIComponent(source), sourceUrl: decodeURIComponent(sourceUrl), content: '', date: '', region: '' };
             }
           }
+          clearTimeout(_st);
           this.loading = false;
         },
 
@@ -423,6 +763,43 @@
 
         isContentBlocked(content) {
           return content && (content.includes('页面访问提示') || content.includes('暂停访问') || content.includes('PDF 文件') || content.includes('pdf-pending') || content.includes('内容待提取'));
+        },
+
+        // —— 附件类型样式 ——
+        attExtClass(ext) {
+          const map = {
+            'pdf': 'bg-red-50 text-red-600',
+            'doc': 'bg-blue-50 text-blue-600',
+            'docx': 'bg-blue-50 text-blue-600',
+            'xls': 'bg-green-50 text-green-600',
+            'xlsx': 'bg-green-50 text-green-600',
+            'zip': 'bg-amber-50 text-amber-600',
+            'rar': 'bg-amber-50 text-amber-600',
+            'link': 'bg-sky-50 text-sky-600',
+            'download': 'bg-purple-50 text-purple-600',
+          };
+          return map[ext] || 'bg-gray-50 text-gray-600';
+        },
+        attExtIcon(ext) {
+          const map = {
+            'pdf': '📄',
+            'doc': '📝',
+            'docx': '📝',
+            'xls': '📊',
+            'xlsx': '📊',
+            'zip': '📦',
+            'rar': '📦',
+            'link': '🔗',
+            'download': '📎',
+          };
+          return map[ext] || '📎';
+        },
+
+        // —— 判断是否为 NXZF 文件（需强制 download 属性） ——
+        isNxzf(att) {
+          if (!att || !att.local_file) return false;
+          const name = att.name || att.local_file;
+          return name.toUpperCase().endsWith('.NXZF');
         },
 
         // —— 来源文本颜色 ——
@@ -531,19 +908,19 @@
           </svg>
           <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">首页</span>
         </a>
-        <a href="/list.html" class="flex flex-col items-center gap-0.5 group">
+        <a href="/customers" class="flex flex-col items-center gap-0.5 group">
           <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
           </svg>
-          <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">标讯大全</span>
+          <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">客户资源</span>
         </a>
-        <a href="/favorites.html" class="flex flex-col items-center gap-0.5 group">
+        <a href="/favorites" class="flex flex-col items-center gap-0.5 group">
           <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
           <span class="text-xs text-gray-400 group-hover:text-emerald-600 transition-colors">我的收藏</span>
         </a>
-        <a href="/subscribe.html" class="flex flex-col items-center gap-0.5 group">
+        <a href="/subscribe" class="flex flex-col items-center gap-0.5 group">
           <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
           </svg>
@@ -553,6 +930,38 @@
     </div>
   </nav>
 
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --></div>
-</body>
+<!-- 工作日/非工作日 底部导航切换 -->
+<script>
+(async () => {
+  const isNonWorkday = await HolidayUtils.init();
+  if (isNonWorkday) {
+    const homeLink = document.querySelector('nav a[href="/"]');
+    const customerLink = document.querySelector('nav a[href="/customers"]');
+    if (homeLink) {
+      const dot = homeLink.querySelector('.absolute');
+      if (dot) dot.style.display = 'none';
+      const svg = homeLink.querySelector('svg');
+      if (svg) svg.classList.replace('text-emerald-600', 'text-gray-400');
+      const span = homeLink.querySelector('span');
+      if (span) span.classList.replace('text-emerald-600', 'text-gray-400');
+    }
+    if (customerLink) {
+      const dot = customerLink.querySelector('.absolute');
+      if (!dot) {
+        const d = document.createElement('span');
+        d.className = 'absolute -top-1 w-1 h-1 rounded-full bg-emerald-600';
+        customerLink.appendChild(d);
+      } else {
+        dot.style.display = '';
+      }
+      const svg = customerLink.querySelector('svg');
+      if (svg) svg.classList.replace('text-gray-400', 'text-emerald-600');
+      const span = customerLink.querySelector('span');
+      if (span) span.classList.replace('text-gray-400', 'text-emerald-600');
+    }
+  }
+})();
+</script>
+
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --><!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --></body>
 </html>
