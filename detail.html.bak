@@ -42,10 +42,15 @@
     .prose-content h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #111; }
     .prose-content h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; color: #1f2937; margin-top: 1.5rem; }
     .prose-content h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: #374151; }
-    .prose-content p { margin: 0; }
+    .prose-content p { margin: 0 0 0.6rem 0; }
     .prose-content ul, .prose-content ol { margin-bottom: 1rem; padding-left: 1.5rem; }
     .prose-content li { font-size: 0.95rem; line-height: 1.7; color: #4b5563; margin-bottom: 0.25rem; }
-    .prose-content table { max-width: 100%; }
+    .prose-content table { max-width: 100%; border-collapse: collapse; }
+    .prose-content td, .prose-content th { padding: 4px 8px; border: 1px solid #e5e7eb; vertical-align: top; }
+    /* hbggzy.cn 表格样式 */
+    .tab1 { text-align: center; border-collapse: collapse; width: 100% !important; }
+    .td1 { width: 30%; text-align: right; padding-right: 10px; background: #f9fafb; font-weight: 500; }
+    .td2 { width: 70%; text-align: left; padding-left: 10px; }
     .prose-content th, .prose-content td { font-size: 0.9rem; }
     .fade-in { animation: fadeIn 0.3s ease; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
@@ -265,7 +270,6 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
             </svg>
             附件下载
-            <span class="text-xs text-amber-600 font-normal ml-2">（部分源站附件暂不支持站内下载）</span>
           </h2>
           <div class="space-y-2">
             <template x-for="(att, idx) in bid.attachments" :key="idx">
@@ -303,14 +307,25 @@
                 </template>
                 <!-- 附件下载（代理或源站）— local_file存在时隐藏 -->
                 <template x-if="att.url && !att.local_file && !att.source_only">
-                  <a :href="attachmentUrl(att)" target="_blank"
-                    @click.prevent="handleAttachmentClick(att, $event)"
-                    class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center hover:bg-emerald-200 transition-colors cursor-pointer"
-                    :title="needsSession(att.url) ? '从源站下载' : '下载文件'">
-                    <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                    </svg>
-                  </a>
+                  <template x-if="needsSession(att.url)">
+                    <!-- 需session的源站：先尝试fetch，再降级详情页 -->
+                    <button @click.prevent="fetchAttachment(att, $event)"
+                      class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center hover:bg-emerald-200 transition-colors cursor-pointer"
+                      title="从源站下载">
+                      <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                      </svg>
+                    </button>
+                  </template>
+                  <template x-if="!needsSession(att.url)">
+                    <a :href="attachmentUrl(att)" target="_blank"
+                      class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center hover:bg-emerald-200 transition-colors cursor-pointer"
+                      title="代理下载">
+                      <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                      </svg>
+                    </a>
+                  </template>
                 </template>
                 <!-- 无任何下载链接 -->
                 <template x-if="!att.local_file && !att.url">
@@ -436,7 +451,7 @@
 
         needsSession(url) {
           if (!url) return false;
-          const sessionDomains = ['jsggzy.jszwfw.gov.cn', 'ggzyfw.fujian.gov.cn', 'www.ccgp-hebei.gov.cn', 'www.cqggzy.com', 'ggzyjy.fzggw.nx.gov.cn', 'www.qhggzyjy.gov.cn'];
+          const sessionDomains = ['ggzyfw.fujian.gov.cn', 'www.ccgp-hebei.gov.cn', 'www.cqggzy.com', 'ggzyjy.fzggw.nx.gov.cn', 'www.qhggzyjy.gov.cn'];
           return sessionDomains.some(d => url.includes(d));
         },
 
@@ -454,13 +469,12 @@
           return att.url;
         },
 
-                // 需session的附件：先fetch，失败则跳转源站
-        async handleAttachmentClick(att, event) {
-          if (!att || !att.url) return true;
-          if (!this.needsSession(att.url)) return true;
-          event.preventDefault();
+        // 需session的附件：先用fetch从用户浏览器抓取，失败则打开源站
+        async fetchAttachment(att, event) {
+          if (!att || !att.url) return;
           const btn = event.currentTarget;
-          btn.classList.add('opacity-50', 'pointer-events-none');
+          btn.classList.remove('bg-emerald-100', 'hover:bg-emerald-200');
+          btn.classList.add('bg-blue-100', 'animate-pulse');
           btn.title = '下载中...';
           try {
             const resp = await fetch(att.url, {
@@ -470,45 +484,32 @@
             });
             if (resp.ok) {
               const blob = await resp.blob();
-              const url = URL.createObjectURL(blob);
+              const blobUrl = URL.createObjectURL(blob);
               const a = document.createElement('a');
-              a.href = url;
-              a.download = att.name || 'download';
+              a.href = blobUrl;
+              a.download = att.name || 'attachment';
               document.body.appendChild(a);
               a.click();
               document.body.removeChild(a);
-              setTimeout(() => URL.revokeObjectURL(url), 60000);
+              setTimeout(() => URL.revokeObjectURL(blobUrl), 60000);
               btn.title = '下载完成';
-              btn.classList.remove('opacity-50', 'pointer-events-none');
-              return false;
+              btn.classList.remove('bg-blue-100', 'animate-pulse');
+              btn.classList.add('bg-emerald-100');
+              return;
             }
-          } catch(e) {}
-          btn.title = '跳转源站';
-          btn.classList.remove('opacity-50', 'pointer-events-none');
-          const detailUrl = (this.bid && this.bid.sourceUrl) || '';
-          if (detailUrl) window.open(detailUrl, '_blank');
-          else window.open(att.url, '_blank');
-          return false;
-        },
-
-        async _decompressGzip(buf) {
-          // Try native DecompressionStream, fallback to pako
-          const uint8 = new Uint8Array(buf);
-          try {
-            const ds = new DecompressionStream('gzip');
-            const writer = ds.writable.getWriter();
-            writer.write(uint8);
-            writer.close();
-            const reader = ds.readable.getReader();
-            const chunks = [];
-            while (true) { const { done, value } = await reader.read(); if (done) break; chunks.push(value); }
-            const total = chunks.reduce((a, c) => a + c.byteLength, 0);
-            const merged = new Uint8Array(total);
-            let offset = 0;
-            for (const chunk of chunks) { merged.set(chunk, offset); offset += chunk.byteLength; }
-            return new TextDecoder('utf-8').decode(merged);
           } catch(e) {
-            return new TextDecoder('utf-8').decode(pako.inflate(uint8));
+            // fetch失败（CORS等），降级到打开源站
+          }
+          // 降级：打开jsggzy详情页（同源可下载）
+          btn.title = '跳转源站';
+          btn.classList.remove('bg-blue-100', 'animate-pulse');
+          btn.classList.add('bg-amber-100');
+          // 提取详情页URL（从bid.sourceUrl或att.url）
+          const detailUrl = (this.bid && this.bid.sourceUrl) || '';
+          if (detailUrl && detailUrl.includes(att.url.split('/')[2])) {
+            window.open(detailUrl, '_blank');
+          } else {
+            window.open(att.url, '_blank');
           }
         },
 
@@ -516,12 +517,12 @@
           try {
             // 先尝试加载单个标讯的小 JSON 文件（更快）
             let data = null;
-            const smallResp = await fetch('/data/bid/' + id + '.json');
+            const smallResp = await fetch('/bid/' + id + '.json');
             if (smallResp.ok && smallResp.headers.get('content-type')?.includes('json')) {
               data = await smallResp.json();
               if (data && data.id) {
                 data._title = this.highlightText(data.title);
-                data._content = data._content || (data.content ? this.highlightText(data.content) : '');
+                data._content = data._content || (data.html ? this.highlightText(data.html) : (data.content ? this.highlightText(data.content) : ''));
                 this.bid = data;
                 document.title = data.title + ' — 标讯宝';
                 const desc = (data.budget || '') + ' · ' + (data.buyer || '') + ' · ' + (data.deadline || '') + '截止 · ' + (data.region || '');
@@ -555,7 +556,7 @@
                 const found = (detailData.bids || []).find(b => String(b.id) === String(id));
                 if (found) {
                   found._title = this.highlightText(found.title);
-                  found._content = found.content ? this.highlightText(found.content) : '';
+                  found._content = (found.html || found.content) ? this.highlightText(found.html || found.content) : '';
                   this.bid = found;
                   document.title = found.title + ' — 标讯宝';
                   this.loading = false;
@@ -563,30 +564,27 @@
                 }
               }
             } catch(e) {}
-            // 尝试分片加载（轻量+全正文，永远不超25MB）
+            // 仍没找到，通过index查找分片chunk
             try {
               const idxResp = await fetch('/data/bids-index.json.gz');
               if (idxResp.ok) {
                 const idxBuf = await idxResp.arrayBuffer();
-                const idxText = await this._decompressGzip(idxBuf);
-                const idx = JSON.parse(idxText);
+                const idxDecompressed = pako.inflate(new Uint8Array(idxBuf));
+                const idx = JSON.parse(new TextDecoder('utf-8').decode(idxDecompressed));
                 const chunkNum = idx[String(id)];
                 if (chunkNum !== undefined) {
                   const chunkResp = await fetch('/data/bids-' + chunkNum + '.json.gz');
                   if (chunkResp.ok) {
-                    const buf = await chunkResp.arrayBuffer();
-                    const text = await this._decompressGzip(buf);
-                    const chunkData = JSON.parse(text);
-                    const found = (chunkData.bids || []).find(b => String(b.id) === String(id));
-                    if (found) {
-                      found._title = this.highlightText(found.title);
-                      found._content = found.content ? this.highlightText(found.content) : '';
-                      if (found.html) {
-                        found._content = found.html;
-                        found.content = found.content || found.html;
-                      }
-                      this.bid = found;
-                      document.title = found.title + ' — 标讯宝';
+                    const chunkBuf = await chunkResp.arrayBuffer();
+                    const chunkDecompressed = pako.inflate(new Uint8Array(chunkBuf));
+                    const chunk = JSON.parse(new TextDecoder('utf-8').decode(chunkDecompressed));
+                    const bidsList = chunk.bids || [];
+                    const bidFound = bidsList.find(x => String(x.id) === String(id));
+                    if (bidFound) {
+                      bidFound._title = this.highlightText(bidFound.title);
+                      bidFound._content = (bidFound.html || bidFound.content) ? this.highlightText(bidFound.html || bidFound.content) : '';
+                      this.bid = bidFound;
+                      document.title = bidFound.title + ' — 标讯宝';
                       this.loading = false;
                       return;
                     }
@@ -613,7 +611,7 @@
               const bidFound = bidsList.find(x => String(x.id) === String(id));
               if (bidFound) {
                 bidFound._title = this.highlightText(bidFound.title);
-                bidFound._content = bidFound.content ? this.highlightText(bidFound.content) : '';
+                bidFound._content = (bidFound.html || bidFound.content) ? this.highlightText(bidFound.html || bidFound.content) : '';
                 bidFound._html = bidFound.html || '';
                 this.bid = bidFound;
                 document.title = bidFound.title + ' — 标讯宝';
@@ -649,6 +647,8 @@
             if (b._content) {
               // 已有预清洁HTML，仅高亮（注意不破坏HTML结构）
               b._content = this.highlightText(b._content);
+            } else if (b.html) {
+              b._content = this.highlightText(b.html);
             } else if (b.content) {
               b._content = this.highlightText(b.content);
             } else {
