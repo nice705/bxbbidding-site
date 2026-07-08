@@ -244,9 +244,9 @@
           </h2>
           <!-- 有内容 → 展示（排除屏蔽页面） -->
           <!-- 有内容 → 展示 -->
-          <div class="prose-content" x-show="bid.content && bid.content.length > 20 && !isContentBlocked(bid.content)" x-html="bid._content || bid.content"></div>
+          <div class="prose-content" x-show="(bid.html || bid._html || bid.content) && (bid.html || bid._html || bid.content).length > 20 && !isContentBlocked(bid.html || bid._html || bid.content)" x-html="bid.html || bid._html || bid._content || bid.content"></div>
           <!-- 无内容 → 显示元数据 + 原文链接 -->
-          <div class="text-center py-6" x-show="!bid.content || bid.content.length <= 20 || isContentBlocked(bid.content)">
+          <div class="text-center py-6" x-show="!bid.html && !bid._html && (!bid.content || bid.content.length <= 20 || isContentBlocked(bid.content))">
             <div class="text-3xl mb-2">📋</div>
             <p class="text-gray-600 text-sm font-medium mb-3">公告正文需跳转原文查看</p>
             <div class="flex flex-wrap justify-center gap-2 mb-4">
@@ -522,7 +522,8 @@
               data = await smallResp.json();
               if (data && data.id) {
                 data._title = this.highlightText(data.title);
-                data._content = data._content || (data.html ? this.highlightText(data.html) : (data.content ? this.highlightText(data.content) : ''));
+                data._html = data.html || '';
+                data._content = data._content || (data.content ? this.highlightText(data.content) : '');
                 this.bid = data;
                 document.title = data.title + ' — 标讯宝';
                 const desc = (data.budget || '') + ' · ' + (data.buyer || '') + ' · ' + (data.deadline || '') + '截止 · ' + (data.region || '');
@@ -556,7 +557,8 @@
                 const found = (detailData.bids || []).find(b => String(b.id) === String(id));
                 if (found) {
                   found._title = this.highlightText(found.title);
-                  found._content = (found.html || found.content) ? this.highlightText(found.html || found.content) : '';
+                  found._html = found.html || '';
+                  found._content = (found.content) ? this.highlightText(found.content) : '';
                   this.bid = found;
                   document.title = found.title + ' — 标讯宝';
                   this.loading = false;
@@ -582,7 +584,8 @@
                     const bidFound = bidsList.find(x => String(x.id) === String(id));
                     if (bidFound) {
                       bidFound._title = this.highlightText(bidFound.title);
-                      bidFound._content = (bidFound.html || bidFound.content) ? this.highlightText(bidFound.html || bidFound.content) : '';
+                      bidFound._html = bidFound.html || '';
+                      bidFound._content = (bidFound.content) ? this.highlightText(bidFound.content) : '';
                       this.bid = bidFound;
                       document.title = bidFound.title + ' — 标讯宝';
                       this.loading = false;
@@ -611,7 +614,7 @@
               const bidFound = bidsList.find(x => String(x.id) === String(id));
               if (bidFound) {
                 bidFound._title = this.highlightText(bidFound.title);
-                bidFound._content = (bidFound.html || bidFound.content) ? this.highlightText(bidFound.html || bidFound.content) : '';
+                bidFound._content = (bidFound.content) ? this.highlightText(bidFound.content) : '';
                 bidFound._html = bidFound.html || '';
                 this.bid = bidFound;
                 document.title = bidFound.title + ' — 标讯宝';
@@ -644,11 +647,9 @@
             if (!b) { this.loading = false; return; }
             // Highlight title & content
             b._title = this.highlightText(b.title);
+            b._html = b.html || '';
             if (b._content) {
-              // 已有预清洁HTML，仅高亮（注意不破坏HTML结构）
               b._content = this.highlightText(b._content);
-            } else if (b.html) {
-              b._content = this.highlightText(b.html);
             } else if (b.content) {
               b._content = this.highlightText(b.content);
             } else {
