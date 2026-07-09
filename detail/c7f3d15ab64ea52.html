@@ -27,11 +27,8 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
-  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
-  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
-  .att-toolarge{background:#fee2e2;color:#991b1b}
+  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .attachments a:hover{background:#047857}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -178,9 +175,7 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="https://121.40.176.240/attachments/6162354f-bae0-4394-81a0-6bda34f27e99_007_开标记录表.pdf" class="att-btn att-download" target="_blank" download="开标记录表.pdf">📥 开标记录表.pdf</a>
-      <a href="https://121.40.176.240/attachments/6162354f-bae0-4394-81a0-6bda34f27e99_007_评标委员会成员评标情况.pdf" class="att-btn att-download" target="_blank" download="评标委员会成员评标情况.pdf">📥 评标委员会成员评标情况.pdf</a>
-      <a href="https://121.40.176.240/attachments/6162354f-bae0-4394-81a0-6bda34f27e99_007_中标候选人公示.pdf" class="att-btn att-download" target="_blank" download="中标候选人公示.pdf">📥 中标候选人公示.pdf</a>
+    <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=3fd1d82e-8b4b-47c0-b976-0888e228608c&amp;appUrlFlag=ztb001&amp;siteGuid=bb9105b0-d084-4897-ba17-4dcc8bbc3ff7"开标记录表.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=d4ba7b72-412e-4580-9f1b-784b8efc4a8a&amp;appUrlFlag=ztb001&amp;siteGuid=bb9105b0-d084-4897-ba17-4dcc8bbc3ff7"评标委员会成员评标情况.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=de363057-4bda-4f64-a665-7651e8eda8a5&amp;appUrlFlag=ztb001&amp;siteGuid=bb9105b0-d084-4897-ba17-4dcc8bbc3ff7"中标候选人公示.pdf</a>
   </div>
 </div>
 <footer class="footer">

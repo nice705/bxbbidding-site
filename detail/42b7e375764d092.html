@@ -27,11 +27,8 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
-  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
-  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
-  .att-toolarge{background:#fee2e2;color:#991b1b}
+  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .attachments a:hover{background:#047857}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -76,9 +73,7 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <span class="att-btn att-pending">⏳ 承诺函.doc（附件准备中...）</span>
-      <span class="att-btn att-pending">⏳ 招标文件正文-6d97a091-a1f1-423f-8fae-1b0504e7d98a.pdf（附件准备中...）</span>
-      <span class="att-btn att-pending">⏳ 中小企业声明函.doc（附件准备中...）</span>
+    <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/811d0800-b342-13c7-3908-708a5a4b0540.doc"承诺函.doc</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/b0862407-c8cd-0af5-1b79-23298aeed385.pdf"招标文件正文-6d97a091-a1f1-423f-8fae-1b0504e7d98a.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/c3273e5d-4e1c-2244-e0ec-fd210f45a074.doc"中小企业声明函.doc</a>
   </div>
 </div>
 <footer class="footer">
