@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -75,7 +78,13 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/4a603710-10b3-aaff-c04c-844df77922ef.pdf"中小企业声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/63109ee9-24c6-6e2e-f523-569ba670accd.pdf"资格承诺函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/a7a9b18b-0b0a-510d-36b2-bc401a43c949.pdf"定州市区供热老旧管网改造项目造价咨询服务二次磋商文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/bb054331-3f5c-0f2b-8884-75ff1b04aa33.pdf"磋商记录.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/be9eddaf-d201-d1b1-fd77-677285cfd197.pdf"采购人承诺书1.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/d046fb4f-7f2a-f41a-1772-6a073d013b62.pdf"成交公告.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/dbd14c4e-b85a-886b-c4b5-a8ee14c38143.pdf"代理机构承诺书.pdf</a>
+    <span class="att-btn att-pending">⏳ 中小企业声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 资格承诺函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 定州市区供热老旧管网改造项目造价咨询服务二次磋商文件.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 磋商记录.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 采购人承诺书1.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 成交公告.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 代理机构承诺书.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

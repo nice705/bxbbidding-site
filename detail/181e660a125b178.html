@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -251,7 +254,18 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/eb223589-32f1-4850-a714-e22f483e7ebc-5593ece5-b778-4259-801c-862fb9c5a9dc?1823503"（发布）勘察设计任务书.docx</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/e5e177f5-8d52-4d8b-b6d8-57d3b39df6af-5593ece5-b778-4259-801c-862fb9c5a9dc?1823501"招标公告扫描件.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/c64ef72b-1a5f-44d2-96cc-1540652d75c0-5593ece5-b778-4259-801c-862fb9c5a9dc?1823499"项目代码证.png</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/9f9a32af-2ce9-4b9b-a29d-1cac71f469d4-5593ece5-b778-4259-801c-862fb9c5a9dc?1823497"广东省企业投资项目备案证.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/8c659590-9e4b-49ce-be83-2a03786242bc-5593ece5-b778-4259-801c-862fb9c5a9dc?1823495"招标代理合同.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/78c85c22-c40c-4540-a189-16c609d3cd79-5593ece5-b778-4259-801c-862fb9c5a9dc?1823493"招标文件（发布）.doc</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/73c38a63-e615-49da-85c8-ffa6b591ae71-5593ece5-b778-4259-801c-862fb9c5a9dc?1823491"（发布）广州市越秀区瑶台城中村改造项目—房建工程安置3地块建设项目可行性研究报告（含估算）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/4f0318d8-fe80-4423-86e0-e36e694b4d00-5593ece5-b778-4259-801c-862fb9c5a9dc?1823489"招标文件扫描件.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/4cf860ec-d850-4ac7-8f25-588f96d40f9d-5593ece5-b778-4259-801c-862fb9c5a9dc?1823486"招标人承诺书和招标人声明.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/48ac7368-0aab-48e9-9722-f038b9c6e507-5593ece5-b778-4259-801c-862fb9c5a9dc?1823483"招标公告（发布）.doc</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/104b8ff4-6774-43a6-a3db-3192bb2f90cd-5593ece5-b778-4259-801c-862fb9c5a9dc?1823480"广州市越秀区瑶台城中村改造项目-房建工程安置3地块建设项目（自编S4地块）施工总承包合同.docx</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/02c7e030-20a0-4ae6-bd64-9ba504af2a82-5593ece5-b778-4259-801c-862fb9c5a9dc?1823477"其他所有前期资料.pdf</a>
+    <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/181e660a125b178/（发布）勘察设计任务书.docx" class="att-btn att-download" target="_blank" download="（发布）勘察设计任务书.docx">📥 （发布）勘察设计任务书.docx</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/181e660a125b178/招标公告扫描件.pdf" class="att-btn att-download" target="_blank" download="招标公告扫描件.pdf">📥 招标公告扫描件.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/181e660a125b178/项目代码证.png" class="att-btn att-download" target="_blank" download="项目代码证.png">📥 项目代码证.png</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/181e660a125b178/广东省企业投资项目备案证.pdf" class="att-btn att-download" target="_blank" download="广东省企业投资项目备案证.pdf">📥 广东省企业投资项目备案证.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/181e660a125b178/招标代理合同.pdf" class="att-btn att-download" target="_blank" download="招标代理合同.pdf">📥 招标代理合同.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/181e660a125b178/招标文件（发布）.doc" class="att-btn att-download" target="_blank" download="招标文件（发布）.doc">📥 招标文件（发布）.doc</a>
+      <span class="att-btn att-pending">⏳ （发布）广州市越秀区瑶台城中村改造项目—房建工程安置3地块建设项目可行性研究报告（含估算）.pdf（附件准备中...）</span>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/181e660a125b178/招标文件扫描件.pdf" class="att-btn att-download" target="_blank" download="招标文件扫描件.pdf">📥 招标文件扫描件.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/181e660a125b178/招标人承诺书和招标人声明.pdf" class="att-btn att-download" target="_blank" download="招标人承诺书和招标人声明.pdf">📥 招标人承诺书和招标人声明.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/181e660a125b178/招标公告（发布）.doc" class="att-btn att-download" target="_blank" download="招标公告（发布）.doc">📥 招标公告（发布）.doc</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/181e660a125b178/广州市越秀区瑶台城中村改造项目-房建工程安置3地块建设项目（自编S4地块）施工总承包合同.docx" class="att-btn att-download" target="_blank" download="广州市越秀区瑶台城中村改造项目-房建工程安置3地块建设项目（自编S4地块）施工总承包合同.docx">📥 广州市越秀区瑶台城中村改造项目-房建工程安置3地块建设项目（自编S4地块）施工总承包合同.docx</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/181e660a125b178/其他所有前期资料.pdf" class="att-btn att-download" target="_blank" download="其他所有前期资料.pdf">📥 其他所有前期资料.pdf</a>
   </div>
 </div>
 <footer class="footer">

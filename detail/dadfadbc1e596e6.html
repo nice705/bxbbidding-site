@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -133,7 +136,8 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=http://222.85.190.33:82/TPBidder/rest/guizhouhlhtattachaction/download?attachguid=02933944-d7b9-4c3e-adb4-f2a06fcb7301&amp;isCommondto=true"【B包】招标文件正文.pdf</a> <a href="/api/proxy-attachment?url=http://222.85.190.33:82/TPBidder/rest/guizhouhlhtattachaction/download?attachguid=563209e3-5f99-45bf-86b0-f90fae4f86c4&amp;isCommondto=true"【A包】招标文件正文.pdf</a>
+    <a href="https://121.40.176.240/attachments/贵州公共资源交易中心/dadfadbc1e596e6/【B包】招标文件正文.pdf" class="att-btn att-download" target="_blank" download="【B包】招标文件正文.pdf">📥 【B包】招标文件正文.pdf</a>
+      <a href="https://121.40.176.240/attachments/贵州公共资源交易中心/dadfadbc1e596e6/【A包】招标文件正文.pdf" class="att-btn att-download" target="_blank" download="【A包】招标文件正文.pdf">📥 【A包】招标文件正文.pdf</a>
   </div>
 </div>
 <footer class="footer">

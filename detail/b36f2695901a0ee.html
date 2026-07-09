@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -155,7 +158,12 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=http://222.85.190.33:82/TPBidder/rest/guizhouhlhtattachaction/download?attachguid=57bc0cac-8c7e-420a-82e9-432fb5874330&amp;isCommondto=true"【品目3：中天吾乡学校家具设备采购】招标文件正文.pdf</a> <a href="/api/proxy-attachment?url=http://222.85.190.33:82/TPBidder/rest/guizhouhlhtattachaction/download?attachguid=004a4495-4b16-4898-90ca-2d9f4b594d4a&amp;isCommondto=true"【品目2：中天吾乡学校电力设备采购】招标文件正文.pdf</a> <a href="/api/proxy-attachment?url=http://222.85.190.33:82/TPBidder/rest/guizhouhlhtattachaction/download?attachguid=f3b8d170-3239-4144-88f2-dbd6853f8aee&amp;isCommondto=true"【品目4：中天吾乡学校图书设备采购】招标文件正文.pdf</a> <a href="/api/proxy-attachment?url=http://222.85.190.33:82/TPBidder/rest/guizhouhlhtattachaction/download?attachguid=58887cbd-7e02-4911-b7dd-b47767c8cdfd&amp;isCommondto=true"【品目1：中天吾乡学校教学设备采购】招标文件正文.pdf</a> <a href="/api/proxy-attachment?url=http://222.85.190.33:82/TPBidder/rest/guizhouhlhtattachaction/download?attachguid=0093d088-c83a-4be2-a3a3-fa28e48228ca&amp;isCommondto=true"节能产品政府采购品目清单.pdf</a> <a href="/api/proxy-attachment?url=http://222.85.190.33:82/TPBidder/rest/guizhouhlhtattachaction/download?attachguid=d11d3797-e31c-44b6-8eb4-3d3cd81b8d4c&amp;isCommondto=true"附件：采购清单及参数.rar</a>
+    <a href="https://121.40.176.240/attachments/贵州公共资源交易中心/b36f2695901a0ee/【品目3：中天吾乡学校家具设备采购】招标文件正文.pdf" class="att-btn att-download" target="_blank" download="【品目3：中天吾乡学校家具设备采购】招标文件正文.pdf">📥 【品目3：中天吾乡学校家具设备采购】招标文件正文.pdf</a>
+      <a href="https://121.40.176.240/attachments/贵州公共资源交易中心/b36f2695901a0ee/【品目2：中天吾乡学校电力设备采购】招标文件正文.pdf" class="att-btn att-download" target="_blank" download="【品目2：中天吾乡学校电力设备采购】招标文件正文.pdf">📥 【品目2：中天吾乡学校电力设备采购】招标文件正文.pdf</a>
+      <a href="https://121.40.176.240/attachments/贵州公共资源交易中心/b36f2695901a0ee/【品目4：中天吾乡学校图书设备采购】招标文件正文.pdf" class="att-btn att-download" target="_blank" download="【品目4：中天吾乡学校图书设备采购】招标文件正文.pdf">📥 【品目4：中天吾乡学校图书设备采购】招标文件正文.pdf</a>
+      <a href="https://121.40.176.240/attachments/贵州公共资源交易中心/b36f2695901a0ee/【品目1：中天吾乡学校教学设备采购】招标文件正文.pdf" class="att-btn att-download" target="_blank" download="【品目1：中天吾乡学校教学设备采购】招标文件正文.pdf">📥 【品目1：中天吾乡学校教学设备采购】招标文件正文.pdf</a>
+      <a href="https://121.40.176.240/attachments/贵州公共资源交易中心/b36f2695901a0ee/节能产品政府采购品目清单.pdf" class="att-btn att-download" target="_blank" download="节能产品政府采购品目清单.pdf">📥 节能产品政府采购品目清单.pdf</a>
+      <span class="att-btn att-pending">⏳ 附件：采购清单及参数.rar（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -223,7 +226,8 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=456ad619-bf99-432f-ac83-56c181e05763&amp;appUrlFlag=ztb001&amp;siteGuid=63e47685-8a8b-4d81-b2b4-788660412d04"招标公告.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=a7a4233e-9f09-4379-ab1c-c7d0e7e4abe9&amp;appUrlFlag=ztb001&amp;siteGuid=63e47685-8a8b-4d81-b2b4-788660412d04"（询比文件清单）班玛县灯塔乡班前村、忠智村2社供水水质提升保障工程(1).doc</a>
+    <a href="https://121.40.176.240/attachments/885a5c19-04da-4148-9fbb-340761174861_003_招标公告.pdf" class="att-btn att-download" target="_blank" download="招标公告.pdf">📥 招标公告.pdf</a>
+      <a href="https://121.40.176.240/attachments/885a5c19-04da-4148-9fbb-340761174861_003_（询比文件清单）班玛县灯塔乡班前村、忠智村2社供水水质提升保障工程(1).doc" class="att-btn att-download" target="_blank" download="（询比文件清单）班玛县灯塔乡班前村、忠智村2社供水水质提升保障工程(1).doc">📥 （询比文件清单）班玛县灯塔乡班前村、忠智村2社供水水质提升保障工程(1).doc</a>
   </div>
 </div>
 <footer class="footer">

@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -232,7 +235,8 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/ff7293b5-47ae-41b6-8272-a750dff3582d-ed5033e6-9ada-43dc-9922-05163c9ed67d?1823247"英怀、怀阳高速设计回溯部分工点病害处治工程施工招标公告（盖章版）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/3b56c746-328b-4549-b0a6-e8a23f141e70-ed5033e6-9ada-43dc-9922-05163c9ed67d?1823242"英怀、怀阳高速设计回溯部分工点病害处治工程施工招标文件（盖章版）.pdf</a>
+    <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/d90cab4feaf5493/英怀、怀阳高速设计回溯部分工点病害处治工程施工招标公告（盖章版）.pdf" class="att-btn att-download" target="_blank" download="英怀、怀阳高速设计回溯部分工点病害处治工程施工招标公告（盖章版）.pdf">📥 英怀、怀阳高速设计回溯部分工点病害处治工程施工招标公告（盖章版）.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/d90cab4feaf5493/英怀、怀阳高速设计回溯部分工点病害处治工程施工招标文件（盖章版）.pdf" class="att-btn att-download" target="_blank" download="英怀、怀阳高速设计回溯部分工点病害处治工程施工招标文件（盖章版）.pdf">📥 英怀、怀阳高速设计回溯部分工点病害处治工程施工招标文件（盖章版）.pdf</a>
   </div>
 </div>
 <footer class="footer">
