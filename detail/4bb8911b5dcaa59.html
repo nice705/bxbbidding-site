@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -108,7 +111,8 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/d4134dde-c6eb-4243-a518-a37b60cf5784--3C14?1824242"第1次答疑与澄清、修改文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/475b6da0-842f-4042-8524-f4b9cb175d67--3C14?1824241"答疑澄清文件公告.pdf</a>
+    <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/4bb8911b5dcaa59/第1次答疑与澄清、修改文件.pdf" class="att-btn att-download" target="_blank" download="第1次答疑与澄清、修改文件.pdf">📥 第1次答疑与澄清、修改文件.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/4bb8911b5dcaa59/答疑澄清文件公告.pdf" class="att-btn att-download" target="_blank" download="答疑澄清文件公告.pdf">📥 答疑澄清文件公告.pdf</a>
   </div>
 </div>
 <footer class="footer">

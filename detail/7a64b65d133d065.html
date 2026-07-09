@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -75,7 +78,26 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/22bac525-fcd2-ccf9-c88d-600df58154b4.pdf"A包中小企业声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/22d55ebb-81d2-3ff9-7d74-8b232869cb46.pdf"B包招标文件正文.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/2b24a37d-d10b-bd5a-c097-07328b4ad0c1.pdf"专家评分公示信息-C包.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/2eef2cd5-8a55-d0bb-29aa-36f4e2728e6b.pdf"D包招标文件正文.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/481398f9-41c5-c3c1-af78-d0ef5f41b19d.pdf"C包本国产品声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/4a6430f1-4789-3604-cc0b-69895665f8d6.pdf"D包中小企业声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/4c159e56-226f-ff93-ae40-d79e0103acb1.pdf"专家评分公示信息-A包.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/4cd43241-de3c-42b1-40b8-06a7dcdb50aa.pdf"D包承诺函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/4e80758e-a266-d913-3858-9192c1313156.pdf"专家评分公示信息-D包.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/5e896ca8-5b32-5728-fd16-ef8b94ab5492.pdf"A包承诺函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/6239b49e-0c4c-4b90-959e-92a2513561fc.pdf"专家评分公示信息-B包.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/7379097c-fb1b-70bc-c745-c78e8d109d6f.pdf"C包承诺函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/952d4070-baaa-23a8-40fc-d50120728fd2.pdf"A包本国产品声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/981ebc64-5157-1347-8be0-3b2a0706fc9f.pdf"C包招标文件正文.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/a37d4fd0-1f77-e97f-0d93-7a9edd558442.pdf"D包本国产品声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/bd2c49b1-22bb-5995-2598-53aac6591e74.pdf"B包承诺函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/c617e707-b5c8-2ab2-7b81-9ea86a3f94f6.pdf"B包本国产品声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/e9a0d39d-6e0a-6b33-399c-17814190db5d.pdf"A包招标文件正文.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/f1153ac9-d425-cb4f-6445-7aafe52ba71b.pdf"C包中小企业声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/fc957c7a-bd91-8c92-b695-d581c840f2e1.pdf"B包中小企业声明函.pdf</a>
+    <span class="att-btn att-pending">⏳ A包中小企业声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ B包招标文件正文.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 专家评分公示信息-C包.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ D包招标文件正文.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ C包本国产品声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ D包中小企业声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 专家评分公示信息-A包.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ D包承诺函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 专家评分公示信息-D包.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ A包承诺函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 专家评分公示信息-B包.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ C包承诺函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ A包本国产品声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ C包招标文件正文.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ D包本国产品声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ B包承诺函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ B包本国产品声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ A包招标文件正文.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ C包中小企业声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ B包中小企业声明函.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

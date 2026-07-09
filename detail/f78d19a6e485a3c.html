@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -51,7 +54,15 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/aff232f5-3e5b-412a-b1d4-ced5f3f40512?1819934"广东省工程建设项目中标候选人公示-盖章版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/e68b4b52-0f58-4aa7-8c20-6a32e54874d7?1819933"评标报告-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/b4346e4e-a360-4881-abaf-ca3eb649c537?1819932"定标过程资料-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/4203a1e2-2715-4364-826a-d644585e0344?1819931"K值抽取记录表-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/edccca3e-fa41-4867-ba59-5f28112591fd?1819930"评标过程资料-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/0717012f-3de5-404f-bab0-935af7657b03?1819929"高州市鉴龙水利水电建设有限公司-脱敏版-.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/57dc0536-9d7b-4be1-b587-8ffe707d2c7e?1819928"广东方中建设工程有限公司-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/840b239e-0fa7-4199-91f2-2d1e8ff95a53?1819927"广东园政工程有限公司-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/b057c69a-5427-40d1-996d-ddd62d191da3?1819926"定标报告-脱敏版.pdf</a>
+    <span class="att-btn att-pending">⏳ 广东省工程建设项目中标候选人公示-盖章版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 评标报告-脱敏版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 定标过程资料-脱敏版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ K值抽取记录表-脱敏版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 评标过程资料-脱敏版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 高州市鉴龙水利水电建设有限公司-脱敏版-.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 广东方中建设工程有限公司-脱敏版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 广东园政工程有限公司-脱敏版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 定标报告-脱敏版.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

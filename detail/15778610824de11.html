@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -167,7 +170,12 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=1e5ba47b-3346-43a2-bc96-96d8220c8004&amp;appUrlFlag=ztb001&amp;siteGuid=4f7a925a-a9fb-448c-a714-0b2580461204"青海沐晖建设工程有限公司企业业绩和人员业绩.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=8ca72c5f-b661-40ce-98e3-99686daeb523&amp;appUrlFlag=ztb001&amp;siteGuid=4f7a925a-a9fb-448c-a714-0b2580461204"青海九地建设工程有限公司企业业绩和人员业绩.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=c69bb9cb-d58c-4c60-bfc2-1380378552e5&amp;appUrlFlag=ztb001&amp;siteGuid=4f7a925a-a9fb-448c-a714-0b2580461204"开标记录表.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=cce979fd-854f-487f-b550-2a31db03eb2f&amp;appUrlFlag=ztb001&amp;siteGuid=4f7a925a-a9fb-448c-a714-0b2580461204"评标委员会成员评标情况.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=efe46ebb-8153-4e01-9aa9-8e4e5e25d877&amp;appUrlFlag=ztb001&amp;siteGuid=4f7a925a-a9fb-448c-a714-0b2580461204"青海敦行建设工程有限公司企业业绩和人员业绩.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=f46347d5-2f50-4463-9679-51a896d65ece&amp;appUrlFlag=ztb001&amp;siteGuid=4f7a925a-a9fb-448c-a714-0b2580461204"中标候选人公示.pdf</a>
+    <a href="https://121.40.176.240/attachments/7e4a73b7-05cb-48ab-9ef9-aa23f913710d_010_青海沐晖建设工程有限公司企业业绩和人员业绩.pdf" class="att-btn att-download" target="_blank" download="青海沐晖建设工程有限公司企业业绩和人员业绩.pdf">📥 青海沐晖建设工程有限公司企业业绩和人员业绩.pdf</a>
+      <a href="https://121.40.176.240/attachments/7e4a73b7-05cb-48ab-9ef9-aa23f913710d_010_青海九地建设工程有限公司企业业绩和人员业绩.pdf" class="att-btn att-download" target="_blank" download="青海九地建设工程有限公司企业业绩和人员业绩.pdf">📥 青海九地建设工程有限公司企业业绩和人员业绩.pdf</a>
+      <a href="https://121.40.176.240/attachments/7e4a73b7-05cb-48ab-9ef9-aa23f913710d_010_开标记录表.pdf" class="att-btn att-download" target="_blank" download="开标记录表.pdf">📥 开标记录表.pdf</a>
+      <a href="https://121.40.176.240/attachments/7e4a73b7-05cb-48ab-9ef9-aa23f913710d_010_评标委员会成员评标情况.pdf" class="att-btn att-download" target="_blank" download="评标委员会成员评标情况.pdf">📥 评标委员会成员评标情况.pdf</a>
+      <a href="https://121.40.176.240/attachments/7e4a73b7-05cb-48ab-9ef9-aa23f913710d_010_青海敦行建设工程有限公司企业业绩和人员业绩.pdf" class="att-btn att-download" target="_blank" download="青海敦行建设工程有限公司企业业绩和人员业绩.pdf">📥 青海敦行建设工程有限公司企业业绩和人员业绩.pdf</a>
+      <a href="https://121.40.176.240/attachments/7e4a73b7-05cb-48ab-9ef9-aa23f913710d_010_中标候选人公示.pdf" class="att-btn att-download" target="_blank" download="中标候选人公示.pdf">📥 中标候选人公示.pdf</a>
   </div>
 </div>
 <footer class="footer">

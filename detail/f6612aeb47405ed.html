@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -229,7 +232,12 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/e4790224-4ad8-4530-9d9e-637aa83a284d--3C51?1824099"优质投标人一中移建设有限公司.rar</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/d92f1989-af6f-4401-a7ea-a7e937833691--3C51?1824098"优质投标人公示（签字）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/b6d781b0-a3cb-4349-a3cd-8b6f74b20f37--3C51?1824097"评标专家评标过程的评审意见公示表.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/4447c463-ba1f-421b-bd2d-9c83996cd06a--3C51?1824096"评标报告（脱敏）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/2ab913da-9294-42e9-b008-58e5fbccd748--3C51?1824095"优质投标人三中徽建技术有限公司.rar</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/25a6eafb-749f-40ff-a568-28acb3cbad2b--3C51?1824093"优质投标人二广东省电信规划设计院有限公司.rar</a>
+    <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/f6612aeb47405ed/评标报告（脱敏）.pdf" class="att-btn att-download" target="_blank" download="优质投标人一中移建设有限公司.rar">📥 优质投标人一中移建设有限公司.rar</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/f6612aeb47405ed/优质投标人公示（签字）.pdf" class="att-btn att-download" target="_blank" download="优质投标人公示（签字）.pdf">📥 优质投标人公示（签字）.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/f6612aeb47405ed/评标专家评标过程的评审意见公示表.pdf" class="att-btn att-download" target="_blank" download="评标专家评标过程的评审意见公示表.pdf">📥 评标专家评标过程的评审意见公示表.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/f6612aeb47405ed/评标报告（脱敏）.pdf" class="att-btn att-download" target="_blank" download="评标报告（脱敏）.pdf">📥 评标报告（脱敏）.pdf</a>
+      <span class="att-btn att-pending">⏳ 优质投标人三中徽建技术有限公司.rar（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 优质投标人二广东省电信规划设计院有限公司.rar（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

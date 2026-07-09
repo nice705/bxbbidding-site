@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -75,7 +78,9 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/8807baad-ac18-d882-453a-e6d77a0de722.pdf"二次（杜）招标文件-河北资源环境职业技术学院2026应用软件采购项目B包.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/b316602a-7e91-2fa7-ad0b-2906302e84c1.pdf"中小.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/f08b7e54-a0b5-fef4-600d-9b60af58d593.pdf"二十二条.pdf</a>
+    <span class="att-btn att-pending">⏳ 二次（杜）招标文件-河北资源环境职业技术学院2026应用软件采购项目B包.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中小.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 二十二条.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

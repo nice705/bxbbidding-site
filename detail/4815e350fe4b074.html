@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -51,7 +54,15 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/fc484654-6bd5-4b87-a298-a60677f4e72a?1819357"投标文件格式（仅供参考）.docx</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/48e536a4-84e2-4eda-be0d-09e0dcabb9f7?1819356"最高投标限价PDF版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/5675aa7a-bbc5-412a-b27d-36cda2307d63?1819355"技术标封面.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/658cd028-78cf-4b7c-8e53-06e937a920db?1819354"施工合同格式-东莞市大朗镇求富路社区梦想启航儿童公园项目.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/bd712bbd-5778-4c40-a39b-b7b9e4fe0c56?1819353"图纸—东莞市大朗镇求富路社区梦想启航儿童公园项目.zip</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/39026ccc-a252-45d5-8c7e-162643699a3d?1819352"东莞市大朗镇求富路社区梦想启航儿童公园项目招标文件电子版v5.0.zbs</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/de537f56-9c93-43e5-83e1-aef9bc617602?1819351"（发出稿）招标文件—东莞市大朗镇求富路社区梦想启航儿童公园项目.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/b26010fb-ca9f-438b-a896-91ae72e4d986?1819350"评标程序附表.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/fa1c976e-7ad4-4564-8668-9739916ebe53?1819349"清单—东莞市大朗镇求富路社区梦想启航儿童公园项目.COS4</a>
+    <span class="att-btn att-pending">⏳ 投标文件格式（仅供参考）.docx（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 最高投标限价PDF版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 技术标封面.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 施工合同格式-东莞市大朗镇求富路社区梦想启航儿童公园项目.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 图纸—东莞市大朗镇求富路社区梦想启航儿童公园项目.zip（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 东莞市大朗镇求富路社区梦想启航儿童公园项目招标文件电子版v5.0.zbs（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ （发出稿）招标文件—东莞市大朗镇求富路社区梦想启航儿童公园项目.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 评标程序附表.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 清单—东莞市大朗镇求富路社区梦想启航儿童公园项目.COS4（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -226,7 +229,8 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=b47f9192-ba38-4fc6-bbd6-780a89bf0060&amp;appUrlFlag=ztb001&amp;siteGuid=7eb5f7f1-9041-43ad-8e13-8fcb82ea831a"2026-2027年度物业管理服务项目.doc</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=b4b1cc24-3a87-4b8f-82e9-199d3e181ffc&amp;appUrlFlag=ztb001&amp;siteGuid=7eb5f7f1-9041-43ad-8e13-8fcb82ea831a"招标公告.pdf</a>
+    <a href="https://121.40.176.240/attachments/1fe9951c-08e2-4f83-9ddf-8051d1010b8f_002_2026-2027年度物业管理服务项目.doc" class="att-btn att-download" target="_blank" download="2026-2027年度物业管理服务项目.doc">📥 2026-2027年度物业管理服务项目.doc</a>
+      <a href="https://121.40.176.240/attachments/1fe9951c-08e2-4f83-9ddf-8051d1010b8f_002_招标公告.pdf" class="att-btn att-download" target="_blank" download="招标公告.pdf">📥 招标公告.pdf</a>
   </div>
 </div>
 <footer class="footer">

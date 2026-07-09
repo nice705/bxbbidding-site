@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -240,7 +243,23 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/f6706a73-c8d8-4dfe-9b9f-167f41121aca-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824957"招标代理委托书.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/cba2a989-bd92-438c-9554-c64ddd41ed4f-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824956"招标文件.docx</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/c7935b22-9ac9-4a6f-92c0-4a385ff6936e-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824955"关于前期基础资料已收集完成的说明.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/b42bb380-eb82-4764-9fd9-8d797b061865-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824954"设计任务书.docx</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/ac61aaa2-1762-4c2c-94c3-528399e646f8-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824953"广东省投资项目代码.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/91afd274-e5e5-407d-90b3-eeb094fd8d33-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824952"资金来源的说明.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/7a9dc5a6-4b5f-4988-becd-dcfabfd45d70-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824950"招标人声明.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/74ae2383-d89e-4b4d-a628-ea0135c57781-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824949"广东省企业投资项目备案证.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/6d9403e0-3bf7-4b5a-a498-9190f5a8bf1b-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824947"招标公告.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/61b2ce82-fe72-453a-9e79-f8ff0a3da7f8-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824945"设计费报价表.xlsx</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/47836e1b-7bdb-4b91-a510-d497500e3df6-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824944"建筑图纸.zip</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/3dbcdae0-4a78-471e-b869-8c6e276567f3-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824943"设计服务合同.docx</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/2ca74dbf-b037-4529-9552-65c43732117b-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824942"招标文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/2a17af14-6e2a-4cda-a678-3211c2a764a2-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824941"电子签名委托书.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/1ea26291-83df-4a99-8ad2-e1093972b774-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824940"招标公告.doc</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/085d8db4-92a1-4aa9-8a58-41c8c24a6b61-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824939"招标人授权代表证明书.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/07117e49-ad17-4b74-bd4f-5d275435ef89-e8007c9e-4034-48ef-bec3-33108b3b85fa?1824938"招标申请函.pdf</a>
+    <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/招标代理委托书.pdf" class="att-btn att-download" target="_blank" download="招标代理委托书.pdf">📥 招标代理委托书.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/招标文件.docx" class="att-btn att-download" target="_blank" download="招标文件.docx">📥 招标文件.docx</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/关于前期基础资料已收集完成的说明.pdf" class="att-btn att-download" target="_blank" download="关于前期基础资料已收集完成的说明.pdf">📥 关于前期基础资料已收集完成的说明.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/设计任务书.docx" class="att-btn att-download" target="_blank" download="设计任务书.docx">📥 设计任务书.docx</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/广东省投资项目代码.pdf" class="att-btn att-download" target="_blank" download="广东省投资项目代码.pdf">📥 广东省投资项目代码.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/资金来源的说明.pdf" class="att-btn att-download" target="_blank" download="资金来源的说明.pdf">📥 资金来源的说明.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/招标人声明.pdf" class="att-btn att-download" target="_blank" download="招标人声明.pdf">📥 招标人声明.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/广东省企业投资项目备案证.pdf" class="att-btn att-download" target="_blank" download="广东省企业投资项目备案证.pdf">📥 广东省企业投资项目备案证.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/招标公告.pdf" class="att-btn att-download" target="_blank" download="招标公告.pdf">📥 招标公告.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/设计费报价表.xlsx" class="att-btn att-download" target="_blank" download="设计费报价表.xlsx">📥 设计费报价表.xlsx</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/招标申请函.pdf" class="att-btn att-download" target="_blank" download="建筑图纸.zip">📥 建筑图纸.zip</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/设计服务合同.docx" class="att-btn att-download" target="_blank" download="设计服务合同.docx">📥 设计服务合同.docx</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/招标文件.pdf" class="att-btn att-download" target="_blank" download="招标文件.pdf">📥 招标文件.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/电子签名委托书.pdf" class="att-btn att-download" target="_blank" download="电子签名委托书.pdf">📥 电子签名委托书.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/招标公告.doc" class="att-btn att-download" target="_blank" download="招标公告.doc">📥 招标公告.doc</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/招标人授权代表证明书.pdf" class="att-btn att-download" target="_blank" download="招标人授权代表证明书.pdf">📥 招标人授权代表证明书.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/b544d79023896e7/招标申请函.pdf" class="att-btn att-download" target="_blank" download="招标申请函.pdf">📥 招标申请函.pdf</a>
   </div>
 </div>
 <footer class="footer">

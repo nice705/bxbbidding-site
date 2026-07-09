@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -51,7 +54,11 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/7d696d32-5a29-49f2-a6ff-8306b527df75?1823204"3、20260707最高投标限价.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/5183f6fb-14c6-4d2d-ba73-f2249c72616c?1823203"2、20260707工程量清单.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/b9beff1f-ba88-4f73-bfcb-5b9833b61a92?1823202"评标程序附表.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/8c6e294a-7f8c-4609-b775-28f6a1a83d20?1823201"东莞市茶山镇城中村改造配套道路交通疏解工程招标文件电子版v4.0.zbs</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/8d710548-0f80-42ef-8320-0a5afd8345aa?1823200"1、20260708东莞市茶山镇城中村改造配套道路交通疏解工程补充通知（一）.pdf</a>
+    <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/e075ab85b27da69/东莞市茶山镇城中村改造配套道路交通疏解工程招标文件电子版v4.0.zbs" class="att-btn att-download" target="_blank" download="3、20260707最高投标限价.pdf">📥 3、20260707最高投标限价.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/e075ab85b27da69/评标程序附表.pdf" class="att-btn att-download" target="_blank" download="2、20260707工程量清单.pdf">📥 2、20260707工程量清单.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/e075ab85b27da69/评标程序附表.pdf" class="att-btn att-download" target="_blank" download="评标程序附表.pdf">📥 评标程序附表.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/e075ab85b27da69/东莞市茶山镇城中村改造配套道路交通疏解工程招标文件电子版v4.0.zbs" class="att-btn att-download" target="_blank" download="东莞市茶山镇城中村改造配套道路交通疏解工程招标文件电子版v4.0.zbs">📥 东莞市茶山镇城中村改造配套道路交通疏解工程招标文件电子版v4.0.zbs</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/e075ab85b27da69/东莞市茶山镇城中村改造配套道路交通疏解工程招标文件电子版v4.0.zbs" class="att-btn att-download" target="_blank" download="1、20260708东莞市茶山镇城中村改造配套道路交通疏解工程补充通知（一）.pdf">📥 1、20260708东莞市茶山镇城中村改造配套道路交通疏解工程补充通知（一）.pdf</a>
   </div>
 </div>
 <footer class="footer">

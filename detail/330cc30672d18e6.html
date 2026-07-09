@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -146,7 +149,9 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=1122d83a-414a-470a-b5f0-565c407d9267&amp;appUrlFlag=ztb001&amp;siteGuid=47d11648-922c-4774-9c81-57fcac09ac63"招标文件正文.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=820ff88a-f164-4eb9-b948-9ec5780c1595&amp;appUrlFlag=ztb001&amp;siteGuid=47d11648-922c-4774-9c81-57fcac09ac63"工程量清单.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=a0c47a95-3f19-4c81-89a4-8f870cf687fb&amp;appUrlFlag=ztb001&amp;siteGuid=47d11648-922c-4774-9c81-57fcac09ac63"招标公告.pdf</a>
+    <a href="https://121.40.176.240/attachments/3bf02cb6-22b4-4271-8628-49de3712203f_006_招标文件正文.pdf" class="att-btn att-download" target="_blank" download="招标文件正文.pdf">📥 招标文件正文.pdf</a>
+      <a href="https://121.40.176.240/attachments/3bf02cb6-22b4-4271-8628-49de3712203f_006_工程量清单.pdf" class="att-btn att-download" target="_blank" download="工程量清单.pdf">📥 工程量清单.pdf</a>
+      <a href="https://121.40.176.240/attachments/3bf02cb6-22b4-4271-8628-49de3712203f_006_招标公告.pdf" class="att-btn att-download" target="_blank" download="招标公告.pdf">📥 招标公告.pdf</a>
   </div>
 </div>
 <footer class="footer">

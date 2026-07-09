@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -51,7 +54,11 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/035d4b603424b2115bb3fef0d3b91d37?1821704"广东省第四建筑工程有限公司,广东恒诚益建设工程有限公司_第四部分 投标文件公示表格.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/c05d4b603424b211829ca5c2101a923d?1821703"0862定标报告及附件（公示版）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/a75d4b603424b211b4962312d4937d03?1821702"评标报告（定标公示版）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/8f5d4b603424b21130b8a6d568b32939?1821701"深圳潮阳建筑工程公司_第四部分 投标文件公示表格.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/6b5d4b603424b2119fbc9535357e9321?1821700"广东省第二建筑工程有限公司_第四部分 投标文件公示表格.pdf</a>
+    <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/cd3a4759e59481f/广东省第四建筑工程有限公司,广东恒诚益建设工程有限公司_第四部分 投标文件公示表格.pdf" class="att-btn att-download" target="_blank" download="广东省第四建筑工程有限公司,广东恒诚益建设工程有限公司_第四部分 投标文件公示表格.pdf">📥 广东省第四建筑工程有限公司,广东恒诚益建设工程有限公司_第四部分 投标文件公示表格.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/cd3a4759e59481f/0862定标报告及附件（公示版）.pdf" class="att-btn att-download" target="_blank" download="0862定标报告及附件（公示版）.pdf">📥 0862定标报告及附件（公示版）.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/cd3a4759e59481f/广东省第二建筑工程有限公司_第四部分 投标文件公示表格.pdf" class="att-btn att-download" target="_blank" download="评标报告（定标公示版）.pdf">📥 评标报告（定标公示版）.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/cd3a4759e59481f/深圳潮阳建筑工程公司_第四部分 投标文件公示表格.pdf" class="att-btn att-download" target="_blank" download="深圳潮阳建筑工程公司_第四部分 投标文件公示表格.pdf">📥 深圳潮阳建筑工程公司_第四部分 投标文件公示表格.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/cd3a4759e59481f/广东省第二建筑工程有限公司_第四部分 投标文件公示表格.pdf" class="att-btn att-download" target="_blank" download="广东省第二建筑工程有限公司_第四部分 投标文件公示表格.pdf">📥 广东省第二建筑工程有限公司_第四部分 投标文件公示表格.pdf</a>
   </div>
 </div>
 <footer class="footer">

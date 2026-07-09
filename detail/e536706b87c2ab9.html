@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -51,7 +54,11 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/b196068b-83d2-4b1f-a6f8-789354cbe233?1824834"评标报告(公示).pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/24f928713020424d9b13fac93eeb15b1?1824833"广州市市政工程机械施工有限公司_中标候选人的公示信息表.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/7d588510dd174d39b79f3d21895e7d8a?1824832"评标报告(公示).pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/bc8feffa7fc74cc287429668fb622181?1824831"春璟建设集团有限公司_中标候选人的公示信息表.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/a236cc1bc8d742b9bcfaacd3d8b1c89a?1824830"广东华盛源建设有限公司_中标候选人的公示信息表.pdf</a>
+    <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/e536706b87c2ab9/评标报告(公示).pdf" class="att-btn att-download" target="_blank" download="评标报告(公示).pdf">📥 评标报告(公示).pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/e536706b87c2ab9/广州市市政工程机械施工有限公司_中标候选人的公示信息表.pdf" class="att-btn att-download" target="_blank" download="广州市市政工程机械施工有限公司_中标候选人的公示信息表.pdf">📥 广州市市政工程机械施工有限公司_中标候选人的公示信息表.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/e536706b87c2ab9/评标报告(公示).pdf" class="att-btn att-download" target="_blank" download="评标报告(公示).pdf">📥 评标报告(公示).pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/e536706b87c2ab9/春璟建设集团有限公司_中标候选人的公示信息表.pdf" class="att-btn att-download" target="_blank" download="春璟建设集团有限公司_中标候选人的公示信息表.pdf">📥 春璟建设集团有限公司_中标候选人的公示信息表.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/e536706b87c2ab9/广东华盛源建设有限公司_中标候选人的公示信息表.pdf" class="att-btn att-download" target="_blank" download="广东华盛源建设有限公司_中标候选人的公示信息表.pdf">📥 广东华盛源建设有限公司_中标候选人的公示信息表.pdf</a>
   </div>
 </div>
 <footer class="footer">

@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -51,7 +54,13 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/e6d07ddf061f45e3a0139a308b87a8ca?1823111"批复文件（可行性研究报告和初步设计概算批复）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/f06917e9d7a0456fa4e5fa278313281c?1823110"云浮市云安区高标准绿色粮食物资仓库建设工程（二期）-工程量清单.xlsx</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/eb253b35a5cf4baf84dea5bbb67c4098?1823109"云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 投标文件格式.docx</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/9fb61ed30b25470fb9abe7a26975eb58?1823108"云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 招标控制价.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/7948eae1f6b6475ca98a61d765ac3b27?1823107"云浮市云安区高标准绿色粮食物资仓库建设工程项目（二期）- 施工图（PDF版）.rar</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/4ed1b7d9bb674fee8cf89bbc872c1e81?1823106"云浮市云安区高标准绿色粮食物资仓库建设工程（二期）-  招标公告（盖章挂网版）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/1c1517b5537642439f32c5339d2ffe3f?1823105"云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 招标文件（盖章挂网版）.pdf</a>
+    <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/be9b55a5b63c084/云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 投标文件格式.docx" class="att-btn att-download" target="_blank" download="批复文件（可行性研究报告和初步设计概算批复）.pdf">📥 批复文件（可行性研究报告和初步设计概算批复）.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/be9b55a5b63c084/云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 投标文件格式.docx" class="att-btn att-download" target="_blank" download="云浮市云安区高标准绿色粮食物资仓库建设工程（二期）-工程量清单.xlsx">📥 云浮市云安区高标准绿色粮食物资仓库建设工程（二期）-工程量清单.xlsx</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/be9b55a5b63c084/云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 投标文件格式.docx" class="att-btn att-download" target="_blank" download="云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 投标文件格式.docx">📥 云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 投标文件格式.docx</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/be9b55a5b63c084/云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 投标文件格式.docx" class="att-btn att-download" target="_blank" download="云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 招标控制价.pdf">📥 云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 招标控制价.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/be9b55a5b63c084/云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 投标文件格式.docx" class="att-btn att-download" target="_blank" download="云浮市云安区高标准绿色粮食物资仓库建设工程项目（二期）- 施工图（PDF版）.rar">📥 云浮市云安区高标准绿色粮食物资仓库建设工程项目（二期）- 施工图（PDF版）.rar</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/be9b55a5b63c084/云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 投标文件格式.docx" class="att-btn att-download" target="_blank" download="云浮市云安区高标准绿色粮食物资仓库建设工程（二期）-  招标公告（盖章挂网版）.pdf">📥 云浮市云安区高标准绿色粮食物资仓库建设工程（二期）-  招标公告（盖章挂网版）.pdf</a>
+      <a href="https://121.40.176.240/attachments/广东省公共资源交易平台/be9b55a5b63c084/云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 投标文件格式.docx" class="att-btn att-download" target="_blank" download="云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 招标文件（盖章挂网版）.pdf">📥 云浮市云安区高标准绿色粮食物资仓库建设工程（二期）- 招标文件（盖章挂网版）.pdf</a>
   </div>
 </div>
 <footer class="footer">

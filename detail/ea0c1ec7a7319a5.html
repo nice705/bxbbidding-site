@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -185,7 +188,12 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=4f6a46d7-572d-49e5-b32f-152064bb7201&amp;appUrlFlag=ztb001&amp;siteGuid=24ba03e1-d913-4ff2-b992-32feccd6c71b"评标委员会成员评标情况.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=63667e7a-5102-43e4-ab42-9d794b9f06e0&amp;appUrlFlag=ztb001&amp;siteGuid=24ba03e1-d913-4ff2-b992-32feccd6c71b"中京宏基建设集团有限公司企业业绩和人员业绩.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=a43973ee-62ee-4463-bac2-b28f58707e44&amp;appUrlFlag=ztb001&amp;siteGuid=24ba03e1-d913-4ff2-b992-32feccd6c71b"开标记录表.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=bfa1d718-5d95-4b2d-9e77-c9aa57b77f29&amp;appUrlFlag=ztb001&amp;siteGuid=24ba03e1-d913-4ff2-b992-32feccd6c71b"河南天展建筑工程有限公司企业业绩和人员业绩.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=c197d988-adf8-4d54-95e1-e72b6cbe08b8&amp;appUrlFlag=ztb001&amp;siteGuid=24ba03e1-d913-4ff2-b992-32feccd6c71b"鑫海建工集团有限公司企业业绩和人员业绩.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=cae49d3a-5b72-4ae0-b356-e2217e5ea200&amp;appUrlFlag=ztb001&amp;siteGuid=24ba03e1-d913-4ff2-b992-32feccd6c71b"中标候选人公示.pdf</a>
+    <a href="https://121.40.176.240/attachments/0e19edc2-f421-4777-bbb8-67ae335e47bf_008_评标委员会成员评标情况.pdf" class="att-btn att-download" target="_blank" download="评标委员会成员评标情况.pdf">📥 评标委员会成员评标情况.pdf</a>
+      <a href="https://121.40.176.240/attachments/0e19edc2-f421-4777-bbb8-67ae335e47bf_008_中京宏基建设集团有限公司企业业绩和人员业绩.pdf" class="att-btn att-download" target="_blank" download="中京宏基建设集团有限公司企业业绩和人员业绩.pdf">📥 中京宏基建设集团有限公司企业业绩和人员业绩.pdf</a>
+      <a href="https://121.40.176.240/attachments/0e19edc2-f421-4777-bbb8-67ae335e47bf_008_开标记录表.pdf" class="att-btn att-download" target="_blank" download="开标记录表.pdf">📥 开标记录表.pdf</a>
+      <a href="https://121.40.176.240/attachments/0e19edc2-f421-4777-bbb8-67ae335e47bf_008_河南天展建筑工程有限公司企业业绩和人员业绩.pdf" class="att-btn att-download" target="_blank" download="河南天展建筑工程有限公司企业业绩和人员业绩.pdf">📥 河南天展建筑工程有限公司企业业绩和人员业绩.pdf</a>
+      <a href="https://121.40.176.240/attachments/0e19edc2-f421-4777-bbb8-67ae335e47bf_008_鑫海建工集团有限公司企业业绩和人员业绩.pdf" class="att-btn att-download" target="_blank" download="鑫海建工集团有限公司企业业绩和人员业绩.pdf">📥 鑫海建工集团有限公司企业业绩和人员业绩.pdf</a>
+      <a href="https://121.40.176.240/attachments/0e19edc2-f421-4777-bbb8-67ae335e47bf_008_中标候选人公示.pdf" class="att-btn att-download" target="_blank" download="中标候选人公示.pdf">📥 中标候选人公示.pdf</a>
   </div>
 </div>
 <footer class="footer">

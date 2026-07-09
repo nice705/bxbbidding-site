@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-09 23:30:03",
-  "todayCount": 187,
+  "updatedAt": "2026-07-10 00:05:42",
+  "todayCount": 0,
   "total": 200,
   "bids": [
     {
@@ -700,7 +700,20 @@
       "buyer": "",
       "deadline": "",
       "budget": "",
-      "attachments": "[{\"name\": \"贵州民族大学学生宿舍扩建项目配套家具采购项目招标文件（需求公示）.pdf\", \"url\": \"https://gz-gov-open-doc.oss-cn-gz-ysgzlt-d01-a.ltops.gzdata.com.cn/1171DL/529900/2127000000002850/20267/8a5be12e-df8e-4e76-bfff-a1b15c03f95b.pdf\", \"ext\": \".pdf\", \"local_file\": \"贵州公共资源交易中心/ea540da8cc1a1df/贵州民族大学学生宿舍扩建项目配套家具采购项目招标文件（需求公示）.pdf\"}, {\"name\": \"附件（清单参数）.pdf\", \"url\": \"https://gz-gov-open-doc.oss-cn-gz-ysgzlt-d01-a.ltops.gzdata.com.cn/1171DL/529900/2127000000002850/20267/b3f9cdd1-6698-48d9-9681-1a51b626ca7d.pdf\", \"ext\": \".pdf\", \"local_file\": \"贵州公共资源交易中心/ea540da8cc1a1df/附件（清单参数）.pdf\"}]",
+      "attachments": [
+        {
+          "name": "贵州民族大学学生宿舍扩建项目配套家具采购项目招标文件（需求公示）.pdf",
+          "url": "https://gz-gov-open-doc.oss-cn-gz-ysgzlt-d01-a.ltops.gzdata.com.cn/1171DL/529900/2127000000002850/20267/8a5be12e-df8e-4e76-bfff-a1b15c03f95b.pdf",
+          "ext": ".pdf",
+          "local_file": "guizhou_9dfd117cb7f90c4e_贵州民族大学学生宿舍扩建项目配套家具采购项目招标文件（需求公示）.pdf.pdf"
+        },
+        {
+          "name": "附件（清单参数）.pdf",
+          "url": "https://gz-gov-open-doc.oss-cn-gz-ysgzlt-d01-a.ltops.gzdata.com.cn/1171DL/529900/2127000000002850/20267/b3f9cdd1-6698-48d9-9681-1a51b626ca7d.pdf",
+          "ext": ".pdf",
+          "local_file": "guizhou_9dfd117cb7f90c4e_附件（清单参数）.pdf.pdf"
+        }
+      ],
       "hasAttachment": true,
       "is_bidding": true
     },
@@ -970,7 +983,14 @@
       "buyer": "",
       "deadline": "",
       "budget": "",
-      "attachments": "[{\"name\": \"招标文件正文.pdf\", \"url\": \"http://222.85.190.33:82/TPBidder/rest/guizhouhlhtattachaction/download?AttachGuid=253b5bc1-a165-4973-978a-0eeddacd3c7f&isCommondto=true\", \"ext\": \"unknown\", \"local_file\": \"贵州公共资源交易中心/10ba6875f42238a/招标文件正文.pdf\"}]",
+      "attachments": [
+        {
+          "name": "招标文件正文.pdf",
+          "url": "http://222.85.190.33:82/TPBidder/rest/guizhouhlhtattachaction/download?AttachGuid=253b5bc1-a165-4973-978a-0eeddacd3c7f&isCommondto=true",
+          "ext": "unknown",
+          "local_file": "guizhou_3260ce05dad5ae87_招标文件正文.pdf.pdf"
+        }
+      ],
       "hasAttachment": true,
       "is_bidding": true
     },

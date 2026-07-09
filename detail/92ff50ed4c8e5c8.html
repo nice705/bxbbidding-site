@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -51,7 +54,14 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/c9f785ea901b41d180d3e5cf9ea688a9?1817663"合格的定标候选人公示.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/b3215d795e4b4099a03646f5169669ad?1817662"广东惠昌源实业有限公司（联合投标人：中筑（深圳）设计院有限公司）-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/9cf3fbb0ac6146fcbc1e1ecdf0f4b5c7?1817661"广东翔顺建设集团有限公司（联合投标人：信智达工程科技有限公司）-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/7f5b1d807cb74dc1891838a7f31b63c1?1817660"开标记录表-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/76d91a42b1b842a696a73ee378b78db3?1817659"广东炫烨建设工程有限公司（联合投标人：中远智信设计有限公司）-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/407b7a3ae69540f39d718a61781c2806?1817658"广东均兴建设工程有限公司（联合投标人：广州黄埔建筑设计院有限公司）-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/2239c0358fb2443d96bf3c5f01cde6b6?1817657"评标报告文件(X445300090900016r16r001)-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/1aa04c9f15d9432dbeb580b634280228?1817656"韶关市湕邦建筑工程有限公司（联合投标人：广东名都设计有限公司）-脱敏版.pdf</a>
+    <span class="att-btn att-pending">⏳ 合格的定标候选人公示.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 广东惠昌源实业有限公司（联合投标人：中筑（深圳）设计院有限公司）-脱敏版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 广东翔顺建设集团有限公司（联合投标人：信智达工程科技有限公司）-脱敏版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 开标记录表-脱敏版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 广东炫烨建设工程有限公司（联合投标人：中远智信设计有限公司）-脱敏版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 广东均兴建设工程有限公司（联合投标人：广州黄埔建筑设计院有限公司）-脱敏版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 评标报告文件(X445300090900016r16r001)-脱敏版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 韶关市湕邦建筑工程有限公司（联合投标人：广东名都设计有限公司）-脱敏版.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

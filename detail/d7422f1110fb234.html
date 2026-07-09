@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -305,7 +308,15 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/19c6805c-e10b-48fd-8994-4efc957f8fb6--3C51?1819798"定标候选人公示.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/e41a6c7f-0275-400b-8264-11390c6d2b5b--3C51?1819797"评标结果公示（签）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/27399b00-f8d6-416c-9576-e71898fb47e6--3C51?1819796"中天设计咨询有限公司;广东顺协工程勘察有限公司.rar</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/92c36303-a08f-43cb-ba21-04a9ab002269--3C51?1819795"信息产业电子第十一设计研究院科技工程股份有限公司;湖南省勘测设计院有限公司（一）.rar</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/2017977e-351d-4e43-b784-ca8a0bf3b6d9--3C51?1819794"信息产业电子第十一设计研究院科技工程股份有限公司;湖南省勘测设计院有限公司（二）.rar</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/99d4e5de-2cd4-43ca-82dc-e3e7e5d1d889--3C51?1819792"中誉设计有限公司.rar</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/2244ef2d-7b2a-4efb-a26f-e7d52e30f76c--3C51?1819791"中交第二公路勘察设计研究院有限公司.rar</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/9ec39e55-ed65-42a4-97b5-75bfd7f76c31--3C51?1819790"中国华西工程设计建设有限公司.rar</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/6f34e69d-ca1a-4f43-a4fb-708c7489934d--3C51?1819789"评标过程及结果公示资料.pdf</a>
+    <span class="att-btn att-pending">⏳ 定标候选人公示.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 评标结果公示（签）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中天设计咨询有限公司;广东顺协工程勘察有限公司.rar（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 信息产业电子第十一设计研究院科技工程股份有限公司;湖南省勘测设计院有限公司（一）.rar（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 信息产业电子第十一设计研究院科技工程股份有限公司;湖南省勘测设计院有限公司（二）.rar（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中誉设计有限公司.rar（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中交第二公路勘察设计研究院有限公司.rar（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中国华西工程设计建设有限公司.rar（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 评标过程及结果公示资料.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -51,7 +54,14 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/bacb615b-1d75-4bce-8fbe-81972aa879da?1821044"施工图.rar</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/c857ee9a-84f5-43b5-b0d6-9145c0eeddb3?1821043"水乡河西数字产业区环业路、联新路、协进路工程(EK0+500～E...招标文件电子版v2….zbs</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/f891a585-a6c1-4f48-abf6-466593fb8c19?1821042"招标文件【定】(EK0+500~EK0+569.67).pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/bf2941bd-1b17-48a6-9eeb-f265f435d4af?1821040"最高投标限价+工期.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/2fbebfc5-2a35-4ef7-ab84-379af6af90fc?1821038"施工合同【格式】.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/81760fb8-3560-4837-8c20-bb82a5b79225?1821037"工程量清单报价表.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/b44c35fd-7d1b-4401-8b88-325189efbf45?1821035"评标程序附表.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/74f847ca-c214-47bf-acfc-492f6da60140?1821034"第九章 投标文件格式（仅供参考，以招文为准）.docx</a>
+    <span class="att-btn att-pending">⏳ 施工图.rar（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 水乡河西数字产业区环业路、联新路、协进路工程(EK0+500～E...招标文件电子版v2….zbs（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标文件【定】(EK0+500~EK0+569.67).pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 最高投标限价+工期.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 施工合同【格式】.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 工程量清单报价表.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 评标程序附表.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 第九章 投标文件格式（仅供参考，以招文为准）.docx（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

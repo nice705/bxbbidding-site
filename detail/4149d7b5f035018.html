@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -51,7 +54,16 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/3fb564f1b77948b7b157c7818c77db69?1820010"招标公告（定）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/8b79d806fd4a4c718ff8ca41b25995a0?1820009"概算书盖章版-开平市城区排水设施提升改造工程（七期）（修正）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/f2e90c4d004d44dfbb3c9ff7adf4a748?1820008"招标情况说明.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/0fe40ed5fecc4d51b1813ff26eed4fb9?1820007"概算书盖章版-开平市城区排水设施提升改造工程（七期）（修正）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/3409bdb309304b5998777c75b8217f9c?1820006"PDF-开平市城区排水设施提升改造工程七期.zip</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/ab9936f2ff0c421482bac977cb6b5e39?1820005"PDF-开平市城区排水设施提升改造工程七期.zip</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/81b262e557e144d7a288b6b61445a00a?1820004"概算书盖章版-开平市城区排水设施提升改造工程（七期）（修正）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/fcf596e6de744334bb2ef09b5934a451?1820003"（挂网版）招标文件-开平市城区排水设施提升改造工程（七期）施工图设计施工总承包.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/c24cada5af0b4af1b2078f58f7eaa931?1820002"（挂网版）招标文件-开平市城区排水设施提升改造工程（七期）施工图设计施工总承包.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/3eb7336cadac4abe870f51937610469b?1820001"招标情况说明.pdf</a>
+    <span class="att-btn att-pending">⏳ 招标公告（定）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 概算书盖章版-开平市城区排水设施提升改造工程（七期）（修正）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标情况说明.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 概算书盖章版-开平市城区排水设施提升改造工程（七期）（修正）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ PDF-开平市城区排水设施提升改造工程七期.zip（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ PDF-开平市城区排水设施提升改造工程七期.zip（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 概算书盖章版-开平市城区排水设施提升改造工程（七期）（修正）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ （挂网版）招标文件-开平市城区排水设施提升改造工程（七期）施工图设计施工总承包.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ （挂网版）招标文件-开平市城区排水设施提升改造工程（七期）施工图设计施工总承包.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标情况说明.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

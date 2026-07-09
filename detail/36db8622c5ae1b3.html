@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -79,7 +82,12 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/1eafaeb3-99a5-08c5-28f3-600937882b0a.pdf"招标文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/507be3b8-480f-d7f0-f4c1-fcc82aaf240e.pdf"中小企业声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/5ac2e0c8-2ff0-118d-4b37-3087ae20b718.pdf"声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/5fc7bdd8-0b72-b6d9-b276-936dbc72b8d5.pdf"关干本国产品比例的声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/a3b670d2-cc61-cc55-eff3-8d8efbeab33e.pdf"品牌型号一览表.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/e3001a36-5724-f9c0-c038-750921430495.pdf"供应商资格承诺函.pdf</a>
+    <span class="att-btn att-pending">⏳ 招标文件.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中小企业声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 关干本国产品比例的声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 品牌型号一览表.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 供应商资格承诺函.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

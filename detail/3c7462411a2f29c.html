@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -228,7 +231,11 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/14554a66-f919-4d14-945c-7a2cccd7ec40--3C51?1816566"定标候选人公示.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/0058e3ec-3cbb-43ff-99b4-ecee55dd9de2--3C51?1816565"汕尾市广投建设工程有限公司投标文件公示文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/a3cb2a73-37f7-4b71-a4c7-4b1a2d1c7962--3C51?1816564"广州市第一市政工程有限公司投标文件公示文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/db81c194-8510-4769-80a7-d8c935661960--3C51?1816563"广东省建筑工程机械施工有限公司投标文件公示文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/978f8444-d62e-460a-9e7c-d8115f68af8a--3C51?1816562"评标报告-脱敏版.pdf</a>
+    <span class="att-btn att-pending">⏳ 定标候选人公示.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 汕尾市广投建设工程有限公司投标文件公示文件.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 广州市第一市政工程有限公司投标文件公示文件.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 广东省建筑工程机械施工有限公司投标文件公示文件.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 评标报告-脱敏版.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

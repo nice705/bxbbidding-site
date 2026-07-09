@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -182,7 +185,9 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=0f08c245-daba-43be-a9f5-bc15bc458b50&amp;appUrlFlag=ztb001&amp;siteGuid=47d11648-922c-4774-9c81-57fcac09ac63"中标候选人公示.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=11f9c9b3-5da8-435a-a1ae-ecdaa6caada9&amp;appUrlFlag=ztb001&amp;siteGuid=47d11648-922c-4774-9c81-57fcac09ac63"开标记录表.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=f56797fe-e829-4ea8-bdef-5785e3757ad7&amp;appUrlFlag=ztb001&amp;siteGuid=47d11648-922c-4774-9c81-57fcac09ac63"评标委员会成员评标情况.pdf</a>
+    <a href="https://121.40.176.240/attachments/6a6f9819-6d86-4138-9c37-38c04f2cac90_006_中标候选人公示.pdf" class="att-btn att-download" target="_blank" download="中标候选人公示.pdf">📥 中标候选人公示.pdf</a>
+      <a href="https://121.40.176.240/attachments/6a6f9819-6d86-4138-9c37-38c04f2cac90_006_开标记录表.pdf" class="att-btn att-download" target="_blank" download="开标记录表.pdf">📥 开标记录表.pdf</a>
+      <a href="https://121.40.176.240/attachments/6a6f9819-6d86-4138-9c37-38c04f2cac90_006_评标委员会成员评标情况.pdf" class="att-btn att-download" target="_blank" download="评标委员会成员评标情况.pdf">📥 评标委员会成员评标情况.pdf</a>
   </div>
 </div>
 <footer class="footer">

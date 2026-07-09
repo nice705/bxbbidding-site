@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -81,7 +84,17 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/007cb7df-b997-1429-c117-52f9cf28d2d9.pdf"22条承诺2.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/39d1f5a7-db07-f8ca-ebc1-47f6f2f319d5.pdf"沧州市公安局中标公告.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/44e7f7dd-8947-36fe-fea6-56f7c3bc9538.pdf"22条承诺1.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/535d3898-0a27-93de-c25b-41988fdc40de.pdf"招标文件正文1.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/61ab8e04-0ddf-cfa9-7532-512295d4405a.pdf"招标文件正文2.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/7a18f03b-4591-b5cb-946d-72fc1c1d17a4.pdf"本国产品声明涵2.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/80ddd035-24b3-e548-1765-dff932e37695.pdf"中小22.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/9efbcad3-1af8-93fc-788c-3452dad9724c.pdf"附件2.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/a87cd423-a361-5f43-2288-74bdd0d5fd8c.pdf"附件1.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/b1a321d9-aed8-aafc-4bf8-53975c81387a.pdf"本国产品声明涵1.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/d4f8567f-6161-d871-547b-eaa8305ddcb9.pdf"中小企业1.pdf</a>
+    <span class="att-btn att-pending">⏳ 22条承诺2.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 沧州市公安局中标公告.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 22条承诺1.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标文件正文1.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标文件正文2.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 本国产品声明涵2.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中小22.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 附件2.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 附件1.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 本国产品声明涵1.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中小企业1.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

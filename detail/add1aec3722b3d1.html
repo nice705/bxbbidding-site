@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -75,7 +78,13 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/316c5363-761a-9cb3-ac4c-96ea79f8aa09.pdf"02包供应商承诺函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/70463289-13d1-864f-f79a-fb9624c072b0.pdf"03包本国产品声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/862bf51a-bd7c-2b3c-c3c0-74bfaae351e2.pdf"03包供应商资格承诺函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/96fc7c45-52ec-d517-7ff0-acd9f0bfe1f2.pdf"招标文件-沧州市人民医院医疗设备更新购置项目（三）02包.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/afbc3a56-2e18-07ee-abf9-6b2504370eb8.pdf"中标公示02包-03包.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/b36dd01f-ea2c-8fb0-c0bc-766ce7a97974.pdf"02包本国产品声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/f3e390dc-5bcd-d5a9-3680-c746b584421c.pdf"招标文件-沧州市人民医院医疗设备更新购置项目（三）03包.pdf</a>
+    <span class="att-btn att-pending">⏳ 02包供应商承诺函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 03包本国产品声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 03包供应商资格承诺函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标文件-沧州市人民医院医疗设备更新购置项目（三）02包.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中标公示02包-03包.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 02包本国产品声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标文件-沧州市人民医院医疗设备更新购置项目（三）03包.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

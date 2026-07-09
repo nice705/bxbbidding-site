@@ -27,8 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
@@ -218,7 +221,8 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=b5951b32-b653-46b2-a3b9-8d14c89c7233&amp;appUrlFlag=ztb001&amp;siteGuid=bb9105b0-d084-4897-ba17-4dcc8bbc3ff7"招标公告.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=e70cec4b-54bb-4313-a751-c49b1bd33c57&amp;appUrlFlag=ztb001&amp;siteGuid=bb9105b0-d084-4897-ba17-4dcc8bbc3ff7"询比公告——2026年粮食应急供应演练.docx</a>
+    <a href="https://121.40.176.240/attachments/8fe9ac7f-593b-47d6-9dd2-4140b945c387_007_招标公告.pdf" class="att-btn att-download" target="_blank" download="招标公告.pdf">📥 招标公告.pdf</a>
+      <a href="https://121.40.176.240/attachments/8fe9ac7f-593b-47d6-9dd2-4140b945c387_007_询比公告——2026年粮食应急供应演练.docx" class="att-btn att-download" target="_blank" download="询比公告——2026年粮食应急供应演练.docx">📥 询比公告——2026年粮食应急供应演练.docx</a>
   </div>
 </div>
 <footer class="footer">
