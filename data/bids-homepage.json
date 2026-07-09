@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-10 05:56:46",
+  "updatedAt": "2026-07-10 05:58:18",
   "todayCount": 7,
   "total": 200,
   "bids": [
@@ -259,14 +259,7 @@
       "buyer": "",
       "deadline": "",
       "budget": "",
-      "attachments": [
-        {
-          "name": "潜在供应商",
-          "url": "https://www.zcygov.cn/bid-enroll/acquirepurfile/launch/7339922458062356574",
-          "ext": "cn/bid-enroll/acquirepurfile/launch/7339922458062356574",
-          "direct": true
-        }
-      ],
+      "attachments": [],
       "hasAttachment": true,
       "is_bidding": true
     },
@@ -315,14 +308,7 @@
       "buyer": "",
       "deadline": "",
       "budget": "",
-      "attachments": [
-        {
-          "name": "潜在供应商",
-          "url": "https://www.zcygov.cn/bid-enroll/acquirepurfile/launch/7339942553141117000",
-          "ext": "cn/bid-enroll/acquirepurfile/launch/7339942553141117000",
-          "direct": true
-        }
-      ],
+      "attachments": [],
       "hasAttachment": true,
       "is_bidding": true
     },
@@ -432,14 +418,7 @@
       "buyer": "",
       "deadline": "",
       "budget": "",
-      "attachments": [
-        {
-          "name": "潜在供应商",
-          "url": "https://www.zcygov.cn/bid-enroll/acquirepurfile/launch/7339950276566319163",
-          "ext": "cn/bid-enroll/acquirepurfile/launch/7339950276566319163",
-          "direct": true
-        }
-      ],
+      "attachments": [],
       "hasAttachment": true,
       "is_bidding": true
     },
@@ -656,14 +635,7 @@
       "buyer": "",
       "deadline": "",
       "budget": "",
-      "attachments": [
-        {
-          "name": "潜在供应商",
-          "url": "https://www.zcygov.cn/bid-enroll/acquirepurfile/launch/7339954674612830270",
-          "ext": "cn/bid-enroll/acquirepurfile/launch/7339954674612830270",
-          "direct": true
-        }
-      ],
+      "attachments": [],
       "hasAttachment": true,
       "is_bidding": true
     },
