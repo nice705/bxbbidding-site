@@ -1,3 +1,1 @@
-# 静态HTML详情页 - 直接投放
-# SPA fallback: /detail?id=xxx → detail.html
-/detail /detail.html 200
+# 静态HTML详情页 - 直接投放（/detail/{id}.html 直接serve，无需规则）
