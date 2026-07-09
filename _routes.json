@@ -9,8 +9,6 @@
     "/data/customer_history.json",
     "/data/*.json",
     "/list",
-    "/favourites",
-    "/favorites",
     "/data/*.json.gz",
     "/data/bids-detail.json"
   ],
