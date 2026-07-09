@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-10 00:30:03",
+  "updatedAt": "2026-07-10 00:54:35",
   "todayCount": 0,
   "total": 200,
   "bids": [
@@ -89,8 +89,8 @@
         {
           "name": "中标结果公告.pdf",
           "url": "https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=7010d6eb-4671-4e03-98c8-f2457b26824f&appUrlFlag=ztb001&siteGuid=7eb5f7f1-9041-43ad-8e13-8fcb82ea831a",
-          "local_file": "f4789a29-b714-45d0-b50d-92c8e1b90e32_002_中标结果公告.pdf",
-          "need_captcha": true
+          "need_captcha": true,
+          "download_failed": true
         }
       ],
       "hasAttachment": true,
@@ -2531,7 +2531,7 @@
           "name": "承诺函.doc",
           "url": "https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/7841cff9-eb17-dd48-c43d-2c184e7e1736.doc",
           "ext": "doc",
-          "local_file": ""
+          "local_file": "99550_关键岗位人员承诺函.docx"
         },
         {
           "name": "中小企业声明函.doc",
@@ -2781,7 +2781,7 @@
           "name": "招标文件正文.pdf",
           "url": "https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/f6f2339d-de0b-b6c1-b9c1-b48f77240f21.pdf",
           "ext": "pdf",
-          "local_file": ""
+          "local_file": "80610_招标文件正文.pdf"
         }
       ],
       "hasAttachment": true,
@@ -2806,19 +2806,19 @@
           "name": "承诺函.pdf",
           "url": "https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/ae4c8c69-3997-2c12-6144-bc9a5cce017d.pdf",
           "ext": "pdf",
-          "local_file": ""
+          "local_file": "19194_6_03包-供应商资格承诺函.pdf"
         },
         {
           "name": "中小企业声明函.pdf",
           "url": "https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/ceae7203-09af-68ae-ed72-69a739d93be7.pdf",
           "ext": "pdf",
-          "local_file": ""
+          "local_file": "75715_中小企业声明函.pdf"
         },
         {
           "name": "招标文件正文.pdf",
           "url": "https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/ddab851d-a96f-eea6-b8b8-047efffb1550.pdf",
           "ext": "pdf",
-          "local_file": ""
+          "download_failed": true
         }
       ],
       "hasAttachment": true,
@@ -2849,7 +2849,7 @@
           "name": "采购文件.pdf",
           "url": "https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/df9206ec-1699-7e50-f275-4cbf0cc092ea.pdf",
           "ext": "pdf",
-          "local_file": ""
+          "local_file": "92418_附件1：中央国家机关2026年度服务器操作系统软件框架协议联合征集采购项目采购文件.pdf"
         }
       ],
       "hasAttachment": true,
@@ -2874,19 +2874,19 @@
           "name": "招标文件正文.pdf",
           "url": "https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/4aea427d-a73d-c27e-d577-9616db4c297a.pdf",
           "ext": "pdf",
-          "local_file": ""
+          "download_failed": true
         },
         {
           "name": "承诺函.pdf",
           "url": "https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/a97c1a31-7189-3407-1c64-55b3f36c28be.pdf",
           "ext": "pdf",
-          "local_file": ""
+          "local_file": "19194_4_02包-供应商资格承诺函.pdf"
         },
         {
           "name": "中小企业声明函.pdf",
           "url": "https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/bdc687cb-5a90-e8f3-e7c2-784127922319.pdf",
           "ext": "pdf",
-          "local_file": ""
+          "local_file": "19194_2_01包-中小企业声明函.pdf"
         }
       ],
       "hasAttachment": true,
@@ -2979,7 +2979,7 @@
           "name": "供应商资格承诺函.pdf",
           "url": "https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/cb74b976-e2ee-0dd5-d644-9f4ca2a25b4c.pdf",
           "ext": "pdf",
-          "local_file": ""
+          "local_file": "19194_3_01包-供应商资格承诺函.pdf"
         },
         {
           "name": "拟分包情况说明及分包意向协议.pdf",
@@ -3078,7 +3078,7 @@
           "name": "中小企业声明函.pdf",
           "url": "https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/88c17683-7120-f2f0-8f82-ba9371b07788.pdf",
           "ext": "pdf",
-          "local_file": ""
+          "local_file": "94228_中小企业声明函.pdf"
         },
         {
           "name": "招标文件正文 (1).pdf",
@@ -3115,7 +3115,7 @@
           "name": "中小企业声明函.pdf",
           "url": "https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/696c3692-b3cd-0616-ec9b-8e9f093f1a50.pdf",
           "ext": "pdf",
-          "local_file": ""
+          "local_file": "19194_7_03包-中小企业声明函.pdf"
         },
         {
           "name": "谈判文件.pdf",
@@ -3158,7 +3158,7 @@
           "name": "招标文件正文.pdf",
           "url": "https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/fbd13982-02bd-7c13-412f-f73b65e45645.pdf",
           "ext": "pdf",
-          "local_file": ""
+          "local_file": "79455805-9980-4e47-9d22-dd4d2c6ae544_005_招标文件正文.pdf"
         }
       ],
       "hasAttachment": true,
