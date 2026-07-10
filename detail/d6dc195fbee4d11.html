@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -75,7 +79,11 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/08ee0016-c779-499e-0e8d-4377f19bf00c.pdf"符合本国产品标准的声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/145438e1-e2a7-7f73-a750-ee5f0937257b.pdf"公示信息.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/56dff68b-f1f5-97ba-59b0-4d4be001220d.pdf"中小企业声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/82f490ba-6268-5776-b752-b75732271350.pdf"承诺函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/9571b5a5-d8ac-795f-6492-d0263b437e03.pdf"（最终版）文安县2026年义务教育能力改善与提升设备购置项目（二次）.pdf</a>
+    <span class="att-btn att-pending">⏳ 符合本国产品标准的声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 公示信息.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中小企业声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 承诺函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ （最终版）文安县2026年义务教育能力改善与提升设备购置项目（二次）.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

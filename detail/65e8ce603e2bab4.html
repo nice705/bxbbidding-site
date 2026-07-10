@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -51,7 +55,11 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/4374b360-e637-489f-8f00-7492d1a8f8b3--3C51?1824288"中国建筑第二工程局有限公司投标文件公示文件电子版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/f1087d7d-ae28-4092-917f-176840d504f7--3C51?1824287"广西华业建筑工程有限公司投标文件（公示版）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/e51a87bc-5d4a-4ec6-9329-f779ab8ba127--3C51?1824286"中国建筑第六工程局有限公司;四会市汇兴建筑安装工程有限公司投标文件公示-副本.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/af3b3ac4-7841-409d-a42b-76c1ffa16eab--3C51?1824285"中标候选人公告.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/4d73a40a-7ff9-4598-b88a-e45c1478a3b5--3C51?1824284"评标报告（公示版）.pdf</a>
+    <span class="att-btn att-pending">⏳ 中国建筑第二工程局有限公司投标文件公示文件电子版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 广西华业建筑工程有限公司投标文件（公示版）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中国建筑第六工程局有限公司;四会市汇兴建筑安装工程有限公司投标文件公示-副本.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中标候选人公告.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 评标报告（公示版）.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

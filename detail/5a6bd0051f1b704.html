@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -52,7 +56,11 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=1024FPA/undefined/339900/10007278061/20266/34456182-4f78-4d40-9a2a-b990ac70a914.docx"2026年塑胶草坪-公开招标定稿.docx</a> <a href="/api/proxy-attachment?url=1024FPA/339900/10007278061/20267/2581ec0d-1118-4ac3-ac71-57553eca937f.docx"供应商未中标情况说明.docx</a> <a href="/api/proxy-attachment?url=1024FPA/339900/10007278061/20267/6e965bfd-5679-4716-ae9c-d43f72d9dfee.pdf"开标一览表.pdf</a> <a href="/api/proxy-attachment?url=1024FPA/20267/b7d86d3a-b3b6-4193-86ed-e806266ebaa8.pdf"中小企业声明函</a> <a href="/api/proxy-attachment?url=1024FPA/20267/e80f030b-6c4d-4946-be98-2f38168e459a.pdf"关于符合本国产品标准的声明函</a>
+    <span class="att-btn att-pending">⏳ 2026年塑胶草坪-公开招标定稿.docx（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 供应商未中标情况说明.docx（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 开标一览表.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中小企业声明函（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 关于符合本国产品标准的声明函（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

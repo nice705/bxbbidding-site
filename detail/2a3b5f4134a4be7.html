@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -204,7 +208,12 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/e3d91901-5860-44d0-8b8e-2d0b442e6760--3C51?1823210"第一中标候选人投标文件（复评）.zip</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/99f76264-8209-46c1-aebe-fbad76d261ca--3C51?1823209"复标报告（隐去专家姓名）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/5c35ead1-93c2-4a2e-8f4c-9929b97b4870--3C51?1823208"中标候选人公示（复评）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/141db672-cc29-46b1-8749-ba7c74e9772f--3C51?1823207"中标人信息表.doc</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/11294de0-a528-4a63-b033-624330a76836--3C51?1823206"第二中标候选人投标文件（复评）.zip</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/044c6f28-7481-453c-bd70-074a7f3cd9bc--3C51?1823205"评标专家评标过程的评审意见公示表（复评）.pdf</a>
+    <span class="att-btn att-pending">⏳ 第一中标候选人投标文件（复评）.zip（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 复标报告（隐去专家姓名）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中标候选人公示（复评）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中标人信息表.doc（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 第二中标候选人投标文件（复评）.zip（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 评标专家评标过程的评审意见公示表（复评）.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -241,7 +245,17 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/eda1d7d3-03d1-4cb0-8b49-5e47b2fb9ab3-3ca938a7-4835-472d-a001-b968e7e95b07?1823399"（挂网）建设工程监理合同.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/e8c3578c-6894-4553-a1e5-1af7ea979428-3ca938a7-4835-472d-a001-b968e7e95b07?1823397"广东省投资项目代码（2509-440114-18-01-908668）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/e518e47e-4f55-4555-9484-7d217f9c613e-3ca938a7-4835-472d-a001-b968e7e95b07?1823395"招标人声明.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/b67659a8-a348-4675-95a8-2ff02bf010e1-3ca938a7-4835-472d-a001-b968e7e95b07?1823392"招标公告（定稿）-秀湖大道一期工程工程监理0706.doc</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/b57349c7-2100-425e-8dd4-7b08d98a9c97-3ca938a7-4835-472d-a001-b968e7e95b07?1823389"招标公告（盖章）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/a6529110-262a-491c-9d2e-71da9a759015-3ca938a7-4835-472d-a001-b968e7e95b07?1823386"可行性研究报告的批复（穗花发改投批〔2026〕9号）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/9c450f9d-fcb5-4df4-a2d1-b6bb76198d5a-3ca938a7-4835-472d-a001-b968e7e95b07?1823382"招标申请函.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/50fed29e-8dda-4f0a-a489-2162c9fd9447-3ca938a7-4835-472d-a001-b968e7e95b07?1823378"电子签名委托书.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/4d556922-4699-4d3d-aede-77d42d501d08-3ca938a7-4835-472d-a001-b968e7e95b07?1823374"招标文件（盖章）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/3ca5ad7a-0444-47be-ad1c-b9c2b9e8dd12-3ca938a7-4835-472d-a001-b968e7e95b07?1823369"招标文件（定稿）-秀湖大道一期工程工程监理0706.doc</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/3bc68de2-1795-4f25-9f49-7aaaa6c5df6a-3ca938a7-4835-472d-a001-b968e7e95b07?1823364"授权代表证明书.pdf</a>
+    <span class="att-btn att-pending">⏳ （挂网）建设工程监理合同.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 广东省投资项目代码（2509-440114-18-01-908668）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标人声明.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标公告（定稿）-秀湖大道一期工程工程监理0706.doc（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标公告（盖章）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 可行性研究报告的批复（穗花发改投批〔2026〕9号）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标申请函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 电子签名委托书.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标文件（盖章）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标文件（定稿）-秀湖大道一期工程工程监理0706.doc（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 授权代表证明书.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

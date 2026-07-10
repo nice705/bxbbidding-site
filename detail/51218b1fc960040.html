@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -51,7 +55,11 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/d2c1642c7923b2114a99819605279620?1819834"中国建筑第二工程局有限公司_第四部分 投标文件公示表格.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/88c2642c7923b2119ead0e9fc0800918?1819833"0782定标报告（公示版）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/6ec2642c7923b211f39c7d9584fe9034?1819832"0782评标报告【定标阶段】.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/57c2642c7923b2117593c860ebad9c5f?1819831"鲁班源集团有限公司_第四部分 投标文件公示表格.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/35c2642c7923b21181a76b44bb254870?1819830"广东筑奥建设集团有限公司_第四部分 投标文件公示表格.pdf</a>
+    <span class="att-btn att-pending">⏳ 中国建筑第二工程局有限公司_第四部分 投标文件公示表格.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 0782定标报告（公示版）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 0782评标报告【定标阶段】.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 鲁班源集团有限公司_第四部分 投标文件公示表格.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 广东筑奥建设集团有限公司_第四部分 投标文件公示表格.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -241,7 +245,14 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/d4faf1d3-c8f2-4ae4-8d6b-f51c4a971ca2-23269a8e-4dd7-4d00-a084-683049df4176?1827924"招标文件（挂网）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/a6694845-6036-4ceb-a496-591988de0106-23269a8e-4dd7-4d00-a084-683049df4176?1827923"关于知识城储能园区市政道路及配套工程（一期）可行性研究报告的批复.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/9d842230-3ff7-4a21-9111-27ac48a13f68-23269a8e-4dd7-4d00-a084-683049df4176?1827922"招标公告（挂网）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/7ac17353-2652-4e86-9b3e-691ebb59852e-23269a8e-4dd7-4d00-a084-683049df4176?1827921"招标公告（挂网）.docx</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/5c30dbad-8555-4cff-8589-8ff7f6573631-23269a8e-4dd7-4d00-a084-683049df4176?1827920"电子签名委托书.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/43add025-895e-4374-83a8-08cf605f2edc-23269a8e-4dd7-4d00-a084-683049df4176?1827917"招标申请函.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/3686d02b-97ff-47f3-b522-9d6870959bd8-23269a8e-4dd7-4d00-a084-683049df4176?1827914"招标人声明.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/1607bc68-d5e7-4ea3-967c-86dd4fad04e2-23269a8e-4dd7-4d00-a084-683049df4176?1827911"招标文件（挂网）.docx</a>
+    <span class="att-btn att-pending">⏳ 招标文件（挂网）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 关于知识城储能园区市政道路及配套工程（一期）可行性研究报告的批复.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标公告（挂网）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标公告（挂网）.docx（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 电子签名委托书.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标申请函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标人声明.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 招标文件（挂网）.docx（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

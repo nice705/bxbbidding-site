@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -75,7 +79,10 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/3b6c6ce8-2934-4a26-bbcd-58401df4b202.pdf"SQZB-2026-0521邯邰镇西牛林村革命老区道路硬化（白变黑）工程.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/4c8820aa-c212-6a4a-93e3-f42bc87ff4b0.pdf"承诺函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/4d0cb1e3-07eb-2575-4c44-89fbcff4115e.pdf"中小声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/91cc8d35-ee48-e421-70e1-560decbd2821.pdf"22条.pdf</a>
+    <span class="att-btn att-pending">⏳ SQZB-2026-0521邯邰镇西牛林村革命老区道路硬化（白变黑）工程.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 承诺函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中小声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 22条.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">
