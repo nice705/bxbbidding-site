@@ -27,15 +27,11 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
-  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
-  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
-  .att-toolarge{background:#fee2e2;color:#991b1b}
+  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .attachments a:hover{background:#047857}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
-<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -164,9 +160,7 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="http://121.40.176.240/attachments/1cd32563-512d-4c9c-970d-dd734ea11a92_009_招标文件正文.pdf" class="att-btn att-download" target="_blank" download="招标文件正文.pdf">📥 招标文件正文.pdf</a>
-      <a href="http://121.40.176.240/attachments/1cd32563-512d-4c9c-970d-dd734ea11a92_009_工程量清单.pdf" class="att-btn att-download" target="_blank" download="工程量清单.pdf">📥 工程量清单.pdf</a>
-      <a href="http://121.40.176.240/attachments/1cd32563-512d-4c9c-970d-dd734ea11a92_009_招标公告.pdf" class="att-btn att-download" target="_blank" download="招标公告.pdf">📥 招标公告.pdf</a>
+    <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=003606e6-c5eb-4558-80b8-22fba799bc9e&amp;appUrlFlag=ztb001&amp;siteGuid=c788aa3c-cb6e-43d8-bd65-ea0e0c449f20"招标文件正文.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=12e4c4a4-bfa1-4502-a7f6-cc85903b74ad&amp;appUrlFlag=ztb001&amp;siteGuid=c788aa3c-cb6e-43d8-bd65-ea0e0c449f20"工程量清单.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=2938055a-ce4a-4744-89b9-e6e1649cbeaa&amp;appUrlFlag=ztb001&amp;siteGuid=c788aa3c-cb6e-43d8-bd65-ea0e0c449f20"招标公告.pdf</a>
   </div>
 </div>
 <footer class="footer">
