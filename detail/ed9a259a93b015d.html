@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -237,7 +241,17 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/fbfc6422-1be6-4dce-a160-a36e068ded07-52ce1d17-69d4-4cf3-bfb0-f0e2f4a1af91?1827969"6、自行监管的说明.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/d23d942e-2089-425d-bfd8-662351cc97aa-52ce1d17-69d4-4cf3-bfb0-f0e2f4a1af91?1827968"代建招标公告（定稿）.docx</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/ce3bb3f3-1c4e-44f1-b5c6-0bc92bb55828-52ce1d17-69d4-4cf3-bfb0-f0e2f4a1af91?1827967"5、代建招标文件（定稿）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/90dbe155-5238-425b-81eb-18a35c142f8f-52ce1d17-69d4-4cf3-bfb0-f0e2f4a1af91?1827966"8、关于前期基础资料已收集完成的说明.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/81d4f1df-70e9-4bad-97a2-0ead06e11fc7-52ce1d17-69d4-4cf3-bfb0-f0e2f4a1af91?1827965"1、电子签名委托书.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/5cffb382-ca02-408b-9bdb-06da7e90c7b9-52ce1d17-69d4-4cf3-bfb0-f0e2f4a1af91?1827964"3、招标人授权代表委托书.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/56d13097-f443-49f2-a744-ad5c188bdcf0-52ce1d17-69d4-4cf3-bfb0-f0e2f4a1af91?1827963"2、招标人声明.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/51328c80-8ce7-4e16-a0aa-fc3712f459ee-52ce1d17-69d4-4cf3-bfb0-f0e2f4a1af91?1827962"7、招标代理委托书.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/3b1d70f1-d277-4c5b-a00b-ebc68b709897-52ce1d17-69d4-4cf3-bfb0-f0e2f4a1af91?1827961"松北⽚区建构筑物拆卸⼯程建设管理服务合同（定稿）.doc</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/1e271154-f6ed-481a-9b41-4ebd1e7d2a49-52ce1d17-69d4-4cf3-bfb0-f0e2f4a1af91?1827960"代建招标文件（定稿）.docx</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/160e48eb-70b4-48e7-9caf-9db50930f1b5-52ce1d17-69d4-4cf3-bfb0-f0e2f4a1af91?1827959"4、代建招标公告（定稿）.pdf</a>
+    <span class="att-btn att-pending">⏳ 6、自行监管的说明.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 代建招标公告（定稿）.docx（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 5、代建招标文件（定稿）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 8、关于前期基础资料已收集完成的说明.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 1、电子签名委托书.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 3、招标人授权代表委托书.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 2、招标人声明.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 7、招标代理委托书.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 松北⽚区建构筑物拆卸⼯程建设管理服务合同（定稿）.doc（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 代建招标文件（定稿）.docx（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 4、代建招标公告（定稿）.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

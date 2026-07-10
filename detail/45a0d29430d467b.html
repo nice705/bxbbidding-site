@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -73,7 +77,13 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/2ce15c7e-b864-540c-d3f2-c3def0e076f0.pdf"A包供应商资格承诺函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/398d8c40-b60e-ff0e-ee4c-2c5ad3edcd23.pdf"A包本国产品标准的声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/4dc9cc8c-a11c-9ef7-0a24-c3d92401ab9d.pdf"A 包二次招标文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/78a508b2-4f4c-2152-989c-1a9ee5d390a1.pdf"B包供应商资格承诺函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/8e9bf7d3-abc3-1270-3308-c9e055050590.pdf"B 包二次招标文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/99d6be01-5507-0b2b-9470-6aac0dc0930b.pdf"A包中小企业声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/efbd767e-f9c9-1eab-509d-d6d9e0df0ab7.pdf"B包本国产品标准的声明函.pdf</a>
+    <span class="att-btn att-pending">⏳ A包供应商资格承诺函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ A包本国产品标准的声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ A 包二次招标文件.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ B包供应商资格承诺函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ B 包二次招标文件.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ A包中小企业声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ B包本国产品标准的声明函.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

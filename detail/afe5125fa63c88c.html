@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -235,7 +239,9 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/87ed4189-12ce-4da9-bdaa-14391a633dd4-accae3c7-98cb-4c99-8122-ccf7b4f2dff8?1827918"招标公告（公示）.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/6a4b4a09-12d8-4812-b90a-87adc7a896ea-accae3c7-98cb-4c99-8122-ccf7b4f2dff8?1827915"（挂网）环浮山岭产业带茂南段施工监理招标文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/624772d8-8fee-4a1d-b235-954a32f76662-accae3c7-98cb-4c99-8122-ccf7b4f2dff8?1827912"投标格式（总）.doc</a>
+    <span class="att-btn att-pending">⏳ 招标公告（公示）.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ （挂网）环浮山岭产业带茂南段施工监理招标文件.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 投标格式（总）.doc（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

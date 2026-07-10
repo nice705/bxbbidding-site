@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -284,7 +288,14 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/f44a1c77-8aa7-4410-ad49-7a9ac289e7bc--3C51?1817520"定标过程资料-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/9fc18049-9d80-479e-8f1d-c28de4c0a4c7--3C51?1817519"评标过程资料-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/c86706a9-5bb3-49b8-bded-b64960472ac9--3C51?1817518"定标报告-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/5f2f2129-4375-41d4-9088-753343c890d9--3C51?1817517"K值抽取记录表-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/f688b210-47f9-4eea-bc10-4bcfb1fab963--3C51?1817516"安徽三三建设工程有限公司-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/62a7d80c-f1f1-44b6-8913-6e86c2f0f390--3C51?1817515"广州市第二市政工程有限公司-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/2b32d84c-bda2-4d15-9adb-0150fc494c52--3C51?1817514"广州市市政工程机械施工有限公司-脱敏版-.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/3a8021fc-22a9-40be-a2c3-df1b4a0f3e8e--3C51?1817513"中标候选人公示-高州市中医院南院区配套设备设施项目建筑工程施工0703.pdf</a>
+    <span class="att-btn att-expired">⏰ 定标过程资料-脱敏版.pdf（附件已过期，保留7天）</span>
+      <span class="att-btn att-expired">⏰ 评标过程资料-脱敏版.pdf（附件已过期，保留7天）</span>
+      <span class="att-btn att-expired">⏰ 定标报告-脱敏版.pdf（附件已过期，保留7天）</span>
+      <span class="att-btn att-expired">⏰ K值抽取记录表-脱敏版.pdf（附件已过期，保留7天）</span>
+      <span class="att-btn att-expired">⏰ 安徽三三建设工程有限公司-脱敏版.pdf（附件已过期，保留7天）</span>
+      <span class="att-btn att-expired">⏰ 广州市第二市政工程有限公司-脱敏版.pdf（附件已过期，保留7天）</span>
+      <span class="att-btn att-expired">⏰ 广州市市政工程机械施工有限公司-脱敏版-.pdf（附件已过期，保留7天）</span>
+      <span class="att-btn att-expired">⏰ 中标候选人公示-高州市中医院南院区配套设备设施项目建筑工程施工0703.pdf（附件已过期，保留7天）</span>
   </div>
 </div>
 <footer class="footer">

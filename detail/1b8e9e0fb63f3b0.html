@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -76,7 +80,14 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/1026ce8e-b950-7e6a-8e2f-bb5318fc4809.pdf"01包招标文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/16205abb-7d7a-7ad4-df07-1a798228677e.pdf"02声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/30622ab3-4e4f-1dd9-e8f1-2edd9a4a6539.pdf"01承诺函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/3e9dea3d-1ffa-6178-c62f-51f941c06764.pdf"02本国产品声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/9a53edfe-a147-3d8f-cfc7-48758c0bfd20.pdf"02承诺函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/f548acb9-51a8-64ce-7be1-0a22d075556e.pdf"02包招标文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/f78a49e1-5222-b98b-1270-25d4cd49ad16.pdf"01本国产品声明函.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/f7eea26d-7af6-0012-7ecc-eaff1cb6c246.pdf"01声明函.pdf</a>
+    <span class="att-btn att-pending">⏳ 01包招标文件.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 02声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 01承诺函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 02本国产品声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 02承诺函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 02包招标文件.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 01本国产品声明函.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 01声明函.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -230,7 +234,14 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/f88fc793-f71f-4414-9bad-6b7c7a8ebda0-4b40b544-49a3-42ce-8b58-b8c8a5170065?1817791"招标公告-广州白云山中一药业有限公司.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/ea2beed3-fc18-44ae-9fd2-5029d88aaca7-4b40b544-49a3-42ce-8b58-b8c8a5170065?1817787"发售-广州白云山中一药业有限公司2026年10月-2027年9月食堂食材和耗材采购项目.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/a177b29e-2517-45a7-adb7-b38dbabe6c6f-4b40b544-49a3-42ce-8b58-b8c8a5170065?1817782"中一食堂食材和耗材采购项目-图纸和技术资料证明.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/8dcc00ae-ad68-421a-be8d-6776e51f1b9b-4b40b544-49a3-42ce-8b58-b8c8a5170065?1817779"中一食堂食材和耗材采购项目-招标人授权代表证明书.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/8d8badc9-da40-4444-905a-f07a106eeec5-4b40b544-49a3-42ce-8b58-b8c8a5170065?1817776"中一食堂食材和耗材采购项目--招标申请.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/6bad988d-3efd-42e9-91ad-9a82319e8e94-4b40b544-49a3-42ce-8b58-b8c8a5170065?1817772"中一食堂食材和耗材采购项目-项目资金证明.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/1b45cd5c-6dc5-4af4-98db-580d241bbc9b-4b40b544-49a3-42ce-8b58-b8c8a5170065?1817769"中一食堂食材和耗材采购项目-电子签名委托书.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/123c7133-5dbc-466f-b733-012b0c779d28-4b40b544-49a3-42ce-8b58-b8c8a5170065?1817768"广州白云山中一药业有限公司2026年10月-2027年9月食堂食材和耗材采购项目.doc</a>
+    <span class="att-btn att-pending">⏳ 招标公告-广州白云山中一药业有限公司.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 发售-广州白云山中一药业有限公司2026年10月-2027年9月食堂食材和耗材采购项目.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中一食堂食材和耗材采购项目-图纸和技术资料证明.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中一食堂食材和耗材采购项目-招标人授权代表证明书.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中一食堂食材和耗材采购项目--招标申请.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中一食堂食材和耗材采购项目-项目资金证明.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中一食堂食材和耗材采购项目-电子签名委托书.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 广州白云山中一药业有限公司2026年10月-2027年9月食堂食材和耗材采购项目.doc（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

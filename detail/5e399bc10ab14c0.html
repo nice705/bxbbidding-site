@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -171,7 +175,12 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=6e37e074-0ff2-4ef1-8cc8-d783096958a3&amp;appUrlFlag=ztb001&amp;siteGuid=414a5b25-c8b1-4ff5-9352-68ff81a171b1"青海广晟建设工程有限公司企业业绩和人员业绩.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=711ebe85-0043-46e1-9af2-3dde68ce3f26&amp;appUrlFlag=ztb001&amp;siteGuid=414a5b25-c8b1-4ff5-9352-68ff81a171b1"开标记录表.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=787ddf1d-390a-4328-b218-05e1f7964082&amp;appUrlFlag=ztb001&amp;siteGuid=414a5b25-c8b1-4ff5-9352-68ff81a171b1"青海宏亚水电工程有限公司企业业绩和人员业绩.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=7c2a7473-bbf3-44a9-8b5d-676ca7f4b12a&amp;appUrlFlag=ztb001&amp;siteGuid=414a5b25-c8b1-4ff5-9352-68ff81a171b1"评标委员会成员评标情况.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=be1a2f44-ea59-4aa3-ae1a-ef723a9aeefc&amp;appUrlFlag=ztb001&amp;siteGuid=414a5b25-c8b1-4ff5-9352-68ff81a171b1"中标候选人公示.pdf</a> <a href="/api/proxy-attachment?url=https://www.qhggzyjy.gov.cn/wzds/WebbuilderMIS/attach/downloadZtbAttach.jspx?attachGuid=cb4f404e-a8f5-449e-90e3-54ca6960d44a&amp;appUrlFlag=ztb001&amp;siteGuid=414a5b25-c8b1-4ff5-9352-68ff81a171b1"青海正和水利水电开发有限公司企业业绩和人员业绩.pdf</a>
+    <a href="http://121.40.176.240/attachments/772a2a2b-3232-4ec9-a3ac-05458e4d14c6_005_青海广晟建设工程有限公司企业业绩和人员业绩.pdf" class="att-btn att-download" target="_blank" download="青海广晟建设工程有限公司企业业绩和人员业绩.pdf">📥 青海广晟建设工程有限公司企业业绩和人员业绩.pdf</a>
+      <a href="http://121.40.176.240/attachments/772a2a2b-3232-4ec9-a3ac-05458e4d14c6_005_开标记录表.pdf" class="att-btn att-download" target="_blank" download="开标记录表.pdf">📥 开标记录表.pdf</a>
+      <a href="http://121.40.176.240/attachments/772a2a2b-3232-4ec9-a3ac-05458e4d14c6_005_青海宏亚水电工程有限公司企业业绩和人员业绩.pdf" class="att-btn att-download" target="_blank" download="青海宏亚水电工程有限公司企业业绩和人员业绩.pdf">📥 青海宏亚水电工程有限公司企业业绩和人员业绩.pdf</a>
+      <a href="http://121.40.176.240/attachments/772a2a2b-3232-4ec9-a3ac-05458e4d14c6_005_评标委员会成员评标情况.pdf" class="att-btn att-download" target="_blank" download="评标委员会成员评标情况.pdf">📥 评标委员会成员评标情况.pdf</a>
+      <a href="http://121.40.176.240/attachments/772a2a2b-3232-4ec9-a3ac-05458e4d14c6_005_中标候选人公示.pdf" class="att-btn att-download" target="_blank" download="中标候选人公示.pdf">📥 中标候选人公示.pdf</a>
+      <a href="http://121.40.176.240/attachments/772a2a2b-3232-4ec9-a3ac-05458e4d14c6_005_青海正和水利水电开发有限公司企业业绩和人员业绩.pdf" class="att-btn att-download" target="_blank" download="青海正和水利水电开发有限公司企业业绩和人员业绩.pdf">📥 青海正和水利水电开发有限公司企业业绩和人员业绩.pdf</a>
   </div>
 </div>
 <footer class="footer">

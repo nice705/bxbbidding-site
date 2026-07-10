@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -83,7 +87,10 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/39b6ac53-074b-c89e-ef0c-d312bb735339.pdf"分包协议.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/84573584-59e7-6304-a435-039fc0fcbbb4.pdf"引入第三方安全技术常驻服务机构开展危险化学品企业安全生产指导服务项目（三次）招标文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/d75a6f1d-19e1-8732-28f4-b8b314c338ce.pdf"成交结果公告.pdf</a> <a href="/api/proxy-attachment?url=https://www.ccgp-hebei.gov.cn/BidInquiryAnncFiles/dac780db-fa30-3f90-227e-01f850dc2bc3.pdf"承诺函.pdf</a>
+    <span class="att-btn att-pending">⏳ 分包协议.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 引入第三方安全技术常驻服务机构开展危险化学品企业安全生产指导服务项目（三次）招标文件.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 成交结果公告.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 承诺函.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">

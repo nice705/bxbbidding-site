@@ -27,11 +27,15 @@
   .content td,.content th{border:1px solid #ddd;padding:8px 12px;font-size:14px}
   .attachments{background:#fff;padding:20px 28px;border-radius:8px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .attachments h3{font-size:16px;margin-bottom:12px}
-  .attachments a{display:inline-block;padding:8px 16px;background:#059669;color:#fff;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
-  .attachments a:hover{background:#047857}
+  .att-btn{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;margin:4px 8px 4px 0;font-size:14px}
+  .att-download{background:#059669;color:#fff} .att-download:hover{background:#047857}
+  .att-pending{background:#e5e7eb;color:#9ca3af;cursor:not-allowed}
+  .att-expired{background:#fef3c7;color:#92400e;cursor:not-allowed}
+  .att-toolarge{background:#fee2e2;color:#991b1b}
   .footer{text-align:center;padding:24px;font-size:12px;color:#999}
   .footer a{color:#059669}
 </style>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <nav class="nav">
@@ -51,7 +55,13 @@
   </article>
     <div class="attachments">
     <h3>📎 附件下载</h3>
-    <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/39faf78e65eabc32b7892d45077acca9?1819980"第三中标候选人投标文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/2ca68520cb9e2b1c3ba817e497e0170c?1819979"第二中标候选人投标文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/0e00d76324d4d4b870ceac0d5cdf5777?1819978"第一中标候选人投标文件.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/cb95660b3ed459090003f550239726b2?1819977"评标报告-脱敏版.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/d8b68ac917a8f188ccbe3e077967ebf7?1819976"评标专家评标过程的评审意见公示表.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/b10bd6c9f062a9cc1a75190a201abe75?1819975"中标候选人公示.pdf</a> <a href="/api/proxy-attachment?url=https://www.gdzwfw.gov.cn/ggzy-portal/base/sys-file/download/v3/b3b2bb72b9e8cc7000b9b61a18291ace?1819974"评标结果公示.pdf</a>
+    <span class="att-btn att-pending">⏳ 第三中标候选人投标文件.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 第二中标候选人投标文件.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 第一中标候选人投标文件.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 评标报告-脱敏版.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 评标专家评标过程的评审意见公示表.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 中标候选人公示.pdf（附件准备中...）</span>
+      <span class="att-btn att-pending">⏳ 评标结果公示.pdf（附件准备中...）</span>
   </div>
 </div>
 <footer class="footer">
