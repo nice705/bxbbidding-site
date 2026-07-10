@@ -109,6 +109,7 @@
   window.addEventListener('pagehide',_tb);
 })();
 </script>  <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
+<script async src="https://121.40.176.240/_umami/script.js" data-website-id="b2853376-d072-45a4-9a91-4526e401d4d2"></script>
 </head>
 <body>
 <script>(function(){var c=document.body.children;for(var i=c.length-1;i>=0;i--){if(c[i].id!=="app")c[i].remove();}})();</script>
@@ -978,5 +979,23 @@
 })();
 </script>
 
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --><!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --></body>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --><!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c405c4cd-0812-43c1-91e8-0ce6e30a5434"}'></script><!-- Cloudflare Pages Analytics --><script>
+// 标讯宝 - 用户行为追踪
+(function(){function w(c,r){r=r||30;if(window.umami&&window.umami.track){c()}else if(r>0){setTimeout(function(){w(c,r-1)},300)}}
+w(function(){
+// 搜索事件
+var si=document.querySelector('input[type="search"],input[placeholder*="搜索"],.search-input');
+if(si){var f=si.closest("form")||si.parentNode;var t=function(){var k=si.value.trim();if(k){window.umami.track("search",{keyword:k});
+// 记录零结果搜索
+try{navigator.sendBeacon("https://121.40.176.240/_umami/api/slog",JSON.stringify({keyword:k,result_count:-1}))}catch(e){}}};
+if(f.tagName==="FORM"){f.addEventListener("submit",t)}si.addEventListener("keydown",function(e){if(e.key==="Enter")t()})});
+
+// 附件下载事件
+document.addEventListener("click",function(e){var b=e.target.closest(".att-download,[class*=\"download\"],a[href*=\"attachment\"]");if(b){window.umami.track("attachment_download",{file:(b.textContent||b.title||"").trim().substring(0,60)})}});
+
+// 详情页浏览
+if(location.pathname.indexOf("/detail")===0){var h=document.querySelector("h1");window.umami.track("detail_view",{title:(h?h.textContent.trim():document.title).substring(0,80)})}
+})})();
+</script>
+</body>
 </html>
