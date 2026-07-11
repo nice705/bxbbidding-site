@@ -1,0 +1,2 @@
+# SPA fallback: /detail/{id} and /detail/{id}.html → detail.html
+/detail/* /detail.html 200

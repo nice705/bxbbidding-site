@@ -1,1 +1,1 @@
-# 静态HTML详情页 - 直接投放（/detail/{id}.html 直接serve，无需规则）
+# Static detail pages serve directly; SPA fallback for missing

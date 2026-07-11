@@ -18,6 +18,7 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5/theme/light.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://lib.baomitu.com/alpinejs/3.14.3/cdn.min.js" defer></script>
+  <script src="/static/detail-url.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
     * { font-family: 'Noto Sans SC', -apple-system, sans-serif; }
@@ -360,7 +361,7 @@
 
       <div x-show="matchedBids.length > 0" class="space-y-1.5">
         <template x-for="(bid, idx) in matchedBids.slice(0, 3)" :key="idx">
-          <a :href="'/detail?id=' + bid.id" class="block bg-gray-50 rounded-lg p-2.5 hover:bg-emerald-50 transition-colors">
+          <a :href="detailUrl(bid)" class="block bg-gray-50 rounded-lg p-2.5 hover:bg-emerald-50 transition-colors">
             <div class="flex items-center justify-between mb-0.5">
               <span class="text-xs text-emerald-600 font-medium" x-text="bid.source"></span>
               <span class="text-xs text-gray-400" x-text="bid.date"></span>

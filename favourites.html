@@ -273,7 +273,7 @@
     <!-- Bids Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
       <template x-for="(bid, idx) in visibleBids" :key="bid.id">
-        <a :href="'/detail?id=' + bid.id" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in relative">
+        <a :href="detailUrl(bid)" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in relative">
           <!-- Favorite star -->
           <button @click.prevent="toggleFav(bid, $event)"
             class="absolute top-4 right-2 flex items-center gap-0.5 px-1.5 py-1 rounded-full hover:bg-gray-100 transition-colors z-10 text-xs"

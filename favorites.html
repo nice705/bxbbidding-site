@@ -21,6 +21,7 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5/theme/light.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://lib.baomitu.com/alpinejs/3.14.3/cdn.min.js" defer></script>
+  <script src="/static/detail-url.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
     * { font-family: 'Noto Sans SC', -apple-system, sans-serif; }
@@ -127,7 +128,7 @@
         <!-- Bid Cards -->
         <div class="space-y-3" x-show="!loading && filteredFavs.length > 0">
           <template x-for="bid in filteredFavs" :key="bid.id">
-            <a :href="'/detail?id=' + bid.id" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in relative">
+            <a :href="detailUrl(bid)" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in relative">
               <!-- Status indicator dot -->
               <span x-show="getFavStatus(bid.id) === 'unread'"
                 class="absolute top-3 left-3 w-2 h-2 rounded-full bg-emerald-500"

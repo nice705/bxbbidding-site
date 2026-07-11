@@ -270,7 +270,7 @@
         <!-- Bid Cards -->
         <div class="space-y-3" x-show="!loading">
           <template x-for="bid in pagedBids" :key="bid.id">
-            <a :href="'/detail?id=' + bid.id + (keyword.trim() ? '&q=' + encodeURIComponent(keyword.trim()) : '') + (filters.region ? '&region=' + encodeURIComponent(filters.region) : '')" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in relative">
+            <a :href="detailUrl(bid, keyword, filters.region)" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in relative">
               <!-- Favorite star -->
               <button @click.prevent="toggleFav(bid.id, bid.title)"
                 class="absolute top-3 right-3 flex items-center gap-0.5 px-1.5 py-1 rounded-full hover:bg-gray-100 transition-colors z-10 text-xs"
