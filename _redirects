@@ -1,2 +1,1 @@
-# Static detail pages serve directly; SPA fallback for missing
-/detail/*    /detail.html   200
+# CF auto-serves static files at /detail/{id}.html; SPA fallback only for bare paths
