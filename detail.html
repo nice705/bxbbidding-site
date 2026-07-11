@@ -550,23 +550,6 @@
                 return;
               }
             }
-            // 小文件不存在，尝试 bids-detail.json（快）
-            try {
-              const detailResp = await fetch('/data/bids-detail.json');
-              if (detailResp.ok && detailResp.headers.get('content-type')?.includes('json')) {
-                const detailData = await detailResp.json();
-                const found = (detailData.bids || []).find(b => String(b.id) === String(id));
-                if (found) {
-                  found._title = this.highlightText(found.title);
-                  found._html = found.html || '';
-                  found._content = (found.content) ? this.highlightText(found.content) : '';
-                  this.bid = found;
-                  document.title = found.title + ' — 标讯宝';
-                  this.loading = false;
-                  return;
-                }
-              }
-            } catch(e) {}
             // 仍没找到，通过index查找分片chunk
             try {
               const idxResp = await fetch('/data/bids-index.json.gz');
@@ -593,6 +576,24 @@
                       return;
                     }
                   }
+                }
+              }
+            } catch(e) {}
+            // 分片未命中，尝试 bids-detail.json（较慢）
+            // 小文件不存在，尝试 bids-detail.json（快）
+            try {
+              const detailResp = await fetch('/data/bids-detail.json');
+              if (detailResp.ok && detailResp.headers.get('content-type')?.includes('json')) {
+                const detailData = await detailResp.json();
+                const found = (detailData.bids || []).find(b => String(b.id) === String(id));
+                if (found) {
+                  found._title = this.highlightText(found.title);
+                  found._html = found.html || '';
+                  found._content = (found.content) ? this.highlightText(found.content) : '';
+                  this.bid = found;
+                  document.title = found.title + ' — 标讯宝';
+                  this.loading = false;
+                  return;
                 }
               }
             } catch(e) {}
