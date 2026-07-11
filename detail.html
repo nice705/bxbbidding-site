@@ -572,14 +572,14 @@
               const idxResp = await fetch('/data/bids-index.json.gz');
               if (idxResp.ok) {
                 const idxBuf = await idxResp.arrayBuffer();
-                const idxDecompressed = pako.inflate(new Uint8Array(idxBuf));
+                const idxDecompressed = pako.ungzip(new Uint8Array(idxBuf));
                 const idx = JSON.parse(new TextDecoder('utf-8').decode(idxDecompressed));
                 const chunkNum = idx[String(id)];
                 if (chunkNum !== undefined) {
                   const chunkResp = await fetch('/data/bids-' + chunkNum + '.json.gz');
                   if (chunkResp.ok) {
                     const chunkBuf = await chunkResp.arrayBuffer();
-                    const chunkDecompressed = pako.inflate(new Uint8Array(chunkBuf));
+                    const chunkDecompressed = pako.ungzip(new Uint8Array(chunkBuf));
                     const chunk = JSON.parse(new TextDecoder('utf-8').decode(chunkDecompressed));
                     const bidsList = chunk.bids || [];
                     const bidFound = bidsList.find(x => String(x.id) === String(id));
@@ -640,7 +640,7 @@
               for (const chunk of chunks) { merged.set(chunk, offset); offset += chunk.byteLength; }
               decompressed = merged;
             } catch(e) {
-              decompressed = pako.inflate(uint8);
+              decompressed = pako.ungzip(uint8);
             }
             data = JSON.parse(new TextDecoder('utf-8').decode(decompressed));
             const bids = data.bids || [];
