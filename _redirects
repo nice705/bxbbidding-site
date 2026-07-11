@@ -1,1 +1,2 @@
 # Static detail pages serve directly; SPA fallback for missing
+/detail/*    /detail.html   200
