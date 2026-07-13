@@ -283,7 +283,7 @@
     </div>
 
     <!-- Bids Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3" x-show="dataReady">
       <template x-for="(bid, idx) in visibleBids" :key="bid.id">
         <a :href="detailUrl(bid)" class="block bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover fade-in relative">
           <!-- Favorite star -->
@@ -370,7 +370,7 @@
     </div>
 
     <!-- 加载中（数据未就绪） -->
-    <div class="text-center py-16" x-show="false">
+    <div class="text-center py-16" x-show="!dataReady && !loadingTimeout">
       <div class="flex items-center justify-center gap-1.5 mb-3">
         <span class="dot-blink w-2 h-2 rounded-full bg-emerald-400 inline-block" style="animation-delay: 0s"></span>
         <span class="dot-blink w-2 h-2 rounded-full bg-emerald-400 inline-block" style="animation-delay: 0.2s"></span>
@@ -473,7 +473,7 @@
         loadingFull: false,
         observer: null,
         favedIds: {},
-        dataReady: true,
+        dataReady: false,
         loadingTimeout: false,
 
         async init() {
