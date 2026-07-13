@@ -298,7 +298,7 @@
           <!-- Type badge -->
           <span class="inline-block text-xs font-medium px-1.5 py-0.5 rounded mb-2"
             :class="methodBadgeClass(bid.method)"
-            x-text="bid.method || '公告'"></span>
+            x-text="methodLabel(bid.method)"></span>
           <!-- Title -->
           <h3 class="font-semibold text-gray-900 text-sm leading-snug mb-2 line-clamp-2 pr-6" x-text="bid.title"></h3>
           <!-- Buyer + Products + Type: info row -->
@@ -763,6 +763,31 @@
           // Unknown but non-empty → visible fallback
           if (m && m !== 'default' && m !== 'fulltext_search') return 'bg-gray-100 text-gray-600';
           return 'bg-gray-50 text-gray-500';
+        },
+        methodLabel(m) {
+          if (!m) return '公告';
+          const map = {
+            'default':'公告','fulltext_search':'公告',
+            '公开招标':'公开招标','招标公告':'招标公告','招标变更公告':'招标变更',
+            '中标公告':'中标公告','中标/成交':'中标/成交','中标结果公告':'中标结果','中标结果公示':'中标公示','结果公告':'结果公告',
+            '更正公告':'更正公告',
+            '废标':'废标','废标公告':'废标',
+            '竞争性磋商':'竞争性磋商','竞争性谈判':'竞争性谈判','询价':'询价','单一来源':'单一来源',
+            '采购公告':'采购公告','采购意向':'采购意向','政府采购':'政府采购',
+            '工程建设':'工程建设','工程建设/政府采购':'工程建设/采购',
+            '评标结果公示':'评标结果','合同/验收':'合同/验收',
+            '地方公告+中央公告':'公告',
+            '其他公告':'其他公告','预告':'预告','方案征集':'方案征集','竞价':'竞价',
+            // 海南站 categorynum
+            '003001001':'招标公告','003001002':'资格预审','003001006':'招标计划','003001007':'终止公告',
+            '003002004':'结果公告','003002007':'合同公告','003006001':'采购意向','003003003':'其他',
+            // 广东站 categorynum
+            '3811':'采购意向','3812':'采购公告','3813':'更正公告',
+            '3C14':'招标公告','3C61':'中标公告',
+            // 四川站 categorynum
+            '002010001':'国企采购','002010002':'国企中标',
+          };
+          return map[m] || m;
         },
 
         // —— 截止倒计时（基于发布时间+30天估算） ——
