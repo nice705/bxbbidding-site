@@ -443,6 +443,9 @@
         },
 
         localFileUrl(att) {
+            if (att.oss_url) {
+                return att.oss_url;
+            }
             if (att.local_file) {
                 const t = Date.now();
                 return 'http://121.40.176.240/attachments/' + encodeURIComponent(att.local_file) + '?t=' + t;
