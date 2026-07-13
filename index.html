@@ -730,8 +730,39 @@
 
         // —— 类型Badge颜色 ——
         methodBadgeClass(m) {
-          const map = {'公开招标':'bg-blue-50 text-blue-600','中标公告':'bg-green-50 text-green-600','中标/成交':'bg-green-50 text-green-600','更正公告':'bg-orange-50 text-orange-600','废标':'bg-red-50 text-red-600','竞争性磋商':'bg-purple-50 text-purple-600','竞争性谈判':'bg-purple-50 text-purple-600','询价':'bg-cyan-50 text-cyan-600','单一来源':'bg-pink-50 text-pink-600','其他公告':'bg-gray-50 text-gray-500','预告':'bg-amber-50 text-amber-600','方案征集':'bg-gray-50 text-gray-600','竞价':'bg-yellow-50 text-yellow-600'};
-          return map[m] || 'bg-gray-50 text-gray-600';
+          if (!m) return 'bg-gray-100 text-gray-500';
+          const map = {
+            '公开招标':'bg-blue-50 text-blue-600',
+            '中标公告':'bg-green-50 text-green-600','中标/成交':'bg-green-50 text-green-600',
+            '中标结果公告':'bg-green-50 text-green-600','中标结果公示':'bg-green-50 text-green-600',
+            '结果公告':'bg-green-50 text-green-600',
+            '更正公告':'bg-orange-50 text-orange-600',
+            '废标':'bg-red-50 text-red-600','废标公告':'bg-red-50 text-red-600',
+            '竞争性磋商':'bg-purple-50 text-purple-600',
+            '竞争性谈判':'bg-purple-50 text-purple-600',
+            '询价':'bg-cyan-50 text-cyan-600',
+            '单一来源':'bg-pink-50 text-pink-600',
+            '其他公告':'bg-gray-100 text-gray-500',
+            '预告':'bg-amber-50 text-amber-600',
+            '方案征集':'bg-gray-100 text-gray-600',
+            '竞价':'bg-yellow-50 text-yellow-600',
+            '招标公告':'bg-blue-50 text-blue-600',
+            '招标变更公告':'bg-orange-50 text-orange-600',
+            '采购公告':'bg-indigo-50 text-indigo-600',
+            '采购意向':'bg-violet-50 text-violet-600',
+            '评标结果公示':'bg-amber-50 text-amber-600',
+            '政府采购':'bg-indigo-50 text-indigo-600',
+            '工程建设':'bg-teal-50 text-teal-600',
+            '合同/验收':'bg-emerald-50 text-emerald-600',
+            '工程建设/政府采购':'bg-teal-50 text-teal-600',
+            '地方公告+中央公告':'bg-indigo-50 text-indigo-600',
+          };
+          if (map[m]) return map[m];
+          // Numeric category codes → clean label
+          if (/^\d+[A-Za-z]*$/.test(m)) return 'bg-gray-100 text-gray-500';
+          // Unknown but non-empty → visible fallback
+          if (m && m !== 'default' && m !== 'fulltext_search') return 'bg-gray-100 text-gray-600';
+          return 'bg-gray-50 text-gray-500';
         },
 
         // —— 截止倒计时（基于发布时间+30天估算） ——
@@ -789,6 +820,10 @@
         },
         isFav(id) {
           return !!this.favedIds[id];
+        },
+        detailUrl(bid) {
+          const id = bid.id || bid._id;
+          return id ? '/detail?id=' + id : '#';
         },
 
       }
